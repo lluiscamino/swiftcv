@@ -3,6 +3,9 @@
                    placeholder="University College London"/>
     <x-forms.input id="educationExperiences.{{ $key }}.degree" type="text" label="Degree"
                    placeholder="Bsc. Computer Science"/>
-    <x-forms.input id="educationExperiences.{{ $key }}.startDate" type="date" label="Start Date"/>
-    <x-forms.input id="educationExperiences.{{ $key }}.endDate" type="date" label="End Date"/>
+    <div class="grid gap-4 grid-cols-2">
+        <x-forms.input id="educationExperiences.{{ $key }}.startDate" type="date" label="Start Date"/>
+        <x-forms.input id="educationExperiences.{{ $key }}.endDate" type="date" label="End Date"/>
+    </div>
+    <x-forms.input id="educationExperiences.{{ $key }}.location" type="text" label="Location" placeholder="London, UK"/>
 </div>

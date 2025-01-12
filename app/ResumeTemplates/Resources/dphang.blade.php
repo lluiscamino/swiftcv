@@ -106,7 +106,7 @@ Seattle, Washington
     \item
     \headerrow
     {\textbf{ {{$educationExperience->university}} }}
-    {\textbf{Bethlehem, PA}}
+    {\textbf{<?= $educationExperience->location ?>}}
     \headerrow
     {\emph{ {{$educationExperience->degree}} } (\textbf{GPA:} 3.96/4.00)}
     {\emph{ {{$educationExperience->startDate->format('M Y')}} -- {{$educationExperience->endDate?->format('M Y') ?? 'Present'}} }}

@@ -35,6 +35,7 @@ class CreateResumeForm extends Form
             'educationExperiences.*.degree' => ['required', 'string'],
             'educationExperiences.*.startDate' => ['required', 'date'],
             'educationExperiences.*.endDate' => ['nullable', 'date'],
+            'educationExperiences.*.location' => ['nullable', 'string'],
             'projects' => ['array'],
             'projects.*.name' => ['required', 'string'],
             'projects.*.link' => ['nullable', 'string'],
@@ -67,9 +68,9 @@ class CreateResumeForm extends Form
         return array_map(fn($key) => new WorkExperience(
             company: $this->getPropertyValue("workExperiences.$key.company"),
             jobTitle: $this->getPropertyValue("workExperiences.$key.jobTitle"),
-            location: $this->getPropertyValue("workExperiences.$key.location"),
             startDate: $this->getDatePropertyValue("workExperiences.$key.startDate"),
             endDate: $this->getDatePropertyValue("workExperiences.$key.endDate"),
+            location: $this->getPropertyValue("workExperiences.$key.location"),
             description: ['Developed many features', 'Used the gym', 'blah blah blah']
         ), array_keys($this->getPropertyValue('workExperiences')));
     }
@@ -82,6 +83,7 @@ class CreateResumeForm extends Form
             degree: $this->getPropertyValue("educationExperiences.$key.degree"),
             startDate: $this->getDatePropertyValue("educationExperiences.$key.startDate"),
             endDate: $this->getDatePropertyValue("educationExperiences.$key.endDate"),
+            location: $this->getPropertyValue("educationExperiences.$key.location"),
             description: ['Didnt study much', 'Went to 2 parties']
         ), array_keys($this->getPropertyValue('educationExperiences')));
     }

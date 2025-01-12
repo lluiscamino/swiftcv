@@ -133,7 +133,7 @@
 
 @foreach($vars->educationExperiences as $educationExperience)
     \resumeSubheading
-    {<?= $educationExperience->university ?>}{Georgetown, TX}
+    {<?= $educationExperience->university ?>}{<?= $educationExperience->location ?>}
     {<?= $educationExperience->degree ?>}{<?= $educationExperience->startDate->format('M Y') ?> - <?= $educationExperience->endDate?->format('M Y') ?? 'Present' ?>}
     \resumeItemListStart
     @foreach($educationExperience->description as $line)

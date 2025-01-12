@@ -54,7 +54,7 @@
 \begin{cvsection}{Education}
 
 @foreach($vars->educationExperiences as $educationExperience)
-    \begin{cvsubsection}{Philadelphia, PA}{University of Pennsylvania}{<?= $educationExperience->startDate->format('M Y') ?> -- <?= $educationExperience->endDate?->format('M Y') ?? 'Present' ?>}
+    \begin{cvsubsection}{<?= $educationExperience->location ?>}{<?= $educationExperience->university ?>}{<?= $educationExperience->startDate->format('M Y') ?> -- <?= $educationExperience->endDate?->format('M Y') ?? 'Present' ?>}
     \begin{itemize}
     \item <?= $educationExperience->degree ?>. GPA: 3.6
     @foreach($educationExperience->description as $line)

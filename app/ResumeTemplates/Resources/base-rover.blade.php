@@ -34,7 +34,7 @@
 {\Huge\bfseries
 {{$vars->name}}
 } \\ \medskip
-Resume Template % Title [optional]
+% Resume Template % Title [optional]
 \end{minipage} \hfill
 \begin{minipage}{0.4\textwidth}
 \raggedleft
@@ -60,7 +60,7 @@ GitHub: github.com/{{$vars->githubUsername}}
 \section{Education}
 %=================%
 @foreach($vars->educationExperiences as $educationExperience)
-    \subsection{ {{$educationExperience->university}} $|$ {{$educationExperience->degree}} \hfill {{$educationExperience->startDate->format('M Y')}} - {{$educationExperience->endDate?->format('M Y') ?? 'Present'}} }
+    \subsection{<?= $educationExperience->university ?>, <?= $educationExperience->location ?> $|$ {\normalfont\itshape <?= $educationExperience->degree ?>} \hfill <?= $educationExperience->startDate->format('M Y') ?> - <?= $educationExperience->endDate->format('M Y') ?>}
     \begin{itemize}
     @foreach($educationExperience->description as $line)
         \item {{$line}}

@@ -10,9 +10,9 @@ readonly class WorkExperience
     public function __construct(
         public string    $company,
         public ?string   $jobTitle,
-        public ?string   $location,
         public DateTime  $startDate,
         public ?DateTime $endDate,
+        public ?string   $location,
         public array     $description
     )
     {
