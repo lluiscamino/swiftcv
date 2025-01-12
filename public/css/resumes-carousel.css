@@ -1,0 +1,45 @@
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: white;
+}
+
+.swiper-slide {
+    width: 40%;
+}
+
+@media (min-width: 600px) {
+    .swiper-slide {
+        width: 35%;
+    }
+}
+
+@media (min-width: 801px) {
+    .swiper-slide {
+        width: 30%;
+    }
+}
+
+@media (min-width: 1025px) {
+    .swiper-slide {
+        width: 25%;
+    }
+}
+
+@media (min-width: 1281px) {
+    .swiper-slide {
+        width: 24%;
+    }
+}
+
+.swiper {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}

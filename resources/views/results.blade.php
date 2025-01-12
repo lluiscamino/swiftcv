@@ -1,0 +1,51 @@
+@php use App\ResumeCreator\Resume;
+@endphp
+@include('common/header')
+
+<div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
+    <div class="max-w-screen-lg mx-auto">
+        <h2 class="max-w-2xl mb-4 text-2xl font-extrabold leading-none tracking-tight md:text-3xl xl:text-4xl dark:text-white">
+            Your Resumes are Ready!
+        </h2>
+        <p class="max-w-2xl mb-2 font-light text-gray-800 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+            Here are your generated resumes, showcasing a variety of professional LaTeX templates. Preview and download
+            the ones that best suit your needs.
+        </p>
+        <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+            @php /** @var Resume $resume */ @endphp
+            @foreach(session('resumes') as $resume)
+                <div class="flex flex-col max-w-lg py-4 mx-auto text-center text-gray-900 bg-white border border-gray-100 rounded-lg shadow dark:border-gray-600 xl:py-6 dark:bg-gray-800 dark:text-white">
+                    <h3 class="mb-4 text-xl font-semibold">{{ $resume->templateType->getUserFriendlyName() }}</h3>
+                    <!--<p class="font-light text-gray-500 sm:text-lg dark:text-gray-400">Best option for personal use & for
+                        your next project.</p>-->
+                    <img alt="Resume generated with template {{$resume->templateType->getUserFriendlyName()}}"
+                         src="{{$resume->thumbnailUrl}}">
+                    <div>
+                        <a href="{{ $resume->pdfFileUrl }}" download
+                           class="px-5 py-2.5 text-sm font-medium text-white inline-flex items-center bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-200 rounded-lg text-center dark:text-white dark:focus:ring-green-900 my-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16px"
+                                 height="16px" viewBox="0 0 16 16" version="1.1">
+                                <g id="surface1">
+                                    <path style=" stroke:none;fill-rule:nonzero;fill:rgb(98.039216%,5.882353%,0%);fill-opacity:1;"
+                                          d="M 2.828125 0 L 13.171875 0 C 14.742188 0 16 1.257812 16 2.828125 L 16 13.171875 C 16 14.742188 14.742188 16 13.171875 16 L 2.828125 16 C 1.257812 16 0 14.742188 0 13.171875 L 0 2.828125 C 0 1.257812 1.257812 0 2.828125 0 Z M 2.828125 0 "/>
+                                    <path style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,100%,100%);fill-opacity:1;"
+                                          d="M 12.757812 9.230469 C 12.015625 8.457031 9.988281 8.769531 9.5 8.828125 C 8.789062 8.144531 8.300781 7.3125 8.128906 7.027344 C 8.386719 6.257812 8.558594 5.484375 8.585938 4.65625 C 8.585938 3.941406 8.300781 3.171875 7.5 3.171875 C 7.214844 3.171875 6.957031 3.34375 6.816406 3.570312 C 6.472656 4.171875 6.617188 5.371094 7.160156 6.601562 C 6.84375 7.484375 6.558594 8.34375 5.757812 9.855469 C 4.929688 10.199219 3.1875 11 3.042969 11.855469 C 2.988281 12.113281 3.074219 12.371094 3.273438 12.570312 C 3.472656 12.742188 3.730469 12.828125 3.988281 12.828125 C 5.042969 12.828125 6.074219 11.371094 6.789062 10.144531 C 7.386719 9.941406 8.332031 9.65625 9.273438 9.484375 C 10.386719 10.457031 11.359375 10.601562 11.875 10.601562 C 12.558594 10.601562 12.816406 10.3125 12.902344 10.058594 C 13.042969 9.769531 12.957031 9.457031 12.757812 9.230469 Z M 12.042969 9.714844 C 12.015625 9.914062 11.757812 10.113281 11.300781 10 C 10.757812 9.855469 10.273438 9.601562 9.84375 9.257812 C 10.214844 9.199219 11.042969 9.113281 11.644531 9.230469 C 11.875 9.285156 12.101562 9.429688 12.042969 9.714844 Z M 7.273438 3.828125 C 7.332031 3.742188 7.417969 3.6875 7.5 3.6875 C 7.757812 3.6875 7.816406 4 7.816406 4.257812 C 7.789062 4.855469 7.671875 5.457031 7.472656 6.027344 C 7.042969 4.886719 7.128906 4.085938 7.273438 3.828125 Z M 7.214844 9.371094 C 7.445312 8.914062 7.757812 8.113281 7.875 7.769531 C 8.128906 8.199219 8.558594 8.714844 8.789062 8.941406 C 8.789062 8.972656 7.902344 9.144531 7.214844 9.371094 Z M 5.53125 10.515625 C 4.875 11.601562 4.1875 12.285156 3.816406 12.285156 C 3.757812 12.285156 3.703125 12.257812 3.644531 12.230469 C 3.558594 12.171875 3.53125 12.085938 3.558594 11.972656 C 3.644531 11.570312 4.386719 11.027344 5.53125 10.515625 Z M 5.53125 10.515625 "/>
+                                </g>
+                            </svg>
+                            <span class="ml-1">Download PDF</span>
+                        </a>
+                        <a href="{{ $resume->texFileUrl }}" download
+                           class="px-5 py-2.5 text-sm font-medium text-white inline-flex items-center bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-200 rounded-lg text-center dark:text-white dark:focus:ring-green-900 my-1">
+                            <img src="/images/tex.png" alt="" height="16" width="16"/>
+                            <span class="ml-1">Download TeX</span>
+                        </a>
+                        {{ '' /* TODO: Add original source */ }}
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</div>
+
+@include('common/footer')
+

@@ -1,0 +1,51 @@
+<?php
+
+namespace App\ResumeCreator;
+
+use App\ResumeTemplates\TemplateType;
+use App\ResumeTemplates\Variables\ResumeVariables;
+use Illuminate\Support\Str;
+use RuntimeException;
+use Spatie\TemporaryDirectory\Exceptions\PathAlreadyExists;
+use Spatie\TemporaryDirectory\TemporaryDirectory;
+
+readonly class ResumeCreator
+{
+    public function __construct(private TempResumeFilesCreator $tempResumeFilesCreator)
+    {
+    }
+
+    /**
+     * @param TemplateType[] $templateTypes
+     * @return Resume[]
+     */
+    public function createResumes(array $templateTypes, ResumeVariables $variables): array
+    {
+        $tmpDir = self::createTemporaryDirectory();
+        $resumes = $this->tempResumeFilesCreator->createResumeFiles($tmpDir, $templateTypes, $variables);
+        return self::saveResumesToPermanentDisk($resumes);
+    }
+
+    private static function createTemporaryDirectory(): TemporaryDirectory
+    {
+        try {
+            return (new TemporaryDirectory())
+                ->deleteWhenDestroyed()
+                ->create();
+        } catch (PathAlreadyExists $e) {
+            throw new RuntimeException("Unable to create temporary directory", [
+                'exception' => $e,
+            ]);
+        }
+    }
+
+    /**
+     * @param TempResume[] $tempResumes
+     * @return Resume[] resumes with paths saved to permanent disk
+     */
+    private static function saveResumesToPermanentDisk(array $tempResumes): array
+    {
+        $path = 'resumes/' . Str::orderedUuid();
+        return array_map(fn(TempResume $tempResume) => Resume::createFromTempResume($tempResume, $path), $tempResumes);
+    }
+}
