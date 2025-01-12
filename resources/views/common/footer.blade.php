@@ -144,6 +144,6 @@
 </footer>
 @vite('resources/js/app.js')
 @livewireScripts
-<script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 </body>
 </html>
