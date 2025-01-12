@@ -48,7 +48,7 @@ GitHub: github.com/{{$vars->githubUsername}}
 \section{Experience}
 %=================%
 @foreach($vars->workExperiences as $workExperience)
-    \subsection{ {{$workExperience->jobTitle}} \hfill  {{$workExperience->startDate->format('M Y')}} - {{$workExperience->endDate?->format('M Y') ?? 'Present'}} }
+    \subsection{ {{$workExperience->jobTitle}} \hfill  {{$workExperience->dateRange}} }
     \subsubsection{ {{ $workExperience->company }} \hfill {{$workExperience->location}} }
     \begin{itemize}
     @foreach($workExperience->description as $line)
@@ -60,7 +60,7 @@ GitHub: github.com/{{$vars->githubUsername}}
 \section{Education}
 %=================%
 @foreach($vars->educationExperiences as $educationExperience)
-    \subsection{<?= $educationExperience->university ?>, <?= $educationExperience->location ?> $|$ {\normalfont\itshape <?= $educationExperience->degree ?>} \hfill <?= $educationExperience->startDate->format('M Y') ?> - <?= $educationExperience->endDate->format('M Y') ?>}
+    \subsection{<?= $educationExperience->university ?>, <?= $educationExperience->location ?> $|$ {\normalfont\itshape <?= $educationExperience->degree ?>} \hfill <?= $educationExperience->dateRange ?>}
     \begin{itemize}
     @foreach($educationExperience->description as $line)
         \item {{$line}}
@@ -87,7 +87,7 @@ GitHub: github.com/{{$vars->githubUsername}}
 \section{Projects}
 %=================
 @foreach($vars->projects as $project)
-    \subsection{ {{$project->name}} $|$ \normalfont\textit{ {{$project->link}} } \hfill {{$workExperience->startDate->format('M Y')}} - {{$workExperience->endDate?->format('M Y') ?? 'Present'}} }
+    \subsection{ {{$project->name}} $|$ \normalfont\textit{ {{$project->link}} } \hfill {{$workExperience->dateRange}} }
     \begin{itemize}
     @foreach($project->description as $line)
         \item {{$line}}

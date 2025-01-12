@@ -71,7 +71,7 @@ Seattle, Washington
     {\textbf{ {{$workExperience->location}} }}
     \headerrow
     {\emph{ {{$workExperience->jobTitle}} }}
-    {\emph{ {{$workExperience->startDate->format('M Y')}} -- {{$workExperience->endDate?->format('M Y') ?? 'Present'}} }}
+    {\emph{<?= $workExperience->dateRange ?>}}
     \begin{itemize*}
     @foreach($workExperience->description as $line)
         \item {{$line}}
@@ -109,7 +109,7 @@ Seattle, Washington
     {\textbf{<?= $educationExperience->location ?>}}
     \headerrow
     {\emph{ {{$educationExperience->degree}} } (\textbf{GPA:} 3.96/4.00)}
-    {\emph{ {{$educationExperience->startDate->format('M Y')}} -- {{$educationExperience->endDate?->format('M Y') ?? 'Present'}} }}
+    {\emph{<?= $educationExperience->dateRange ?>}}
 @endforeach
 
 \end{itemize}
@@ -127,7 +127,7 @@ Seattle, Washington
     \item
     \headerrow
     {\textbf{ {{ $project->name }} }}
-    {\emph{ {{$project->startDate->format('M Y')}} -- {{$project->endDate?->format('M Y') ?? 'Present'}} }}
+    {\emph{<?= $project->dateRange ?>}}
     \headerrow
     {\emph{ {{$project->link}} }}
     {\}}

@@ -41,7 +41,7 @@
 % Print the content
 \begin{cvsection}{Employment}
 @foreach($vars->workExperiences as $workExperience)
-    \begin{cvsubsection}{<?= $workExperience->jobTitle ?>}{<?= $workExperience->company ?>}{<?= $workExperience->startDate->format('M Y') ?> - <?= $workExperience->endDate?->format('M Y') ?? 'Present' ?>}
+    \begin{cvsubsection}{<?= $workExperience->jobTitle ?>}{<?= $workExperience->company ?>}{<?= $workExperience->dateRange ?>}
     %iChat AV
     \begin{itemize}
     @foreach($workExperience->description as $line)
@@ -54,7 +54,7 @@
 \begin{cvsection}{Education}
 
 @foreach($vars->educationExperiences as $educationExperience)
-    \begin{cvsubsection}{<?= $educationExperience->location ?>}{<?= $educationExperience->university ?>}{<?= $educationExperience->startDate->format('M Y') ?> -- <?= $educationExperience->endDate?->format('M Y') ?? 'Present' ?>}
+    \begin{cvsubsection}{<?= $educationExperience->location ?>}{<?= $educationExperience->university ?>}{<?= $educationExperience->dateRange ?>}
     \begin{itemize}
     \item <?= $educationExperience->degree ?>. GPA: 3.6
     @foreach($educationExperience->description as $line)
@@ -70,7 +70,7 @@
 
 @foreach($vars->projects as $project)
     \begin{itemize}
-    \item \textbf{<?= $project->name ?>} (<?= $project->startDate->format('M Y') ?> - <?= $project->endDate?->format('M Y') ?? 'Present' ?>). {{ implode('. ', $project->description) }}
+    \item \textbf{<?= $project->name ?>} (<?= $project->dateRange ?>). {{ implode('. ', $project->description) }}
     \end{itemize}
 @endforeach
 \end{cvsubsection}

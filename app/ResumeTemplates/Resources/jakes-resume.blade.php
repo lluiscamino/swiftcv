@@ -134,7 +134,7 @@
 @foreach($vars->educationExperiences as $educationExperience)
     \resumeSubheading
     {<?= $educationExperience->university ?>}{<?= $educationExperience->location ?>}
-    {<?= $educationExperience->degree ?>}{<?= $educationExperience->startDate->format('M Y') ?> - <?= $educationExperience->endDate?->format('M Y') ?? 'Present' ?>}
+    {<?= $educationExperience->degree ?>}{<?= $educationExperience->dateRange ?>}
     \resumeItemListStart
     @foreach($educationExperience->description as $line)
         \resumeItem{<?= $line ?>}
@@ -155,7 +155,7 @@
 
 @foreach($vars->workExperiences as $workExperience)
     \resumeSubheading
-    {<?= $workExperience->jobTitle ?>}{<?= $workExperience->startDate->format('M Y') ?> - <?= $workExperience->endDate?->format('M Y') ?? 'Present' ?>}
+    {<?= $workExperience->jobTitle ?>}{<?= $workExperience->dateRange ?>}
     {<?= $workExperience->company ?>}{<?= $workExperience->location ?>}
     \resumeItemListStart
     @foreach($workExperience->description as $line)
@@ -186,7 +186,7 @@
 
 @foreach($vars->projects as $project)
     \resumeProjectHeading
-    {\textbf{<?= $project->name ?>} $|$ \emph{Python, Flask, React, PostgreSQL, Docker}}{<?= $project->startDate->format('M Y') ?> - <?= $project->endDate?->format('M Y') ?? 'Present' ?>}
+    {\textbf{<?= $project->name ?>} $|$ \emph{Python, Flask, React, PostgreSQL, Docker}}{<?= $project->dateRange ?>}
     \resumeItemListStart
     @foreach($project->description as $line)
         \resumeItem{<?= $line ?>}

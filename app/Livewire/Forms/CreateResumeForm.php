@@ -68,8 +68,7 @@ class CreateResumeForm extends Form
         return array_map(fn($key) => new WorkExperience(
             company: $this->getPropertyValue("workExperiences.$key.company"),
             jobTitle: $this->getPropertyValue("workExperiences.$key.jobTitle"),
-            startDate: $this->getDatePropertyValue("workExperiences.$key.startDate"),
-            endDate: $this->getDatePropertyValue("workExperiences.$key.endDate"),
+            dateRange: $this->getDateRangePropertyValue("workExperiences.$key"),
             location: $this->getPropertyValue("workExperiences.$key.location"),
             description: ['Developed many features', 'Used the gym', 'blah blah blah']
         ), array_keys($this->getPropertyValue('workExperiences')));
@@ -81,8 +80,7 @@ class CreateResumeForm extends Form
         return array_map(fn($key) => new EducationExperience(
             university: $this->getPropertyValue("educationExperiences.$key.institution"),
             degree: $this->getPropertyValue("educationExperiences.$key.degree"),
-            startDate: $this->getDatePropertyValue("educationExperiences.$key.startDate"),
-            endDate: $this->getDatePropertyValue("educationExperiences.$key.endDate"),
+            dateRange: $this->getDateRangePropertyValue("educationExperiences.$key"),
             location: $this->getPropertyValue("educationExperiences.$key.location"),
             description: ['Didnt study much', 'Went to 2 parties']
         ), array_keys($this->getPropertyValue('educationExperiences')));
@@ -94,8 +92,7 @@ class CreateResumeForm extends Form
         return array_map(fn($key) => new Project(
             name: $this->getPropertyValue("projects.$key.name"),
             link: $this->getPropertyValue("projects.$key.link"),
-            startDate: $this->getDatePropertyValue("projects.$key.startDate"),
-            endDate: $this->getDatePropertyValue("projects.$key.endDate"),
+            dateRange: $this->getDateRangePropertyValue("projects.$key"),
             description: ['Worked on a team of 4 to solve a challenge', 'Met my ex-girlfriend']
         ), array_keys($this->getPropertyValue('projects')));
     }
