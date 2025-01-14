@@ -15,7 +15,11 @@ class CreateResumeForm extends Form
     use GetPropertyValues;
 
     public string $name = '', $email = '', $phoneNumber = '';
-    public array $workExperiences, $educationExperiences, $projects, $skills; // https://dev.to/jringeisen/how-to-create-dynamic-input-fields-with-laravel-livewire-14kn
+    public array
+        $workExperiences = [[]],
+        $educationExperiences = [[]],
+        $projects = [[]],
+        $skills = [[]];
 
     /** @return array<string, ValidationRule|array|string> */
     protected function rules(): array

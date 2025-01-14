@@ -1,4 +1,3 @@
-@php use App\Livewire\ResumeSectionType; @endphp
 <div>
     <h2 class="max-w-2xl mb-4 text-2xl font-extrabold leading-none tracking-tight md:text-3xl xl:text-4xl dark:text-white">
         Create your resume in seconds!
@@ -21,12 +20,25 @@
         <div class="mb-2">
             <h3 class="w-full mt-6 md:w-1/2 mb-6 max-w-xl text-xl font-bold leading-none tracking-tight dark:text-white">
                 Work experience</h3>
-            @for($i = 0; $i < $numSections[ResumeSectionType::WORK_EXPERIENCE->value]; $i++)
-                <x-forms.work-experience-input key="{{ $i }}"/>
-            @endfor
+            @foreach($form->workExperiences as $key => $section)
+                <div wire:key="workExperience.{{ $key }}">
+                    <button type="button"
+                            wire:click="removeWorkExperience({{$key}})"
+                            class="rounded-md inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 float-right">
+                        <span class="sr-only">Remove section</span>
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                             stroke="currentColor"
+                             aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                    <x-forms.work-experience-input key="{{ $key }}"/>
+                </div>
+            @endforeach
             <div class="text-center">
                 <button type="button" class="text-green-700 hover:text-green-800 font-bold align-center"
-                        wire:click="addSection({{ResumeSectionType::WORK_EXPERIENCE}})">
+                        wire:click="addWorkExperience()">
                     Add experience
                 </button>
             </div>
@@ -34,25 +46,51 @@
         <div class="mb-2">
             <h3 class="w-full mt-6 md:w-1/2 mb-6 max-w-xl text-xl font-bold leading-none tracking-tight dark:text-white">
                 Education</h3>
-            @for($i = 0; $i < $numSections[ResumeSectionType::EDUCATION_EXPERIENCE->value]; $i++)
-                <x-forms.education-experience-input key="{{ $i }}"/>
-            @endfor
+            @foreach($form->educationExperiences as $key => $section)
+                <div wire:key="educationExperience.{{ $key }}">
+                    <button type="button"
+                            wire:click="removeEducationExperience({{$key}})"
+                            class="rounded-md inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 float-right">
+                        <span class="sr-only">Remove section</span>
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                             stroke="currentColor"
+                             aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                    <x-forms.education-experience-input key="{{ $key }}"/>
+                </div>
+            @endforeach
             <div class="text-center">
                 <button type="button" class="text-green-700 hover:text-green-800 font-bold align-center"
-                        wire:click="addSection({{ResumeSectionType::EDUCATION_EXPERIENCE}})">
-                    Add experience
+                        wire:click="addEducationExperience()">
+                    Add education
                 </button>
             </div>
         </div>
         <div class="mb-2">
             <h3 class="w-full mt-6 md:w-1/2 mb-6 max-w-xl text-xl font-bold leading-none tracking-tight dark:text-white">
                 Projects</h3>
-            @for($i = 0; $i < $numSections[ResumeSectionType::PROJECT->value]; $i++)
-                <x-forms.project-input key="{{ $i }}"/>
-            @endfor
+            @foreach($form->projects as $key => $section)
+                <div wire:key="projects.{{ $key }}">
+                    <button type="button"
+                            wire:click="removeProject({{$key}})"
+                            class="rounded-md inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 float-right">
+                        <span class="sr-only">Remove section</span>
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                             stroke="currentColor"
+                             aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                    <x-forms.project-input key="{{ $key }}"/>
+                </div>
+            @endforeach
             <div class="text-center">
                 <button type="button" class="text-green-700 hover:text-green-800 font-bold align-center"
-                        wire:click="addSection({{ResumeSectionType::PROJECT}})">
+                        wire:click="addProject()">
                     Add project
                 </button>
             </div>
@@ -60,12 +98,25 @@
         <div class="mb-2">
             <h3 class="w-full mt-6 md:w-1/2 mb-6 max-w-xl text-xl font-bold leading-none tracking-tight dark:text-white">
                 Skills</h3>
-            @for($i = 0; $i < $numSections[ResumeSectionType::SKILLS->value]; $i++)
-                <x-forms.skills-input key="{{ $i }}"/>
-            @endfor
+            @foreach($form->skills as $key => $section)
+                <div wire:key="skills.{{ $key }}">
+                    <button type="button"
+                            wire:click="removeSkill({{$key}})"
+                            class="rounded-md inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 float-right">
+                        <span class="sr-only">Remove section</span>
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                             stroke="currentColor"
+                             aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                    <x-forms.skills-input key="{{ $key }}"/>
+                </div>
+            @endforeach
             <div class="text-center">
                 <button type="button" class="text-green-700 hover:text-green-800 font-bold align-center"
-                        wire:click="addSection({{ResumeSectionType::SKILLS}})">
+                        wire:click="addSkill()">
                     Add skill
                 </button>
             </div>

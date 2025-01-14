@@ -5,24 +5,62 @@ namespace App\Livewire;
 use App\Livewire\Forms\CreateResumeForm;
 use App\ResumeCreator\ResumeCreator;
 use App\ResumeTemplates\TemplateType;
+use Illuminate\View\View;
 use Livewire\Component;
 
 class CreateResume extends Component
 {
     public CreateResumeForm $form;
-    public array $numSections = [
-        ResumeSectionType::WORK_EXPERIENCE->value => 1,
-        ResumeSectionType::EDUCATION_EXPERIENCE->value => 1,
-        ResumeSectionType::PROJECT->value => 1,
-        ResumeSectionType::SKILLS->value => 1,
-    ];
 
-    public function addSection(ResumeSectionType $type): void
+    /** @noinspection PhpUnused */
+    public function addWorkExperience(): void
     {
-        $this->numSections[$type->value]++;
+        $this->form->workExperiences[] = [];
     }
 
-    public function save(ResumeCreator $resumeCreator)
+    /** @noinspection PhpUnused */
+    public function removeWorkExperience(int $key): void
+    {
+        unset($this->form->workExperiences[$key]);
+    }
+
+    /** @noinspection PhpUnused */
+    public function addEducationExperience(): void
+    {
+        $this->form->educationExperiences[] = [];
+    }
+
+    /** @noinspection PhpUnused */
+    public function removeEducationExperience(int $key): void
+    {
+        unset($this->form->educationExperiences[$key]);
+    }
+
+    /** @noinspection PhpUnused */
+    public function addProject(): void
+    {
+        $this->form->projects[] = [];
+    }
+
+    /** @noinspection PhpUnused */
+    public function removeProject(int $key): void
+    {
+        unset($this->form->projects[$key]);
+    }
+
+    /** @noinspection PhpUnused */
+    public function addSkill(): void
+    {
+        $this->form->skills[] = [];
+    }
+
+    /** @noinspection PhpUnused */
+    public function removeSkill(int $key): void
+    {
+        unset($this->form->skills[$key]);
+    }
+
+    public function save(ResumeCreator $resumeCreator): void
     {
         $this->validate();
         $resumes = $resumeCreator->createResumes(TemplateType::cases(), $this->form->getResumeVariables());
@@ -30,7 +68,7 @@ class CreateResume extends Component
         $this->redirect('/results');
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.create-resume');
     }
