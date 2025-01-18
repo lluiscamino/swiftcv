@@ -8,13 +8,16 @@ use App\ResumeTemplates\Variables\ResumeVariables;
 use App\ResumeTemplates\Variables\Skill;
 use App\ResumeTemplates\Variables\WorkExperience;
 use Illuminate\Contracts\Validation\ValidationRule;
+use Livewire\Attributes\Url;
 use Livewire\Form;
 
 class CreateResumeForm extends Form
 {
     use GetPropertyValues;
 
+    #[Url]
     public string $name = '', $email = '', $phoneNumber = '';
+    #[Url]
     public array
         $workExperiences = [[]],
         $educationExperiences = [[]],
@@ -108,5 +111,27 @@ class CreateResumeForm extends Form
             name: $this->getPropertyValue("skills.$key.name"),
             description: $this->getPropertyValue("skills.$key.description")
         ), array_keys($this->getPropertyValue('skills')));
+    }
+
+    public function getSearchParams(): string
+    {
+        $result = '?name=' . urlencode($this->name) . '&email=' . urlencode($this->email) .
+            '&phoneNumber=' . urlencode($this->phoneNumber) . '&';
+        $result .= self::sectionsToUrl('workExperiences', $this->workExperiences) . '&';
+        $result .= self::sectionsToUrl('educationExperiences', $this->educationExperiences) . '&';
+        $result .= self::sectionsToUrl('projects', $this->projects) . '&';
+        $result .= self::sectionsToUrl('skills', $this->skills);
+        return $result;
+    }
+
+    private static function sectionsToUrl(string $name, array $sections): string
+    {
+        $result = [];
+        foreach ($sections as $index => $section) {
+            foreach ($section as $key => $value) {
+                $result[] = $name . '[' . $index . '][' . $key . ']=' . urlencode($value);
+            }
+        }
+        return join('&', $result);
     }
 }

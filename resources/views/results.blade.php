@@ -17,6 +17,12 @@
                 <x-resumes.preview :resume="Resume::createFromSerializedArray($serializedResumeArray)"/>
             @endforeach
         </div>
+        <div class="mt-4 flex justify-center">
+            <a href="{{ request()->query('formUrl') }}"
+               class="text-green-700 hover:text-green-800 font-bold align-center1">
+                Go back to editing
+            </a>
+        </div>
     </div>
 </div>
 
