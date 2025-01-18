@@ -64,8 +64,9 @@ class CreateResume extends Component
     {
         $this->validate();
         $resumes = $resumeCreator->createResumes(TemplateType::cases(), $this->form->getResumeVariables());
-        session()->flash('resumes', $resumes);
-        $this->redirect('/results');
+        $this->redirectRoute('results', [
+            'resumes' => $resumes
+        ]);
     }
 
     public function render(): View

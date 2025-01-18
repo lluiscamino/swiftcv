@@ -4,12 +4,12 @@ namespace App\ResumeTemplates;
 
 use App\Files\ValidFile;
 
-enum TemplateType
+enum TemplateType: int
 {
-    case BASE_ROVER;
-    case JAKES_RESUME;
-    case DPHANG;
-    case MCDOWELL_CV;
+    case BASE_ROVER = 0;
+    case JAKES_RESUME = 1;
+    case DPHANG = 2;
+    case MCDOWELL_CV = 3;
 
     public function getTemplateContent(): string
     {

@@ -13,8 +13,8 @@
         </p>
         <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
             @php /** @var Resume $resume */ @endphp
-            @foreach(session('resumes') as $resume)
-                <x-resumes.preview :resume="$resume"/>
+            @foreach(request()->query('resumes') as $serializedResumeArray)
+                <x-resumes.preview :resume="Resume::createFromSerializedArray($serializedResumeArray)"/>
             @endforeach
         </div>
     </div>
