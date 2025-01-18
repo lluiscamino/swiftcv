@@ -22,17 +22,7 @@
                 Work experience</h3>
             @foreach($form->workExperiences as $key => $section)
                 <div wire:key="workExperience.{{ $key }}">
-                    <button type="button"
-                            wire:click="removeWorkExperience({{$key}})"
-                            class="rounded-md inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 float-right">
-                        <span class="sr-only">Remove section</span>
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                             stroke="currentColor"
-                             aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M6 18L18 6M6 6l12 12"/>
-                        </svg>
-                    </button>
+                    <x-forms.remove-section-btn key="{{$key}}" callback="removeWorkExperience"/>
                     <x-forms.work-experience-input key="{{ $key }}"/>
                 </div>
             @endforeach
@@ -48,17 +38,7 @@
                 Education</h3>
             @foreach($form->educationExperiences as $key => $section)
                 <div wire:key="educationExperience.{{ $key }}">
-                    <button type="button"
-                            wire:click="removeEducationExperience({{$key}})"
-                            class="rounded-md inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 float-right">
-                        <span class="sr-only">Remove section</span>
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                             stroke="currentColor"
-                             aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M6 18L18 6M6 6l12 12"/>
-                        </svg>
-                    </button>
+                    <x-forms.remove-section-btn key="{{$key}}" callback="removeEducationExperience"/>
                     <x-forms.education-experience-input key="{{ $key }}"/>
                 </div>
             @endforeach
@@ -74,17 +54,7 @@
                 Projects</h3>
             @foreach($form->projects as $key => $section)
                 <div wire:key="projects.{{ $key }}">
-                    <button type="button"
-                            wire:click="removeProject({{$key}})"
-                            class="rounded-md inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 float-right">
-                        <span class="sr-only">Remove section</span>
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                             stroke="currentColor"
-                             aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M6 18L18 6M6 6l12 12"/>
-                        </svg>
-                    </button>
+                    <x-forms.remove-section-btn key="{{$key}}" callback="removeProject"/>
                     <x-forms.project-input key="{{ $key }}"/>
                 </div>
             @endforeach
@@ -100,17 +70,7 @@
                 Skills</h3>
             @foreach($form->skills as $key => $section)
                 <div wire:key="skills.{{ $key }}">
-                    <button type="button"
-                            wire:click="removeSkill({{$key}})"
-                            class="rounded-md inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 float-right">
-                        <span class="sr-only">Remove section</span>
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                             stroke="currentColor"
-                             aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M6 18L18 6M6 6l12 12"/>
-                        </svg>
-                    </button>
+                    <x-forms.remove-section-btn key="{{$key}}" callback="removeSkill"/>
                     <x-forms.skills-input key="{{ $key }}"/>
                 </div>
             @endforeach
