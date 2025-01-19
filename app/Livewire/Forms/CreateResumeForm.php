@@ -35,6 +35,27 @@ class CreateResumeForm extends Form
         ResumeSectionType::SKILLS->value => 3,
     ];
 
+    protected array $validationAttributes = [
+        'email' => 'email address',
+        'phoneNumber' => 'phone number',
+        'workExperiences.*.company' => 'company',
+        'workExperiences.*.jobTitle' => 'job title',
+        'workExperiences.*.startDate' => 'start date',
+        'workExperiences.*.endDate' => 'end date',
+        'workExperiences.*.location' => 'location',
+        'educationExperiences.*.institution' => 'institution',
+        'educationExperiences.*.degree' => 'degree',
+        'educationExperiences.*.startDate' => 'start date',
+        'educationExperiences.*.endDate' => 'end date',
+        'educationExperiences.*.location' => 'location',
+        'projects.*.name' => 'project name',
+        'projects.*.link' => 'link',
+        'projects.*.startDate' => 'start date',
+        'projects.*.endDate' => 'end date',
+        'skills.*.name' => 'skill name',
+        'skills.*.description' => 'description',
+    ];
+
     /** @return array<string, ValidationRule|array|string> */
     protected function rules(): array
     {
