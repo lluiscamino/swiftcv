@@ -1,5 +1,6 @@
-@php use App\ResumeTemplates\Variables\ResumeVariables; @endphp
+@php use App\ResumeTemplates\Utils\SectionsRenderer;use App\ResumeTemplates\Variables\ResumeVariables; @endphp
 @php /** @var ResumeVariables $vars */ @endphp
+@php $sectionsRenderer = SectionsRenderer::createWithDefaultPaths('mcdowell-cv'); @endphp
 %% The MIT License (MIT)
 %%
 %% Copyright (c) 2015 Daniil Belyakov
@@ -39,60 +40,7 @@
 \makeheader
 
 % Print the content
-\begin{cvsection}{Employment}
-@foreach($vars->workExperiences as $workExperience)
-    \begin{cvsubsection}{<?= $workExperience->jobTitle ?>}{<?= $workExperience->company ?>}{<?= $workExperience->dateRange ?>}
-    %iChat AV
-    \begin{itemize}
-    @foreach($workExperience->description as $line)
-        \item {{ $line }}
-    @endforeach
-    \end{cvsubsection}
-@endforeach
-\end{cvsection}
 
-\begin{cvsection}{Education}
-
-@foreach($vars->educationExperiences as $educationExperience)
-    \begin{cvsubsection}{<?= $educationExperience->location ?>}{<?= $educationExperience->university ?>}{<?= $educationExperience->dateRange ?>}
-    \begin{itemize}
-    \item <?= $educationExperience->degree ?>. GPA: 3.6
-    @foreach($educationExperience->description as $line)
-        \item {{ $line }}
-    @endforeach
-    \end{itemize}
-    \end{cvsubsection}
-    \end{cvsection}
-@endforeach
-
-\begin{cvsection}{Technical Experience}
-\begin{cvsubsection}{Projects}{}{}
-
-@foreach($vars->projects as $project)
-    \begin{itemize}
-    \item \textbf{<?= $project->name ?>} (<?= $project->dateRange ?>). {{ implode('. ', $project->description) }}
-    \end{itemize}
-@endforeach
-\end{cvsubsection}
-\end{cvsection}
-
-\begin{cvsection}{Additional Experience and Awards}
-\begin{cvsubsection}{}{}{}
-\begin{itemize}
-\item \textbf{Instructor (2003 – 2005):} Taught two full-credit Computer Science courses; average ratings of 4.8 out of 5.0.
-\item \textbf{Third Prize, Senior Design Projects:} Awarded 3rd prize for Synchronized Calendar project, out of 100 projects.
-\end{itemize}
-\end{cvsubsection}
-\end{cvsection}
-
-\begin{cvsection}{Languages and Technologies}
-\begin{cvsubsection}{}{}{}
-\begin{itemize}
-@foreach($vars->skills as $skill)
-    \item \textbf{<?= $skill->name ?>}: {{ $skill->description }}
-@endforeach
-\end{itemize}
-\end{cvsubsection}
-\end{cvsection}
+{!! $sectionsRenderer->renderSectionsInOrder($vars) !!}
 
 \end{document}

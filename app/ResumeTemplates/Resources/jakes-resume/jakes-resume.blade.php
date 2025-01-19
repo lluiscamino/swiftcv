@@ -1,5 +1,6 @@
-@php use App\ResumeTemplates\Variables\ResumeVariables; @endphp
+@php use App\ResumeTemplates\Utils\SectionsRenderer;use App\ResumeTemplates\Variables\ResumeVariables; @endphp
 @php /** @var ResumeVariables $vars */ @endphp
+@php $sectionsRenderer = SectionsRenderer::createWithDefaultPaths('jakes-resume'); @endphp
 %-------------------------
 % Resume in Latex
 % Author : Jake Gutierrez
@@ -124,92 +125,7 @@
 \href{https://github.com/<?= $vars->githubUsername ?> }{\underline{github.com/<?= $vars->githubUsername ?>}}
 \end{center}
 
-
-%-----------EDUCATION-----------
-\section{Education}
-@if(!empty($vars->educationExperiences))
-    \resumeSubHeadingListStart
-@endif
-
-@foreach($vars->educationExperiences as $educationExperience)
-    \resumeSubheading
-    {<?= $educationExperience->university ?>}{<?= $educationExperience->location ?>}
-    {<?= $educationExperience->degree ?>}{<?= $educationExperience->dateRange ?>}
-    \resumeItemListStart
-    @foreach($educationExperience->description as $line)
-        \resumeItem{<?= $line ?>}
-    @endforeach
-    \resumeItemListEnd
-@endforeach
-
-@if(!empty($vars->educationExperiences))
-    \resumeSubHeadingListEnd
-@endif
-
-
-%-----------EXPERIENCE-----------
-\section{Experience}
-@if(!empty($vars->workExperiences))
-    \resumeSubHeadingListStart
-@endif
-
-@foreach($vars->workExperiences as $workExperience)
-    \resumeSubheading
-    {<?= $workExperience->jobTitle ?>}{<?= $workExperience->dateRange ?>}
-    {<?= $workExperience->company ?>}{<?= $workExperience->location ?>}
-    \resumeItemListStart
-    @foreach($workExperience->description as $line)
-        \resumeItem{<?= $line ?>}
-    @endforeach
-    \resumeItemListEnd
-@endforeach
-
-@if(!empty($vars->workExperiences))
-    \resumeSubHeadingListEnd
-@endif
-
-% -----------Multiple Positions Heading-----------
-%    \resumeSubSubheading
-%     {Software Engineer I}{Oct 2014 - Sep 2016}
-%     \resumeItemListStart
-%        \resumeItem{Apache Beam}
-%          {Apache Beam is a unified model for defining both batch and streaming data-parallel processing pipelines}
-%     \resumeItemListEnd
-%    \resumeSubHeadingListEnd
-%-------------------------------------------
-
-%-----------PROJECTS-----------
-\section{Projects}
-@if(!empty($vars->projects))
-    \resumeSubHeadingListStart
-@endif
-
-@foreach($vars->projects as $project)
-    \resumeProjectHeading
-    {\textbf{<?= $project->name ?>} $|$ \emph{Python, Flask, React, PostgreSQL, Docker}}{<?= $project->dateRange ?>}
-    \resumeItemListStart
-    @foreach($project->description as $line)
-        \resumeItem{<?= $line ?>}
-    @endforeach
-    \resumeItemListEnd
-@endforeach
-
-@if(!empty($vars->projects))
-    \resumeSubHeadingListEnd
-@endif
-
-
-%
-%-----------PROGRAMMING SKILLS-----------
-\section{Technical Skills}
-\begin{itemize}[leftmargin=0.15in, label={}]
-\small{\item{
-@foreach($vars->skills as $skill)
-    \textbf{<?= $skill->name ?>}{: <?= $skill->description ?>} \\
-@endforeach
-}}
-\end{itemize}
-
+{!! $sectionsRenderer->renderSectionsInOrder($vars) !!}
 
 %-------------------------------------------
 \end{document}

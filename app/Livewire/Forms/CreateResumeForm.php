@@ -6,6 +6,7 @@ use App\Livewire\ResumeSectionType;
 use App\ResumeTemplates\Variables\EducationExperience;
 use App\ResumeTemplates\Variables\Project;
 use App\ResumeTemplates\Variables\ResumeVariables;
+use App\ResumeTemplates\Variables\SectionPositions;
 use App\ResumeTemplates\Variables\Skill;
 use App\ResumeTemplates\Variables\WorkExperience;
 use Illuminate\Contracts\Validation\ValidationRule;
@@ -75,7 +76,8 @@ class CreateResumeForm extends Form
             workExperiences: $this->getWorkExperiences(),
             educationExperiences: $this->getEducationExperiences(),
             projects: $this->getProjectExperiences(),
-            skills: $this->getSkills()
+            skills: $this->getSkills(),
+            positions: $this->getSectionPositions(),
         );
     }
 
@@ -121,6 +123,16 @@ class CreateResumeForm extends Form
             name: $this->getPropertyValue("skills.$key.name"),
             description: $this->getPropertyValue("skills.$key.description")
         ), array_keys($this->getPropertyValue('skills')));
+    }
+
+    public function getSectionPositions(): SectionPositions
+    {
+        return new SectionPositions(
+            workExperiencesPosition: $this->getSectionOrder(ResumeSectionType::WORK_EXPERIENCE),
+            educationExperiencesPosition: $this->getSectionOrder(ResumeSectionType::EDUCATION_EXPERIENCE),
+            projectsPosition: $this->getSectionOrder(ResumeSectionType::PROJECT),
+            skillsPosition: $this->getSectionOrder(ResumeSectionType::SKILLS)
+        );
     }
 
     /**
@@ -188,6 +200,16 @@ class CreateResumeForm extends Form
         $result .= self::sectionsToUrl('projects', $this->projects) . '&';
         $result .= self::sectionsToUrl('skills', $this->skills);
         return $result;
+    }
+
+    public function getSectionPositions(): SectionPositions
+    {
+        return new SectionPositions(
+            workExperiencesPosition: $this->getSectionOrder(ResumeSectionType::WORK_EXPERIENCE),
+            educationExperiencesPosition: $this->getSectionOrder(ResumeSectionType::EDUCATION_EXPERIENCE),
+            projectsPosition: $this->getSectionOrder(ResumeSectionType::PROJECT),
+            skillsPosition: $this->getSectionOrder(ResumeSectionType::SKILLS)
+        );
     }
 
     private static function sectionsToUrl(string $name, array $sections): string

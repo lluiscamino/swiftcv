@@ -41,9 +41,9 @@ enum TemplateType: int
     private function getTemplateFile(): ValidFile
     {
         return match ($this) {
-            self::BASE_ROVER => ValidFile::fromAppPath('ResumeTemplates/Resources/base-rover.blade.php'),
-            self::JAKES_RESUME => ValidFile::fromAppPath('ResumeTemplates/Resources/jakes-resume.blade.php'),
-            self::DPHANG => ValidFile::fromAppPath('ResumeTemplates/Resources/dphang.blade.php'),
+            self::BASE_ROVER => ValidFile::fromAppPath('ResumeTemplates/Resources/base-rover/base-rover.blade.php'),
+            self::JAKES_RESUME => ValidFile::fromAppPath('ResumeTemplates/Resources/jakes-resume/jakes-resume.blade.php'),
+            self::DPHANG => ValidFile::fromAppPath('ResumeTemplates/Resources/dphang/dphang.blade.php'),
             self::MCDOWELL_CV => ValidFile::fromAppPath('ResumeTemplates/Resources/mcdowell-cv/mcdowell-cv.blade.php')
         };
     }

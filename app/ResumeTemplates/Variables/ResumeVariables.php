@@ -11,15 +11,16 @@ readonly class ResumeVariables
      * @param Skill[] $skills
      */
     public function __construct(
-        public string $name,
-        public string $email,
-        public string $phoneNumber,
-        public string $linkedinUsername,
-        public string $githubUsername,
-        public array  $workExperiences,
-        public array  $educationExperiences,
-        public array  $projects,
-        public array  $skills,
+        public string           $name,
+        public string           $email,
+        public string           $phoneNumber,
+        public string           $linkedinUsername,
+        public string           $githubUsername,
+        public array            $workExperiences,
+        public array            $educationExperiences,
+        public array            $projects,
+        public array            $skills,
+        public SectionPositions $positions
     )
     {
     }
