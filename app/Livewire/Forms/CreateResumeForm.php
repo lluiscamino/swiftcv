@@ -28,7 +28,7 @@ class CreateResumeForm extends Form
         $skills = [[]];
 
     #[Url]
-    public array $sectionOrders = [
+    public array $sectionPositions = [
         ResumeSectionType::WORK_EXPERIENCE->value => 0,
         ResumeSectionType::EDUCATION_EXPERIENCE->value => 1,
         ResumeSectionType::PROJECT->value => 2,
@@ -128,10 +128,10 @@ class CreateResumeForm extends Form
     public function getSectionPositions(): SectionPositions
     {
         return new SectionPositions(
-            workExperiencesPosition: $this->getSectionOrder(ResumeSectionType::WORK_EXPERIENCE),
-            educationExperiencesPosition: $this->getSectionOrder(ResumeSectionType::EDUCATION_EXPERIENCE),
-            projectsPosition: $this->getSectionOrder(ResumeSectionType::PROJECT),
-            skillsPosition: $this->getSectionOrder(ResumeSectionType::SKILLS)
+            workExperiencesPosition: $this->getSectionPosition(ResumeSectionType::WORK_EXPERIENCE),
+            educationExperiencesPosition: $this->getSectionPosition(ResumeSectionType::EDUCATION_EXPERIENCE),
+            projectsPosition: $this->getSectionPosition(ResumeSectionType::PROJECT),
+            skillsPosition: $this->getSectionPosition(ResumeSectionType::SKILLS)
         );
     }
 
@@ -141,8 +141,8 @@ class CreateResumeForm extends Form
      */
     public function getOrderedSectionTypes(): array
     {
-        asort($this->sectionOrders);
-        return array_map(fn($value) => ResumeSectionType::from($value), array_keys($this->sectionOrders));
+        asort($this->sectionPositions);
+        return array_map(fn($value) => ResumeSectionType::from($value), array_keys($this->sectionPositions));
     }
 
     public function moveSectionUp(ResumeSectionType $resumeSectionType): void
@@ -151,7 +151,7 @@ class CreateResumeForm extends Form
             Log::warning("Cannot move section $resumeSectionType->name up: already at the top.");
             return;
         }
-        $this->changeSectionOrder($resumeSectionType, -1);
+        $this->changeSectionPosition($resumeSectionType, -1);
     }
 
     public function moveSectionDown(ResumeSectionType $resumeSectionType): void
@@ -160,17 +160,17 @@ class CreateResumeForm extends Form
             Log::warning("Cannot move section $resumeSectionType->name down: already at the bottom.");
             return;
         }
-        $this->changeSectionOrder($resumeSectionType, +1);
+        $this->changeSectionPosition($resumeSectionType, +1);
     }
 
-    private function changeSectionOrder(ResumeSectionType $resumeSectionType, int $offset): void
+    private function changeSectionPosition(ResumeSectionType $resumeSectionType, int $offset): void
     {
-        $currentOrder = $this->getSectionOrder($resumeSectionType);
-        $newOrder = $currentOrder + $offset;
-        foreach ($this->sectionOrders as $typeValue => $order) {
-            if ($order == $newOrder) {
-                $this->sectionOrders[$typeValue] = $currentOrder;
-                $this->sectionOrders[$resumeSectionType->value] = $newOrder;
+        $currentPosition = $this->getSectionPosition($resumeSectionType);
+        $newPosition = $currentPosition + $offset;
+        foreach ($this->sectionPositions as $typeValue => $position) {
+            if ($position == $newPosition) {
+                $this->sectionPositions[$typeValue] = $currentPosition;
+                $this->sectionPositions[$resumeSectionType->value] = $newPosition;
                 break;
             }
         }
@@ -178,17 +178,17 @@ class CreateResumeForm extends Form
 
     public function isAtTop(ResumeSectionType $resumeSectionType): bool
     {
-        return $this->getSectionOrder($resumeSectionType) == 0;
+        return $this->getSectionPosition($resumeSectionType) == 0;
     }
 
     public function isAtBottom(ResumeSectionType $resumeSectionType): bool
     {
-        return $this->getSectionOrder($resumeSectionType) == count($this->sectionOrders) - 1;
+        return $this->getSectionPosition($resumeSectionType) == count($this->sectionPositions) - 1;
     }
 
-    private function getSectionOrder(ResumeSectionType $resumeSectionType): int
+    private function getSectionPosition(ResumeSectionType $resumeSectionType): int
     {
-        return $this->sectionOrders[$resumeSectionType->value];
+        return $this->sectionPositions[$resumeSectionType->value];
     }
 
     public function getSearchParams(): string
@@ -201,7 +201,7 @@ class CreateResumeForm extends Form
                 self::sectionsToUrl('educationExperiences', $this->educationExperiences),
                 self::sectionsToUrl('projects', $this->projects),
                 self::sectionsToUrl('skills', $this->skills),
-                $this->sectionOrdersToUrl()
+                $this->sectionPositionsToUrl()
             ]);
     }
 
@@ -216,11 +216,11 @@ class CreateResumeForm extends Form
         return join('&', $result);
     }
 
-    private function sectionOrdersToUrl(): string
+    private function sectionPositionsToUrl(): string
     {
         $result = [];
-        foreach ($this->sectionOrders as $sectionType => $order) {
-            $result[] = 'sectionOrders[' . $sectionType . ']=' . $order;
+        foreach ($this->sectionPositions as $sectionType => $position) {
+            $result[] = 'sectionPositions[' . $sectionType . ']=' . $position;
         }
         return join('&', $result);
     }
