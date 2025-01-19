@@ -27,7 +27,7 @@ class CreateResumeForm extends Form
         $projects = [[]],
         $skills = [[]];
 
-    //#[Url] TODO: Fix ordering not working when #[Url] is enabled
+    #[Url]
     public array $sectionOrders = [
         ResumeSectionType::WORK_EXPERIENCE->value => 0,
         ResumeSectionType::EDUCATION_EXPERIENCE->value => 1,
@@ -168,7 +168,7 @@ class CreateResumeForm extends Form
         $currentOrder = $this->getSectionOrder($resumeSectionType);
         $newOrder = $currentOrder + $offset;
         foreach ($this->sectionOrders as $typeValue => $order) {
-            if ($order === $newOrder) {
+            if ($order == $newOrder) {
                 $this->sectionOrders[$typeValue] = $currentOrder;
                 $this->sectionOrders[$resumeSectionType->value] = $newOrder;
                 break;
@@ -178,12 +178,12 @@ class CreateResumeForm extends Form
 
     public function isAtTop(ResumeSectionType $resumeSectionType): bool
     {
-        return $this->getSectionOrder($resumeSectionType) === 0;
+        return $this->getSectionOrder($resumeSectionType) == 0;
     }
 
     public function isAtBottom(ResumeSectionType $resumeSectionType): bool
     {
-        return $this->getSectionOrder($resumeSectionType) === count($this->sectionOrders) - 1;
+        return $this->getSectionOrder($resumeSectionType) == count($this->sectionOrders) - 1;
     }
 
     private function getSectionOrder(ResumeSectionType $resumeSectionType): int
@@ -193,23 +193,16 @@ class CreateResumeForm extends Form
 
     public function getSearchParams(): string
     {
-        $result = '?name=' . urlencode($this->name) . '&email=' . urlencode($this->email) .
-            '&phoneNumber=' . urlencode($this->phoneNumber) . '&';
-        $result .= self::sectionsToUrl('workExperiences', $this->workExperiences) . '&';
-        $result .= self::sectionsToUrl('educationExperiences', $this->educationExperiences) . '&';
-        $result .= self::sectionsToUrl('projects', $this->projects) . '&';
-        $result .= self::sectionsToUrl('skills', $this->skills);
-        return $result;
-    }
-
-    public function getSectionPositions(): SectionPositions
-    {
-        return new SectionPositions(
-            workExperiencesPosition: $this->getSectionOrder(ResumeSectionType::WORK_EXPERIENCE),
-            educationExperiencesPosition: $this->getSectionOrder(ResumeSectionType::EDUCATION_EXPERIENCE),
-            projectsPosition: $this->getSectionOrder(ResumeSectionType::PROJECT),
-            skillsPosition: $this->getSectionOrder(ResumeSectionType::SKILLS)
-        );
+        return '?' . join('&', [
+                'name=' . urlencode($this->name),
+                'email=' . urlencode($this->email),
+                'phoneNumber=' . urlencode($this->phoneNumber),
+                self::sectionsToUrl('workExperiences', $this->workExperiences),
+                self::sectionsToUrl('educationExperiences', $this->educationExperiences),
+                self::sectionsToUrl('projects', $this->projects),
+                self::sectionsToUrl('skills', $this->skills),
+                $this->sectionOrdersToUrl()
+            ]);
     }
 
     private static function sectionsToUrl(string $name, array $sections): string
@@ -219,6 +212,15 @@ class CreateResumeForm extends Form
             foreach ($section as $key => $value) {
                 $result[] = $name . '[' . $index . '][' . $key . ']=' . urlencode($value);
             }
+        }
+        return join('&', $result);
+    }
+
+    private function sectionOrdersToUrl(): string
+    {
+        $result = [];
+        foreach ($this->sectionOrders as $sectionType => $order) {
+            $result[] = 'sectionOrders[' . $sectionType . ']=' . $order;
         }
         return join('&', $result);
     }
