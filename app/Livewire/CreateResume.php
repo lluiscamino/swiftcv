@@ -60,6 +60,18 @@ class CreateResume extends Component
         unset($this->form->skills[$key]);
     }
 
+    /** @noinspection PhpUnused */
+    public function moveSectionUp(ResumeSectionType $section): void
+    {
+        $this->form->moveSectionUp($section);
+    }
+
+    /** @noinspection PhpUnused */
+    public function moveSectionDown(ResumeSectionType $section): void
+    {
+        $this->form->moveSectionDown($section);
+    }
+
     public function save(ResumeCreator $resumeCreator): void
     {
         $this->validate();

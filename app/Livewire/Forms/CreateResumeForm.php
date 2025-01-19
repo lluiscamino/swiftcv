@@ -2,12 +2,14 @@
 
 namespace App\Livewire\Forms;
 
+use App\Livewire\ResumeSectionType;
 use App\ResumeTemplates\Variables\EducationExperience;
 use App\ResumeTemplates\Variables\Project;
 use App\ResumeTemplates\Variables\ResumeVariables;
 use App\ResumeTemplates\Variables\Skill;
 use App\ResumeTemplates\Variables\WorkExperience;
 use Illuminate\Contracts\Validation\ValidationRule;
+use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\Url;
 use Livewire\Form;
 
@@ -23,6 +25,14 @@ class CreateResumeForm extends Form
         $educationExperiences = [[]],
         $projects = [[]],
         $skills = [[]];
+
+    //#[Url] TODO: Fix ordering not working when #[Url] is enabled
+    public array $sectionOrders = [
+        ResumeSectionType::WORK_EXPERIENCE->value => 0,
+        ResumeSectionType::EDUCATION_EXPERIENCE->value => 1,
+        ResumeSectionType::PROJECT->value => 2,
+        ResumeSectionType::SKILLS->value => 3,
+    ];
 
     /** @return array<string, ValidationRule|array|string> */
     protected function rules(): array
@@ -111,6 +121,62 @@ class CreateResumeForm extends Form
             name: $this->getPropertyValue("skills.$key.name"),
             description: $this->getPropertyValue("skills.$key.description")
         ), array_keys($this->getPropertyValue('skills')));
+    }
+
+    /**
+     * @return ResumeSectionType[]
+     * @noinspection PhpUnused
+     */
+    public function getOrderedSectionTypes(): array
+    {
+        asort($this->sectionOrders);
+        return array_map(fn($value) => ResumeSectionType::from($value), array_keys($this->sectionOrders));
+    }
+
+    public function moveSectionUp(ResumeSectionType $resumeSectionType): void
+    {
+        if ($this->isAtTop($resumeSectionType)) {
+            Log::warning("Cannot move section $resumeSectionType->name up: already at the top.");
+            return;
+        }
+        $this->changeSectionOrder($resumeSectionType, -1);
+    }
+
+    public function moveSectionDown(ResumeSectionType $resumeSectionType): void
+    {
+        if ($this->isAtBottom($resumeSectionType)) {
+            Log::warning("Cannot move section $resumeSectionType->name down: already at the bottom.");
+            return;
+        }
+        $this->changeSectionOrder($resumeSectionType, +1);
+    }
+
+    private function changeSectionOrder(ResumeSectionType $resumeSectionType, int $offset): void
+    {
+        $currentOrder = $this->getSectionOrder($resumeSectionType);
+        $newOrder = $currentOrder + $offset;
+        foreach ($this->sectionOrders as $typeValue => $order) {
+            if ($order === $newOrder) {
+                $this->sectionOrders[$typeValue] = $currentOrder;
+                $this->sectionOrders[$resumeSectionType->value] = $newOrder;
+                break;
+            }
+        }
+    }
+
+    public function isAtTop(ResumeSectionType $resumeSectionType): bool
+    {
+        return $this->getSectionOrder($resumeSectionType) === 0;
+    }
+
+    public function isAtBottom(ResumeSectionType $resumeSectionType): bool
+    {
+        return $this->getSectionOrder($resumeSectionType) === count($this->sectionOrders) - 1;
+    }
+
+    private function getSectionOrder(ResumeSectionType $resumeSectionType): int
+    {
+        return $this->sectionOrders[$resumeSectionType->value];
     }
 
     public function getSearchParams(): string
