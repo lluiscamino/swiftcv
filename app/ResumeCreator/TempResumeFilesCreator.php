@@ -7,6 +7,7 @@ use App\Files\ValidFile;
 use App\Pdf\PdfThumbnailsCreator;
 use App\ResumeTemplates\TemplateType;
 use App\ResumeTemplates\Variables\ResumeVariables;
+use App\Tex\Compilers\TexCompiler;
 use App\Tex\TexPdfFileCreator;
 use Illuminate\Support\Facades\Blade;
 use Spatie\TemporaryDirectory\TemporaryDirectory;
@@ -28,7 +29,7 @@ readonly class TempResumeFilesCreator
     {
         $texFiles = self::createTexFiles($dir, $templateTypes, $variables);
         self::createExtraFiles($dir, $templateTypes);
-        $pdfFiles = $this->texPdfFileCreator->createPdfFiles($dir, $texFiles);
+        $pdfFiles = $this->texPdfFileCreator->createPdfFiles($dir, self::createCompilersMap($templateTypes), $texFiles);
         $thumbnailFiles = $this->pdfThumbnailsCreator->createThumbnails($dir, ValidFile::fromCreatedFiles($pdfFiles));
         return array_filter(
             array_map(
@@ -71,6 +72,19 @@ readonly class TempResumeFilesCreator
                 file_put_contents($dir->path($fileName), $content);
             }
         }
+    }
+
+    /**
+     * @param TemplateType[] $templateTypes
+     * @return array<TemplateType, TexCompiler>
+     */
+    private static function createCompilersMap(array $templateTypes): array
+    {
+        $compilers = [];
+        foreach ($templateTypes as $templateType) {
+            $compilers[$templateType->name] = $templateType->getCompiler();
+        }
+        return $compilers;
     }
 
     /**

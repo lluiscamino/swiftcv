@@ -4,33 +4,28 @@ namespace App\Tex;
 
 use App\Files\CreatedFile;
 use App\Files\ValidFile;
+use App\Tex\Compilers\PdfLatexCompiler;
+use App\Tex\Compilers\TexCompiler;
 use Illuminate\Process\Pool;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Process;
 use Spatie\TemporaryDirectory\TemporaryDirectory;
-use Symfony\Component\Process\ExecutableFinder;
 
 readonly class TexPdfFileCreator
 {
-    private string $latexMkPath;
-    private string $pdfLatexPath;
-
-    public function __construct(ExecutableFinder $executableFinder)
-    {
-        $this->latexMkPath = $executableFinder->find('latexmk');
-        $this->pdfLatexPath = $executableFinder->find('pdflatex');
-    }
-
     /**
+     * @param array<mixed, TexCompiler> $compilers
      * @param array<mixed, ValidFile> $texFilePaths
      * @return array<mixed, CreatedFile> PDF files indexed by the $texFilePaths key
      */
-    public function createPdfFiles(TemporaryDirectory $dir, array $texFilePaths): array
+    public function createPdfFiles(TemporaryDirectory $dir, array $compilers, array $texFilePaths): array
     {
         $outputDir = $dir->path();
-        $poolResults = Process::concurrently(function (Pool $pool) use ($texFilePaths, $outputDir) {
+        $poolResults = Process::concurrently(function (Pool $pool) use ($texFilePaths, $compilers, $outputDir) {
             foreach ($texFilePaths as $key => $texFilePath) {
-                $pool->as($key)->command($this->getLatexMkCommand($texFilePath->path, $outputDir, $key));
+                $compiler = self::getCompiler($compilers, $key);
+                $pool->as($key)->command($compiler->getCommand($texFilePath->path, $outputDir, $key));
             }
         });
         $results = [];
@@ -50,8 +45,20 @@ readonly class TexPdfFileCreator
         return $results;
     }
 
-    private function getLatexMkCommand(string $texFilePath, string $outputDirectory, string $outputFileName): string
+    /** @param array<mixed, TexCompiler> $compilers */
+    private static function getCompiler(array $compilers, mixed $key): TexCompiler
     {
-        return "$this->latexMkPath $texFilePath -pdf -f -interaction=nonstopmode -output-directory=$outputDirectory -jobname=$outputFileName -pdflatex=$this->pdfLatexPath";
+        if (!array_key_exists($key, $compilers)) {
+            Log::warning("Compiler for key '$key' not found, using default compiler.", [
+                'compilers' => $compilers
+            ]);
+            return self::getDefaultCompiler();
+        }
+        return $compilers[$key];
+    }
+
+    private static function getDefaultCompiler(): TexCompiler
+    {
+        return App::make(PdfLatexCompiler::class);
     }
 }

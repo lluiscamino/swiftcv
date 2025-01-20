@@ -3,6 +3,10 @@
 namespace App\ResumeTemplates;
 
 use App\Files\ValidFile;
+use App\Tex\Compilers\PdfLatexCompiler;
+use App\Tex\Compilers\TexCompiler;
+use App\Tex\Compilers\XelatexCompiler;
+use Illuminate\Support\Facades\App;
 
 enum TemplateType: int
 {
@@ -35,6 +39,14 @@ enum TemplateType: int
             self::JAKES_RESUME => 'Jake\'s Resume',
             self::DPHANG => 'Dphang\'s Resume',
             self::MCDOWELL_CV => 'McDowell CV',
+        };
+    }
+
+    public function getCompiler(): TexCompiler
+    {
+        return match ($this) {
+            self::BASE_ROVER, self::JAKES_RESUME, self::DPHANG => App::make(PdfLatexCompiler::class),
+            self::MCDOWELL_CV => App::make(XelatexCompiler::class)
         };
     }
 
