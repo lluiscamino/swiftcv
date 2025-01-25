@@ -6,7 +6,7 @@
     ],
     [
         'question' => 'What resume templates are available?',
-        'answer' => 'We offer a variety of popular LaTeX resume templates, including Awesome-CV, McDowell CV, Jake\'s Resume and others. We are constantly adding new templates to our collection.'
+        'answer' => 'We offer a variety of popular LaTeX resume templates, including Awesome-CV, McDowell CV, Deedy\'s Resume, Jake\'s Resume and others. We are constantly adding new templates to our collection.'
     ],
     [
         'question' => 'What file format will I receive?',

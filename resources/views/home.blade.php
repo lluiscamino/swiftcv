@@ -6,7 +6,7 @@
             <h1 class="max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white">
                 Effortlessly generate 10+ LaTeX resumes in seconds!</h1>
             <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Easily
-                create polished and professional resumes using popular templates like Awesome CV, Jake's Resume and
+                create polished and professional resumes using popular templates like Awesome CV, Deedy's Resume and
                 more—all without writing a single line of LaTeX. Start building your perfect resume today!</p>
             <div class="space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
                 <a href="/create-resume"

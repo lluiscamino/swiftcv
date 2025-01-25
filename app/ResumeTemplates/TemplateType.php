@@ -14,6 +14,7 @@ enum TemplateType: int
     case JAKES_RESUME = 1;
     case DPHANG = 2;
     case MCDOWELL_CV = 3;
+    case DEEDY_RESUME = 4;
 
     public function getTemplateContent(): string
     {
@@ -39,6 +40,7 @@ enum TemplateType: int
             self::JAKES_RESUME => 'Jake\'s Resume',
             self::DPHANG => 'Dphang\'s Resume',
             self::MCDOWELL_CV => 'McDowell CV',
+            self::DEEDY_RESUME => 'Deedy\'s Resume',
         };
     }
 
@@ -46,7 +48,7 @@ enum TemplateType: int
     {
         return match ($this) {
             self::BASE_ROVER, self::JAKES_RESUME, self::DPHANG => App::make(PdfLatexCompiler::class),
-            self::MCDOWELL_CV => App::make(XelatexCompiler::class)
+            self::MCDOWELL_CV, self::DEEDY_RESUME => App::make(XelatexCompiler::class)
         };
     }
 
@@ -56,7 +58,8 @@ enum TemplateType: int
             self::BASE_ROVER => ValidFile::fromAppPath('ResumeTemplates/Resources/base-rover/base-rover.blade.php'),
             self::JAKES_RESUME => ValidFile::fromAppPath('ResumeTemplates/Resources/jakes-resume/jakes-resume.blade.php'),
             self::DPHANG => ValidFile::fromAppPath('ResumeTemplates/Resources/dphang/dphang.blade.php'),
-            self::MCDOWELL_CV => ValidFile::fromAppPath('ResumeTemplates/Resources/mcdowell-cv/mcdowell-cv.blade.php')
+            self::MCDOWELL_CV => ValidFile::fromAppPath('ResumeTemplates/Resources/mcdowell-cv/mcdowell-cv.blade.php'),
+            self::DEEDY_RESUME => ValidFile::fromAppPath('ResumeTemplates/Resources/deedy-resume/deedy-resume.blade.php'),
         };
     }
 
@@ -66,6 +69,9 @@ enum TemplateType: int
         return match ($this) {
             self::MCDOWELL_CV => [
                 ValidFile::fromAppPath('ResumeTemplates/Resources/mcdowell-cv/mcdowell-cv.cls')
+            ],
+            self::DEEDY_RESUME => [
+                ValidFile::fromAppPath('ResumeTemplates/Resources/deedy-resume/deedy-resume.cls')
             ],
             default => []
         };

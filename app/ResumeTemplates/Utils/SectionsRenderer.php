@@ -18,21 +18,36 @@ readonly class SectionsRenderer
 
     public function renderSectionsInOrder(ResumeVariables $vars): string
     {
-        $paths = $this->createPositionToPathArray($vars);
-        ksort($paths);
-        $data = ['vars' => $vars];
-        return join('', array_map(fn(string $path) => Blade::render($path, $data), $paths));
-    }
-
-    /** @return array<int, string> */
-    private function createPositionToPathArray(ResumeVariables $vars): array
-    {
-        return [
+        return self::orderAndRenderSections($vars, [
             $vars->positions->workExperiencesPosition => $this->workExperiencesResourcePath,
             $vars->positions->educationExperiencesPosition => $this->educationExperiencesResourcePath,
             $vars->positions->projectsPosition => $this->projectsPath,
             $vars->positions->skillsPosition => $this->skillsPath,
-        ];
+        ]);
+    }
+
+    public function renderLeftSideSectionsInOrder(ResumeVariables $vars): string
+    {
+        return self::orderAndRenderSections($vars, [
+            $vars->positions->educationExperiencesPosition => $this->educationExperiencesResourcePath,
+            $vars->positions->skillsPosition => $this->skillsPath,
+        ]);
+    }
+
+    public function renderRightSideSectionsInOrder(ResumeVariables $vars): string
+    {
+        return self::orderAndRenderSections($vars, [
+            $vars->positions->workExperiencesPosition => $this->workExperiencesResourcePath,
+            $vars->positions->projectsPosition => $this->projectsPath,
+        ]);
+    }
+
+    /** @param array $positionsToResourcePathMap array<int, string> */
+    private static function orderAndRenderSections(ResumeVariables $vars, array $positionsToResourcePathMap): string
+    {
+        ksort($positionsToResourcePathMap);
+        $data = ['vars' => $vars];
+        return join('', array_map(fn(string $path) => Blade::render($path, $data), $positionsToResourcePathMap));
     }
 
     public static function createWithDefaultPaths(string $basePath): self
