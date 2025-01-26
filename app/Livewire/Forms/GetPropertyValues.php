@@ -32,4 +32,16 @@ trait GetPropertyValues
             ]);
         }
     }
+
+    /** @return string[] */
+    private function getDescriptionValue(string $name): array
+    {
+        return array_filter(
+            array_map(
+                fn(string $line) => trim($line),
+                explode("\n", $this->getPropertyValue($name))
+            ),
+            fn(string $line) => strlen($line) > 0
+        );
+    }
 }

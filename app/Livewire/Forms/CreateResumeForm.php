@@ -43,15 +43,18 @@ class CreateResumeForm extends Form
         'workExperiences.*.startDate' => 'start date',
         'workExperiences.*.endDate' => 'end date',
         'workExperiences.*.location' => 'location',
+        'workExperiences.*.description' => 'job description',
         'educationExperiences.*.institution' => 'institution',
         'educationExperiences.*.degree' => 'degree',
         'educationExperiences.*.startDate' => 'start date',
         'educationExperiences.*.endDate' => 'end date',
         'educationExperiences.*.location' => 'location',
+        'educationExperiences.*.description' => 'description',
         'projects.*.name' => 'project name',
         'projects.*.link' => 'link',
         'projects.*.startDate' => 'start date',
         'projects.*.endDate' => 'end date',
+        'projects.*.description' => 'description',
         'skills.*.name' => 'skill name',
         'skills.*.description' => 'description',
     ];
@@ -69,17 +72,20 @@ class CreateResumeForm extends Form
             'workExperiences.*.startDate' => ['required', 'date'],
             'workExperiences.*.endDate' => ['nullable', 'date'],
             'workExperiences.*.location' => ['nullable', 'string'],
+            'workExperiences.*.description' => ['nullable', 'string'],
             'educationExperiences' => ['array'],
             'educationExperiences.*.institution' => ['required', 'string'],
             'educationExperiences.*.degree' => ['required', 'string'],
             'educationExperiences.*.startDate' => ['required', 'date'],
             'educationExperiences.*.endDate' => ['nullable', 'date'],
             'educationExperiences.*.location' => ['nullable', 'string'],
+            'educationExperiences.*.description' => ['nullable', 'string'],
             'projects' => ['array'],
             'projects.*.name' => ['required', 'string'],
             'projects.*.link' => ['nullable', 'string'],
             'projects.*.startDate' => ['nullable', 'date'],
             'projects.*.endDate' => ['nullable', 'date'],
+            'projects.*.description' => ['nullable', 'string'],
             'skills' => ['array'],
             'skills.*.name' => ['required', 'string'],
             'skills.*.description' => ['required', 'string'],
@@ -110,7 +116,7 @@ class CreateResumeForm extends Form
             jobTitle: $this->getPropertyValue("workExperiences.$key.jobTitle"),
             dateRange: $this->getDateRangePropertyValue("workExperiences.$key"),
             location: $this->getPropertyValue("workExperiences.$key.location"),
-            description: ['Developed many features', 'Used the gym', 'blah blah blah']
+            description: $this->getDescriptionValue("workExperiences.$key.description")
         ), array_keys($this->getPropertyValue('workExperiences')));
     }
 
@@ -122,7 +128,7 @@ class CreateResumeForm extends Form
             degree: $this->getPropertyValue("educationExperiences.$key.degree"),
             dateRange: $this->getDateRangePropertyValue("educationExperiences.$key"),
             location: $this->getPropertyValue("educationExperiences.$key.location"),
-            description: ['Didnt study much', 'Went to 2 parties']
+            description: $this->getDescriptionValue("educationExperiences.$key.description")
         ), array_keys($this->getPropertyValue('educationExperiences')));
     }
 
@@ -133,7 +139,7 @@ class CreateResumeForm extends Form
             name: $this->getPropertyValue("projects.$key.name"),
             link: $this->getPropertyValue("projects.$key.link"),
             dateRange: $this->getDateRangePropertyValue("projects.$key"),
-            description: ['Worked on a team of 4 to solve a challenge', 'Met my ex-girlfriend']
+            description: $this->getDescriptionValue("projects.$key.description")
         ), array_keys($this->getPropertyValue('projects')));
     }
 
