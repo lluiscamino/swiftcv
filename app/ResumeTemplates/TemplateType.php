@@ -8,13 +8,13 @@ use App\Tex\Compilers\TexCompiler;
 use App\Tex\Compilers\XelatexCompiler;
 use Illuminate\Support\Facades\App;
 
-enum TemplateType: int
+enum TemplateType: string
 {
-    case BASE_ROVER = 0;
-    case JAKES_RESUME = 1;
-    case DPHANG = 2;
-    case MCDOWELL_CV = 3;
-    case DEEDY_RESUME = 4;
+    case BASE_ROVER = 'base-rover';
+    case JAKES_RESUME = 'jakes-resume';
+    case DPHANG = 'dphang';
+    case MCDOWELL_CV = 'mcdowell-cv';
+    case DEEDY_RESUME = 'deedy-resume';
 
     public function getTemplateContent(): string
     {
