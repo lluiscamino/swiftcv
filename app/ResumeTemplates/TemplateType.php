@@ -85,9 +85,14 @@ enum TemplateType: string
         };
     }
 
+    public function getInternalLink(): string
+    {
+        return route('template', ['templateType' => $this]);
+    }
+
     public function getInternalSourceLink(): string
     {
-        return "/templates/$this->value#source";
+        return $this->getInternalLink() . '#source';
     }
 
     private function getTemplateFile(): ValidFile

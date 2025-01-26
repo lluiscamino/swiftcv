@@ -10,4 +10,4 @@ Route::get('/create-resume', fn() => view('create-resume'));
 Route::get('/results', fn() => view('results'))->name('results');
 
 Route::get('/templates/{templateType}',
-    fn(TemplateType $templateType) => view('template', ['templateType' => $templateType]));
+    fn(TemplateType $templateType) => view('template', ['templateType' => $templateType]))->name('template');
