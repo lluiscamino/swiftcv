@@ -4,7 +4,7 @@
     $modalId = md5(rand() . $resume->templateType->name);
 @endphp
 <a href="{{ $resume->pdfFileUrl }}" download
-   class="px-5 py-2.5 text-sm font-medium text-white inline-flex items-center bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-200 rounded-lg text-center dark:text-white dark:focus:ring-green-900 my-1">
+   class="px-5 py-2.5 text-sm font-medium text-white inline-flex items-center bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-200 rounded-lg justify-center dark:text-white dark:focus:ring-green-900 my-1">
     <svg xmlns="http://www.w3.org/2000/svg" width="16px"
          height="16px" viewBox="0 0 16 16" version="1.1">
         <g id="surface1">
@@ -17,8 +17,7 @@
     <span class="ml-1">Download PDF</span>
 </a>
 <a href="{{ $resume->texFileUrl }}" download
-   class="px-5 py-2.5 text-sm font-medium text-white inline-flex items-center bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-200 rounded-lg text-center dark:text-white dark:focus:ring-green-900 my-1">
+   class="px-5 py-2.5 text-sm font-medium text-white inline-flex items-center bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-200 rounded-lg justify-center dark:text-white dark:focus:ring-green-900 my-1">
     <img src="/images/tex.png" alt="" height="16" width="16"/>
     <span class="ml-1">Download TeX</span>
 </a>
-{{ '' /* TODO: Add original source */ }}
