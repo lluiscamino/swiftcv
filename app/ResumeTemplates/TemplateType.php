@@ -52,6 +52,44 @@ enum TemplateType: string
         };
     }
 
+    public function getAuthorName(): string
+    {
+        return match ($this) {
+            self::BASE_ROVER => 'Subidit Nandy',
+            self::JAKES_RESUME => 'Jake Gutierrez',
+            self::DPHANG => 'Daniel Phang',
+            self::MCDOWELL_CV => 'Gayle Laakmann McDowell (LaTeX template: Daniil Belyakov)',
+            self::DEEDY_RESUME => 'Deedy Das'
+        };
+    }
+
+    public function getSourceLink(): string
+    {
+        return match ($this) {
+            self::BASE_ROVER => 'https://github.com/subidit/rover-resume/tree/main/templates/base%20rover',
+            self::JAKES_RESUME => 'https://github.com/jakegut/resume',
+            self::DPHANG => 'https://github.com/dphang/resume',
+            self::MCDOWELL_CV => 'https://github.com/dnl-blkv/mcdowell-cv',
+            self::DEEDY_RESUME => 'https://github.com/deedy/Deedy-Resume'
+        };
+    }
+
+    public function getLicenseText(): string
+    {
+        return match ($this) {
+            self::BASE_ROVER => view('licenses/base-rover'),
+            self::JAKES_RESUME => view('licenses/jakes-resume'),
+            self::DPHANG => view('licenses/dphang'),
+            self::MCDOWELL_CV => view('licenses/mcdowell-cv'),
+            self::DEEDY_RESUME => view('licenses/deedy-resume')
+        };
+    }
+
+    public function getInternalSourceLink(): string
+    {
+        return "/templates/$this->value#source";
+    }
+
     private function getTemplateFile(): ValidFile
     {
         return match ($this) {
