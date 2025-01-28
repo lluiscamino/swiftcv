@@ -15,6 +15,7 @@ enum TemplateType: string
     case DPHANG = 'dphang';
     case MCDOWELL_CV = 'mcdowell-cv';
     case DEEDY_RESUME = 'deedy-resume';
+    case AWESOME_CV = 'awesome-cv';
 
     public function getTemplateContent(): string
     {
@@ -41,6 +42,7 @@ enum TemplateType: string
             self::DPHANG => 'Dphang\'s Resume',
             self::MCDOWELL_CV => 'McDowell CV',
             self::DEEDY_RESUME => 'Deedy\'s Resume',
+            self::AWESOME_CV => 'Awesome CV',
         };
     }
 
@@ -48,7 +50,7 @@ enum TemplateType: string
     {
         return match ($this) {
             self::BASE_ROVER, self::JAKES_RESUME, self::DPHANG => App::make(PdfLatexCompiler::class),
-            self::MCDOWELL_CV, self::DEEDY_RESUME => App::make(XelatexCompiler::class)
+            self::MCDOWELL_CV, self::DEEDY_RESUME, self::AWESOME_CV => App::make(XelatexCompiler::class)
         };
     }
 
@@ -59,7 +61,8 @@ enum TemplateType: string
             self::JAKES_RESUME => 'Jake Gutierrez',
             self::DPHANG => 'Daniel Phang',
             self::MCDOWELL_CV => 'Gayle Laakmann McDowell (LaTeX template: Daniil Belyakov)',
-            self::DEEDY_RESUME => 'Deedy Das'
+            self::DEEDY_RESUME => 'Deedy Das',
+            self::AWESOME_CV => 'Byungjin Park'
         };
     }
 
@@ -70,19 +73,14 @@ enum TemplateType: string
             self::JAKES_RESUME => 'https://github.com/jakegut/resume',
             self::DPHANG => 'https://github.com/dphang/resume',
             self::MCDOWELL_CV => 'https://github.com/dnl-blkv/mcdowell-cv',
-            self::DEEDY_RESUME => 'https://github.com/deedy/Deedy-Resume'
+            self::DEEDY_RESUME => 'https://github.com/deedy/Deedy-Resume',
+            self::AWESOME_CV => 'https://github.com/posquit0/Awesome-CV'
         };
     }
 
     public function getLicenseText(): string
     {
-        return match ($this) {
-            self::BASE_ROVER => view('licenses/base-rover'),
-            self::JAKES_RESUME => view('licenses/jakes-resume'),
-            self::DPHANG => view('licenses/dphang'),
-            self::MCDOWELL_CV => view('licenses/mcdowell-cv'),
-            self::DEEDY_RESUME => view('licenses/deedy-resume')
-        };
+        return view("licenses/$this->value");
     }
 
     public function getInternalLink(): string
@@ -97,26 +95,22 @@ enum TemplateType: string
 
     private function getTemplateFile(): ValidFile
     {
-        return match ($this) {
-            self::BASE_ROVER => ValidFile::fromAppPath('ResumeTemplates/Resources/base-rover/base-rover.blade.php'),
-            self::JAKES_RESUME => ValidFile::fromAppPath('ResumeTemplates/Resources/jakes-resume/jakes-resume.blade.php'),
-            self::DPHANG => ValidFile::fromAppPath('ResumeTemplates/Resources/dphang/dphang.blade.php'),
-            self::MCDOWELL_CV => ValidFile::fromAppPath('ResumeTemplates/Resources/mcdowell-cv/mcdowell-cv.blade.php'),
-            self::DEEDY_RESUME => ValidFile::fromAppPath('ResumeTemplates/Resources/deedy-resume/deedy-resume.blade.php'),
-        };
+        return ValidFile::fromAppPath("ResumeTemplates/Resources/$this->value/$this->value.blade.php");
     }
 
     /** @return ValidFile[] */
     private function getExtraFiles(): array
     {
+        return $this->hasExtraFiles()
+            ? [ValidFile::fromAppPath("ResumeTemplates/Resources/$this->value/$this->value.cls")]
+            : [];
+    }
+
+    private function hasExtraFiles(): bool
+    {
         return match ($this) {
-            self::MCDOWELL_CV => [
-                ValidFile::fromAppPath('ResumeTemplates/Resources/mcdowell-cv/mcdowell-cv.cls')
-            ],
-            self::DEEDY_RESUME => [
-                ValidFile::fromAppPath('ResumeTemplates/Resources/deedy-resume/deedy-resume.cls')
-            ],
-            default => []
+            self::MCDOWELL_CV, self::DEEDY_RESUME, self::AWESOME_CV => true,
+            default => false,
         };
     }
 }

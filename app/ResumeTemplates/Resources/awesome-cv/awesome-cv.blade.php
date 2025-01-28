@@ -1,0 +1,106 @@
+@php use App\ResumeTemplates\Utils\SectionsRenderer;use App\ResumeTemplates\Variables\ResumeVariables; @endphp
+@php /** @var ResumeVariables $vars */ @endphp
+@php $sectionsRenderer = SectionsRenderer::createWithDefaultPaths('awesome-cv'); @endphp
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+% Awesome CV LaTeX Template for CV/Resume
+%
+% This template has been downloaded from:
+% https://github.com/posquit0/Awesome-CV
+%
+% Author:
+% Claud D. Park posquit0.bj@gmail.com
+% http://www.posquit0.com
+%
+% Template license:
+% CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+%
+
+
+%-------------------------------------------------------------------------------
+% CONFIGURATIONS
+%-------------------------------------------------------------------------------
+% A4 paper size by default, use 'letterpaper' for US letter
+\documentclass[11pt, a4paper]{awesome-cv}
+
+% Configure page margins with geometry
+\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
+
+% Color for highlights
+% Awesome Colors: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
+%                 awesome-nephritis, awesome-concrete, awesome-darknight
+\colorlet{awesome}{awesome-red}
+% Uncomment if you would like to specify your own color
+% \definecolor{awesome}{HTML}{CA63A8}
+
+% Colors for text
+% Uncomment if you would like to specify your own color
+% \definecolor{darktext}{HTML}{414141}
+% \definecolor{text}{HTML}{333333}
+% \definecolor{graytext}{HTML}{5D5D5D}
+% \definecolor{lighttext}{HTML}{999999}
+% \definecolor{sectiondivider}{HTML}{5D5D5D}
+
+% Set false if you don't want to highlight section with awesome color
+\setbool{acvSectionColorHighlight}{true}
+
+% If you would like to change the social information separator from a pipe (|) to something else
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+
+
+%-------------------------------------------------------------------------------
+%    PERSONAL INFORMATION
+%    Comment any of the lines below if they are not required
+%-------------------------------------------------------------------------------
+% Available options: circle|rectangle,edge/noedge,left/right
+% \photo{./examples/profile.png}
+\name{<?= $vars->name ?>}{}
+%\position{Site Reliability Engineer{\enskip\cdotp\enskip}Software Architect}
+%\address{235, World Cup buk-ro, Mapo-gu, Seoul, 03936, Republic of Korea}
+
+\mobile{<?= $vars->phoneNumber ?>}
+\email{<?= $vars->email ?>}
+%\dateofbirth{January 1st, 1970}
+%\homepage{www.posquit0.com}
+\github{<?= $vars->githubUsername ?>}
+\linkedin{<?= $vars->linkedinUsername ?>}
+% \gitlab{gitlab-id}
+% \stackoverflow{SO-id}{SO-name}
+% \twitter{@twit}
+% \skype{skype-id}
+% \reddit{reddit-id}
+% \medium{medium-id}
+% \kaggle{kaggle-id}
+% \hackerrank{hackerrank-id}
+% \googlescholar{googlescholar-id}{name-to-display}
+%% \firstname and \lastname will be used
+% \googlescholar{googlescholar-id}{}
+% \extrainfo{extra information}
+
+%\quote{``Be the change that you want to see in the world."}
+
+
+%-------------------------------------------------------------------------------
+\begin{document}
+
+% Print the header with above personal information
+% Give optional argument to change alignment(C: center, L: left, R: right)
+\makecvheader
+
+
+% Leave any of these blank if they are not needed
+\makecvfooter
+{\today}
+{<?= $vars->name ?>>~~~·~~~Curriculum Vitae}
+{\thepage}
+
+
+%-------------------------------------------------------------------------------
+%    CV/RESUME CONTENT
+%    Each section is imported separately, open each file in turn to modify content
+%-------------------------------------------------------------------------------
+
+{!! $sectionsRenderer->renderSectionsInOrder($vars) !!}
+
+%-------------------------------------------------------------------------------
+\end{document}

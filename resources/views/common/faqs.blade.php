@@ -8,7 +8,7 @@
     ],
     [
         'question' => 'What resume templates are available?',
-        'answer' => 'We offer a variety of popular LaTeX resume templates, including Awesome-CV, ' . BladeUtils::linkToTemplate(TemplateType::MCDOWELL_CV) .', ' . BladeUtils::linkToTemplate(TemplateType::DEEDY_RESUME) . ', ' . BladeUtils::linkToTemplate(TemplateType::JAKES_RESUME) . ' and ' . BladeUtils::link('' /* TODO */, 'others') . '. We are constantly adding new templates to our collection.'
+        'answer' => 'We offer a variety of popular LaTeX resume templates, including ' . BladeUtils::linkToTemplate(TemplateType::AWESOME_CV) . ', ' . BladeUtils::linkToTemplate(TemplateType::MCDOWELL_CV) .', ' . BladeUtils::linkToTemplate(TemplateType::DEEDY_RESUME) . ', ' . BladeUtils::linkToTemplate(TemplateType::JAKES_RESUME) . ' and ' . BladeUtils::link('' /* TODO */, 'others') . '. We are constantly adding new templates to our collection.'
     ],
     [
         'question' => 'What file format will I receive?',

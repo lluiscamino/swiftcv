@@ -7,10 +7,10 @@
             <h1 class="max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white">
                 Effortlessly generate 10+ LaTeX resumes in seconds!</h1>
             <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Easily
-                create polished and professional resumes using popular templates like Awesome
-                CV, {!! BladeUtils::linkToTemplate(TemplateType::JAKES_RESUME) !!} and more—all
-                without writing a single line of LaTeX. Start building your perfect resume
-                today!</p>
+                create polished and professional resumes using popular templates
+                like {!! BladeUtils::linkToTemplate(TemplateType::AWESOME_CV) !!},
+                {!! BladeUtils::linkToTemplate(TemplateType::JAKES_RESUME) !!} and more—all without writing a single
+                line of LaTeX. Start building your perfect resume today!</p>
             <div class="space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
                 <a href="/create-resume"
                    class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-lg px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800">
