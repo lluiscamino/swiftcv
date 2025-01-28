@@ -3,6 +3,7 @@
 namespace App\Livewire\Forms;
 
 use App\Livewire\ResumeSectionType;
+use App\ResumeTemplates\Variables\ContactInfo;
 use App\ResumeTemplates\Variables\EducationExperience;
 use App\ResumeTemplates\Variables\Project;
 use App\ResumeTemplates\Variables\ResumeVariables;
@@ -95,16 +96,23 @@ class CreateResumeForm extends Form
     public function getResumeVariables(): ResumeVariables
     {
         return new ResumeVariables(
-            name: $this->getPropertyValue('name'),
-            email: $this->getPropertyValue('email'),
-            phoneNumber: $this->getPropertyValue('phoneNumber'),
-            linkedinUsername: 'lluiscamino',
-            githubUsername: 'lluiscamino',
+            contactInfo: $this->getContactInfo(),
             workExperiences: $this->getWorkExperiences(),
             educationExperiences: $this->getEducationExperiences(),
             projects: $this->getProjectExperiences(),
             skills: $this->getSkills(),
             positions: $this->getSectionPositions(),
+        );
+    }
+
+    private function getContactInfo(): ContactInfo
+    {
+        return new ContactInfo(
+            name: $this->getPropertyValue('name'),
+            email: $this->getPropertyValue('email'),
+            phoneNumber: $this->getPropertyValue('phoneNumber'),
+            linkedinUsername: 'lluiscamino',
+            githubUsername: 'lluiscamino',
         );
     }
 

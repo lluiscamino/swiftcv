@@ -49,11 +49,11 @@
 \begin{document}
 
 \begin{center}
-{\LARGE \textbf{ {{$vars->name}} }}\\
+{\LARGE \textbf{ {{$vars->contactInfo->name}} }}\\
 Seattle, Washington
 \vspace{0.05cm}
 \\
-\raisebox{-0.2\height} {\Large \faPhoneSquare} \ \  {{$vars->phoneNumber}} \hfill\raisebox{-0.2\height}{\Large \faEnvelopeSquare} \ \ {{$vars->email}} \hfill \raisebox{-0.2\height}{\Large \faGithubSquare} \ \ github.com/{{$vars->githubUsername}} \hfill \raisebox{-0.2\height}{\Large \faLinkedinSquare} \ \ linkedin.com/in/{{$vars->linkedinUsername}}
+\raisebox{-0.2\height} {\Large \faPhoneSquare} \ \  {{$vars->contactInfo->phoneNumber}} \hfill\raisebox{-0.2\height}{\Large \faEnvelopeSquare} \ \ {{$vars->contactInfo->email}} \hfill \raisebox{-0.2\height}{\Large \faGithubSquare} \ \ github.com/{{$vars->contactInfo->githubUsername}} \hfill \raisebox{-0.2\height}{\Large \faLinkedinSquare} \ \ linkedin.com/in/{{$vars->contactInfo->linkedinUsername}}
 \end{center}
 
 {!! $sectionsRenderer->renderSectionsInOrder($vars) !!}

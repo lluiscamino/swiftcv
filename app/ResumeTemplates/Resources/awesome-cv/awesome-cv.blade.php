@@ -54,16 +54,16 @@
 %-------------------------------------------------------------------------------
 % Available options: circle|rectangle,edge/noedge,left/right
 % \photo{./examples/profile.png}
-\name{<?= $vars->name ?>}{}
+\name{<?= $vars->contactInfo->name ?>}{}
 %\position{Site Reliability Engineer{\enskip\cdotp\enskip}Software Architect}
 %\address{235, World Cup buk-ro, Mapo-gu, Seoul, 03936, Republic of Korea}
 
-\mobile{<?= $vars->phoneNumber ?>}
-\email{<?= $vars->email ?>}
+\mobile{<?= $vars->contactInfo->phoneNumber ?>}
+\email{<?= $vars->contactInfo->email ?>}
 %\dateofbirth{January 1st, 1970}
 %\homepage{www.posquit0.com}
-\github{<?= $vars->githubUsername ?>}
-\linkedin{<?= $vars->linkedinUsername ?>}
+\github{<?= $vars->contactInfo->githubUsername ?>}
+\linkedin{<?= $vars->contactInfo->linkedinUsername ?>}
 % \gitlab{gitlab-id}
 % \stackoverflow{SO-id}{SO-name}
 % \twitter{@twit}
@@ -91,7 +91,7 @@
 % Leave any of these blank if they are not needed
 \makecvfooter
 {\today}
-{<?= $vars->name ?>>~~~·~~~Curriculum Vitae}
+{<?= $vars->contactInfo->name ?>>~~~·~~~Curriculum Vitae}
 {\thepage}
 
 

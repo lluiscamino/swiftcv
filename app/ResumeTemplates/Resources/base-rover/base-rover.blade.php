@@ -33,16 +33,16 @@
 \begin{center}
 \begin{minipage}{0.5\textwidth}
 {\Huge\bfseries
-{{$vars->name}}
+{{$vars->contactInfo->name}}
 } \\ \medskip
 % Resume Template % Title [optional]
 \end{minipage} \hfill
 \begin{minipage}{0.4\textwidth}
 \raggedleft
-Email: {{$vars->email}} \\
-Mobile: {{$vars->phoneNumber}} \\
-LinkedIn: linkedin.com/in/{{$vars->linkedinUsername}} \\
-GitHub: github.com/{{$vars->githubUsername}}
+Email: {{$vars->contactInfo->email}} \\
+Mobile: {{$vars->contactInfo->phoneNumber}} \\
+LinkedIn: linkedin.com/in/{{$vars->contactInfo->linkedinUsername}} \\
+GitHub: github.com/{{$vars->contactInfo->githubUsername}}
 \end{minipage}
 \end{center}
 

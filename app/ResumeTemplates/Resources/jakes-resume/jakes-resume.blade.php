@@ -119,10 +119,10 @@
 % \end{tabular*}
 
 \begin{center}
-\textbf{\Huge \scshape <?= $vars->name ?>} \\ \vspace{1pt}
-\small <?= $vars->phoneNumber ?> $|$ \href{mailto:<?= $vars->email ?>}{\underline{<?= $vars->email ?>}} $|$
-\href{https://linkedin.com/in/<?= $vars->linkedinUsername ?>}{\underline{linkedin.com/in/<?= $vars->linkedinUsername ?>}} $|$
-\href{https://github.com/<?= $vars->githubUsername ?> }{\underline{github.com/<?= $vars->githubUsername ?>}}
+\textbf{\Huge \scshape <?= $vars->contactInfo->name ?>} \\ \vspace{1pt}
+\small <?= $vars->contactInfo->phoneNumber ?> $|$ \href{mailto:<?= $vars->contactInfo->email ?>}{\underline{<?= $vars->contactInfo->email ?>}} $|$
+\href{https://linkedin.com/in/<?= $vars->contactInfo->linkedinUsername ?>}{\underline{linkedin.com/in/<?= $vars->contactInfo->linkedinUsername ?>}} $|$
+\href{https://github.com/<?= $vars->contactInfo->githubUsername ?> }{\underline{github.com/<?= $vars->contactInfo->githubUsername ?>}}
 \end{center}
 
 {!! $sectionsRenderer->renderSectionsInOrder($vars) !!}

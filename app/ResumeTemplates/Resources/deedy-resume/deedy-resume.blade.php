@@ -69,8 +69,8 @@
 %     TITLE NAME
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\namesection{<?= $vars->name ?>}{}{ \urlstyle{same}\href{http://debarghyadas.com}{debarghyadas.com}| \href{http://fb.co/dd}{fb.co/dd}\\ % TODO: Add links
-\href{mailto:<?= $vars->email ?>}{<?= $vars->email ?>} | <?= $vars->phoneNumber ?> | \href{mailto:dd367@cornell.edu}{dd367@cornell.edu}
+\namesection{<?= $vars->contactInfo->name ?>}{}{ \urlstyle{same}\href{http://debarghyadas.com}{debarghyadas.com}| \href{http://fb.co/dd}{fb.co/dd}\\ % TODO: Add links
+\href{mailto:<?= $vars->contactInfo->email ?>}{<?= $vars->contactInfo->email ?>} | <?= $vars->contactInfo->phoneNumber ?> | \href{mailto:dd367@cornell.edu}{dd367@cornell.edu}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
