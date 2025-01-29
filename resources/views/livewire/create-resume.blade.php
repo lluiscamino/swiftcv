@@ -14,7 +14,9 @@
                 <x-forms.input id="name" type="text" label="Name" placeholder="John Doe"/>
                 <x-forms.input id="email" type="email" label="Email address" placeholder="john.doe@gmail.com"/>
                 <x-forms.input id="phoneNumber" type="tel" label="Phone number" placeholder="+44 987456774"/>
-                <x-forms.input id="website" type="url" label="Personal website" placeholder="mysite.com"/>
+                <x-forms.input id="website" type="url" label="Personal website" placeholder="johndoe.com"/>
+                <x-forms.input id="linkedinUsername" type="text" label="LinkedIn username" placeholder="johndoe"/>
+                <x-forms.input id="githubUsername" type="text" label="GitHub username" placeholder="johncodes"/>
             </div>
         </div>
         @foreach($form->getOrderedSectionTypes() as $sectionType)

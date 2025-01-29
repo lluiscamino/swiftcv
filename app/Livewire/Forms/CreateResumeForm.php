@@ -20,7 +20,13 @@ class CreateResumeForm extends Form
     use GetPropertyValues;
 
     #[Url]
-    public string $name = '', $email = '', $phoneNumber = '', $website = '';
+    public ?string
+        $name = '',
+        $email = null,
+        $phoneNumber = null,
+        $website = null,
+        $linkedinUsername = null,
+        $githubUsername = null;
     #[Url]
     public array
         $workExperiences = [[]],
@@ -40,6 +46,8 @@ class CreateResumeForm extends Form
         'email' => 'email address',
         'phoneNumber' => 'phone number',
         'website' => 'website',
+        'linkedinUsername' => 'LinkedIn username',
+        'githubUsername' => 'GitHub username',
         'workExperiences.*.company' => 'company',
         'workExperiences.*.jobTitle' => 'job title',
         'workExperiences.*.startDate' => 'start date',
@@ -69,6 +77,8 @@ class CreateResumeForm extends Form
             'email' => ['nullable', 'string', 'email', 'max:255'],
             'phoneNumber' => ['nullable', 'string', 'max:255'],
             'website' => ['nullable', 'string', 'max:255'],
+            'linkedinUsername' => ['nullable', 'string', 'max:255'],
+            'githubUsername' => ['nullable', 'string', 'max:255'],
             'workExperiences' => ['array'],
             'workExperiences.*.company' => ['required', 'string'],
             'workExperiences.*.jobTitle' => ['required', 'string'],
@@ -114,8 +124,8 @@ class CreateResumeForm extends Form
             email: $this->getNullablePropertyValue('email'),
             phoneNumber: $this->getNullablePropertyValue('phoneNumber'),
             website: $this->getNullablePropertyValue('website'),
-            linkedinUsername: 'lluiscamino',
-            githubUsername: 'lluiscamino',
+            linkedinUsername: $this->getNullablePropertyValue('linkedinUsername'),
+            githubUsername: $this->getNullablePropertyValue('githubUsername'),
         );
     }
 
@@ -236,6 +246,8 @@ class CreateResumeForm extends Form
                 'email=' . urlencode($this->email),
                 'phoneNumber=' . urlencode($this->phoneNumber),
                 'website=' . urlencode($this->website),
+                'linkedinUsername=' . urlencode($this->linkedinUsername),
+                'githubUsername=' . urlencode($this->githubUsername),
                 self::sectionsToUrl('workExperiences', $this->workExperiences),
                 self::sectionsToUrl('educationExperiences', $this->educationExperiences),
                 self::sectionsToUrl('projects', $this->projects),
