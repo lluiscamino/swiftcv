@@ -20,7 +20,7 @@ class CreateResumeForm extends Form
     use GetPropertyValues;
 
     #[Url]
-    public string $name = '', $email = '', $phoneNumber = '';
+    public string $name = '', $email = '', $phoneNumber = '', $website = '';
     #[Url]
     public array
         $workExperiences = [[]],
@@ -39,6 +39,7 @@ class CreateResumeForm extends Form
     protected array $validationAttributes = [
         'email' => 'email address',
         'phoneNumber' => 'phone number',
+        'website' => 'website',
         'workExperiences.*.company' => 'company',
         'workExperiences.*.jobTitle' => 'job title',
         'workExperiences.*.startDate' => 'start date',
@@ -67,6 +68,7 @@ class CreateResumeForm extends Form
             'name' => ['required', 'string', 'max:255'],
             'email' => ['nullable', 'string', 'email', 'max:255'],
             'phoneNumber' => ['nullable', 'string', 'max:255'],
+            'website' => ['nullable', 'string', 'max:255'],
             'workExperiences' => ['array'],
             'workExperiences.*.company' => ['required', 'string'],
             'workExperiences.*.jobTitle' => ['required', 'string'],
@@ -109,8 +111,9 @@ class CreateResumeForm extends Form
     {
         return new ContactInfo(
             name: $this->getPropertyValue('name'),
-            email: $this->getPropertyValue('email'),
-            phoneNumber: $this->getPropertyValue('phoneNumber'),
+            email: $this->getNullablePropertyValue('email'),
+            phoneNumber: $this->getNullablePropertyValue('phoneNumber'),
+            website: $this->getNullablePropertyValue('website'),
             linkedinUsername: 'lluiscamino',
             githubUsername: 'lluiscamino',
         );
@@ -232,6 +235,7 @@ class CreateResumeForm extends Form
                 'name=' . urlencode($this->name),
                 'email=' . urlencode($this->email),
                 'phoneNumber=' . urlencode($this->phoneNumber),
+                'website=' . urlencode($this->website),
                 self::sectionsToUrl('workExperiences', $this->workExperiences),
                 self::sectionsToUrl('educationExperiences', $this->educationExperiences),
                 self::sectionsToUrl('projects', $this->projects),

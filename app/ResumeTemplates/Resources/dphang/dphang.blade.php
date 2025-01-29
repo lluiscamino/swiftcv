@@ -10,6 +10,7 @@
 \usepackage{textcomp}
 \usepackage{fontawesome}
 \usepackage{enumitem}
+\usepackage{hyperref}
 \DeclareFontFamily{U}{fontawesomeOne}{}
 \DeclareFontShape{U}{fontawesomeOne}{m}{n}
 {<-> FontAwesome--fontawesomeone}{}
@@ -50,10 +51,35 @@
 
 \begin{center}
 {\LARGE \textbf{ {{$vars->contactInfo->name}} }}\\
-Seattle, Washington
+%Seattle, Washington
 \vspace{0.05cm}
 \\
-\raisebox{-0.2\height} {\Large \faPhoneSquare} \ \  {{$vars->contactInfo->phoneNumber}} \hfill\raisebox{-0.2\height}{\Large \faEnvelopeSquare} \ \ {{$vars->contactInfo->email}} \hfill \raisebox{-0.2\height}{\Large \faGithubSquare} \ \ github.com/{{$vars->contactInfo->githubUsername}} \hfill \raisebox{-0.2\height}{\Large \faLinkedinSquare} \ \ linkedin.com/in/{{$vars->contactInfo->linkedinUsername}}
+@php($useHfill = false)
+@if($vars->contactInfo->phoneNumber)
+\raisebox{-0.2\height} {\Large \faPhoneSquare} \ \  {{$vars->contactInfo->phoneNumber}}
+@php($useHfill = true)
+@endif
+@if($vars->contactInfo->email)
+    @if($useHfill)
+        \hfill
+    @endif
+    \raisebox{-0.2\height}{\Large \faEnvelopeSquare} \ \ {{$vars->contactInfo->email}}
+@php($useHfill = true)
+@endif
+@if($vars->contactInfo->githubUsername)
+    @if($useHfill)
+        \hfill
+    @endif
+    \raisebox{-0.2\height}{\Large \faGithubSquare} \ \ \href{https://github.com/<?= $vars->contactInfo->githubUsername ?>}{<?= $vars->contactInfo->githubUsername ?>}
+@php($useHfill = true)
+@endif
+@if($vars->contactInfo->linkedinUsername)
+    @if($useHfill)
+        \hfill
+    @endif
+    \raisebox{-0.2\height}{\Large \faLinkedinSquare} \ \ \href{https://linkedin.com/in/<?= $vars->contactInfo->linkedinUsername ?>}{<?= $vars->contactInfo->linkedinUsername ?>}
+@php($useHfill = true)
+@endif
 \end{center}
 
 {!! $sectionsRenderer->renderSectionsInOrder($vars) !!}

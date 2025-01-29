@@ -58,12 +58,22 @@
 %\position{Site Reliability Engineer{\enskip\cdotp\enskip}Software Architect}
 %\address{235, World Cup buk-ro, Mapo-gu, Seoul, 03936, Republic of Korea}
 
+@if($vars->contactInfo->phoneNumber)
 \mobile{<?= $vars->contactInfo->phoneNumber ?>}
+@endif
+@if($vars->contactInfo->email)
 \email{<?= $vars->contactInfo->email ?>}
+@endif
 %\dateofbirth{January 1st, 1970}
-%\homepage{www.posquit0.com}
+@if($vars->contactInfo->website)
+\homepage{<?= $vars->contactInfo->website ?>}
+@endif
+@if($vars->contactInfo->githubUsername)
 \github{<?= $vars->contactInfo->githubUsername ?>}
+@endif
+@if($vars->contactInfo->linkedinUsername)
 \linkedin{<?= $vars->contactInfo->linkedinUsername ?>}
+@endif
 % \gitlab{gitlab-id}
 % \stackoverflow{SO-id}{SO-name}
 % \twitter{@twit}

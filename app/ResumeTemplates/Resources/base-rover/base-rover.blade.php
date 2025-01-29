@@ -39,10 +39,21 @@
 \end{minipage} \hfill
 \begin{minipage}{0.4\textwidth}
 \raggedleft
+@if($vars->contactInfo->email)
 Email: {{$vars->contactInfo->email}} \\
+@endif
+@if($vars->contactInfo->phoneNumber)
 Mobile: {{$vars->contactInfo->phoneNumber}} \\
+@endif
+@if($vars->contactInfo->website)
+Website: {{$vars->contactInfo->website}} \\
+@endif
+@if($vars->contactInfo->linkedinUsername)
 LinkedIn: linkedin.com/in/{{$vars->contactInfo->linkedinUsername}} \\
+@endif
+@if($vars->contactInfo->githubUsername)
 GitHub: github.com/{{$vars->contactInfo->githubUsername}}
+@endif
 \end{minipage}
 \end{center}
 

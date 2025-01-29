@@ -120,9 +120,18 @@
 
 \begin{center}
 \textbf{\Huge \scshape <?= $vars->contactInfo->name ?>} \\ \vspace{1pt}
-\small <?= $vars->contactInfo->phoneNumber ?> $|$ \href{mailto:<?= $vars->contactInfo->email ?>}{\underline{<?= $vars->contactInfo->email ?>}} $|$
+@if($vars->contactInfo->phoneNumber)
+\small <?= $vars->contactInfo->phoneNumber ?> $|$
+@endif
+@if($vars->contactInfo->email)
+\href{mailto:<?= $vars->contactInfo->email ?>}{\underline{<?= $vars->contactInfo->email ?>}} $|$
+@endif
+@if($vars->contactInfo->linkedinUsername)
 \href{https://linkedin.com/in/<?= $vars->contactInfo->linkedinUsername ?>}{\underline{linkedin.com/in/<?= $vars->contactInfo->linkedinUsername ?>}} $|$
+@endif
+@if($vars->contactInfo->githubUsername)
 \href{https://github.com/<?= $vars->contactInfo->githubUsername ?> }{\underline{github.com/<?= $vars->contactInfo->githubUsername ?>}}
+@endif
 \end{center}
 
 {!! $sectionsRenderer->renderSectionsInOrder($vars) !!}

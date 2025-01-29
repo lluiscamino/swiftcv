@@ -69,8 +69,13 @@
 %     TITLE NAME
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\namesection{<?= $vars->contactInfo->name ?>}{}{ \urlstyle{same}\href{http://debarghyadas.com}{debarghyadas.com}| \href{http://fb.co/dd}{fb.co/dd}\\ % TODO: Add links
-\href{mailto:<?= $vars->contactInfo->email ?>}{<?= $vars->contactInfo->email ?>} | <?= $vars->contactInfo->phoneNumber ?> | \href{mailto:dd367@cornell.edu}{dd367@cornell.edu}
+\namesection{<?= $vars->contactInfo->name ?>}{}{ \urlstyle{same}\href{<?= $vars->contactInfo->website ?>}{<?= $vars->contactInfo->website ?>}\\
+@if($vars->contactInfo->email)
+\href{mailto:<?= $vars->contactInfo->email ?>}{<?= $vars->contactInfo->email ?>} |
+@endif
+@if($vars->contactInfo->phoneNumber)
+\href{tel:<?= $vars->contactInfo->phoneNumber ?>}{<?= $vars->contactInfo->phoneNumber ?>}
+@endif
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -9,6 +9,12 @@ use RuntimeException;
 
 trait GetPropertyValues
 {
+    private function getNullablePropertyValue(string $name): mixed
+    {
+        $value = $this->getPropertyValue($name);
+        return empty($value) ? null : $value;
+    }
+
     private function getDateRangePropertyValue(string $prefix): DateRange
     {
         return new DateRange(

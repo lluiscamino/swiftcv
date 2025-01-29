@@ -6,7 +6,7 @@
         Find the ideal look for your resume from our collection of professional LaTeX templates. Simply fill out the
         form below to get started.
     </p>
-    <form wire:submit="save" autoComplete="off">
+    <form wire:submit="save" autoComplete="off" novalidate>
         <div class="mb-2">
             <h3 class="w-full mt-6 md:w-1/2 mb-6 max-w-xl text-xl font-bold leading-none tracking-tight dark:text-white">
                 Contact information</h3>
@@ -14,6 +14,7 @@
                 <x-forms.input id="name" type="text" label="Name" placeholder="John Doe"/>
                 <x-forms.input id="email" type="email" label="Email address" placeholder="john.doe@gmail.com"/>
                 <x-forms.input id="phoneNumber" type="text" label="Phone number" placeholder="+44 987456774"/>
+                <x-forms.input id="website" type="url" label="Personal website" placeholder="mysite.com"/>
             </div>
         </div>
         @foreach($form->getOrderedSectionTypes() as $sectionType)

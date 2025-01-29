@@ -31,8 +31,8 @@
 
 % Set applicant's personal data for header
 \name{<?= $vars->contactInfo->name ?>}
-\address{123 Spruce St, Apt 35 \linebreak Philadelphia PA 19103}
-\contacts{<?= $vars->contactInfo->phoneNumber ?> \linebreak <?= $vars->contactInfo->email ?>}
+%\address{123 Spruce St, Apt 35 \linebreak Philadelphia PA 19103}
+\contacts{<?= $vars->contactInfo->phoneNumber ?> \linebreak <?= $vars->contactInfo->email ?> \linebreak <?= $vars->contactInfo->website ?>}
 
 \begin{document}
 
