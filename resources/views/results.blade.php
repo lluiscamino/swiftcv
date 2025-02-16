@@ -3,7 +3,7 @@
 @include('common/header')
 
 <div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
-    <div class="max-w-screen-lg mx-auto">
+    <div class="max-w-screen-lg mx-auto pt-20 lg:pt-0">
         <h2 class="max-w-2xl mb-4 text-2xl font-extrabold leading-none tracking-tight md:text-3xl xl:text-4xl dark:text-white">
             Your Resumes are Ready!
         </h2>
