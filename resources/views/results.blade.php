@@ -1,6 +1,6 @@
 @php use App\ResumeCreator\Resume;
 @endphp
-@php($resumes = array_map(fn(array $serializedResume) => Resume::createFromSerializedArray($serializedResume), request()->query('resumes')))
+@php($resumes = array_values(array_map(fn(array $serializedResume) => Resume::createFromSerializedArray($serializedResume), request()->query('resumes'))))
 @include('common/header')
 
 <div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
