@@ -12,7 +12,7 @@
              src="{{$resume->thumbnailUrl}}">
     </button>
     <div>
-        <x-resumes.download-buttons :resume="$resume"/>
+        <x-resumes.download-buttons :resume="$resume" :responsive="true"/>
     </div>
 </div>
 
@@ -42,7 +42,7 @@
             </div>
             <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600 space-x-2">
                 <div class="grid grid-cols-1 gap-2 sm:grid-cols-3 w-full sm:w-auto">
-                    <x-resumes.download-buttons :resume="$resume"/>
+                    <x-resumes.download-buttons :resume="$resume" :responsive="false"/>
                     <a href="{{ $resume->templateType->getInternalSourceLink() }}"
                        class="py-2.5 text-sm font-medium text-green-700 box-border inline-flex items-center border-2 border-green-600 hover:border-green-700 focus:ring-4 focus:ring-green-200 rounded-lg my-1 justify-center">
                         Source & license

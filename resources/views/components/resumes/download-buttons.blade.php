@@ -2,9 +2,12 @@
 @php
     /** @var Resume $resume */
     $modalId = md5(rand() . $resume->templateType->name);
+    /** @var bool $responsive */
+    $buttonsStyle = $responsive
+        ? 'px-5 py-2.5 text-sm text-green-700 hover:text-green-800 font-bold sm:font-medium sm:text-white inline-flex items-center sm:bg-green-600 sm:hover:bg-green-700 focus:ring-4 sm:focus:ring-green-200 rounded-lg justify-center sm:dark:text-white sm:dark:focus:ring-green-900 my-1'
+        : 'px-5 py-2.5 text-sm font-medium text-white inline-flex items-center bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-200 rounded-lg justify-center dark:text-white dark:focus:ring-green-900 my-1';
 @endphp
-<a href="{{ $resume->pdfFileUrl }}" download
-   class="px-5 py-2.5 text-sm font-medium text-white inline-flex items-center bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-200 rounded-lg justify-center dark:text-white dark:focus:ring-green-900 my-1">
+<a href="{{ $resume->pdfFileUrl }}" download class="{{ $buttonsStyle }}">
     <svg xmlns="http://www.w3.org/2000/svg" width="16px"
          height="16px" viewBox="0 0 16 16" version="1.1">
         <g id="surface1">
@@ -16,8 +19,7 @@
     </svg>
     <span class="ml-1">Download PDF</span>
 </a>
-<a href="{{ $resume->texFileUrl }}" download
-   class="px-5 py-2.5 text-sm font-medium text-white inline-flex items-center bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-200 rounded-lg justify-center dark:text-white dark:focus:ring-green-900 my-1">
+<a href="{{ $resume->texFileUrl }}" download class="{{ $buttonsStyle }}">
     <img src="/images/tex.png" alt="" height="16" width="16"/>
     <span class="ml-1">Download TeX</span>
 </a>
