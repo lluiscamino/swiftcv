@@ -69,7 +69,7 @@
 %     TITLE NAME
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\namesection{<?= $vars->contactInfo->name ?>}{}{ \urlstyle{same}\href{<?= $vars->contactInfo->website ?>}{<?= $vars->contactInfo->website ?>}\\
+\namesection{<?= $vars->contactInfo->getNameEscaped() ?>}{}{ \urlstyle{same}\href{<?= $vars->contactInfo->website ?>}{<?= $vars->contactInfo->website ?>}\\
 @if($vars->contactInfo->email)
 \href{mailto:<?= $vars->contactInfo->email ?>}{<?= $vars->contactInfo->email ?>} |
 @endif

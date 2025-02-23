@@ -1,9 +1,9 @@
 \begin{cvsection}{Employment}
 @foreach($vars->workExperiences as $workExperience)
-    \begin{cvsubsection}{<?= $workExperience->jobTitle ?>}{<?= $workExperience->company ?>}{<?= $workExperience->dateRange ?>}
+    \begin{cvsubsection}{<?= $workExperience->getJobTitleEscaped() ?>}{<?= $workExperience->getCompanyEscaped() ?>}{<?= $workExperience->dateRange ?>}
     %iChat AV
     \begin{itemize}
-    @foreach($workExperience->description as $line)
+    @foreach($workExperience->getDescriptionEscaped() as $line)
         \item {{ $line }}
     @endforeach
     \end{cvsubsection}

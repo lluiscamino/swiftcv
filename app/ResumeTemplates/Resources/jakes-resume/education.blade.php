@@ -6,10 +6,10 @@
 
 @foreach($vars->educationExperiences as $educationExperience)
     \resumeSubheading
-    {<?= $educationExperience->university ?>}{<?= $educationExperience->location ?>}
-    {<?= $educationExperience->degree ?>}{<?= $educationExperience->dateRange ?>}
+    {<?= $educationExperience->getUniversityEscaped() ?>}{<?= $educationExperience->getLocationEscaped() ?>}
+    {<?= $educationExperience->getDegreeEscaped() ?>}{<?= $educationExperience->dateRange ?>}
     \resumeItemListStart
-    @foreach($educationExperience->description as $line)
+    @foreach($educationExperience->getDescriptionEscaped() as $line)
         \resumeItem{<?= $line ?>}
     @endforeach
     \resumeItemListEnd

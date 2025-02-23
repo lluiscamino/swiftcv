@@ -5,10 +5,10 @@
 \section{Projects}
 
 @foreach($vars->projects as $project)
-    \subsection{<?= $project->name ?>}
+    \subsection{<?= $project->getNameEscaped() ?>}
     \location{<?= $project->dateRange ?> | <?= $project->link ?>}
     \begin{tightemize}
-    @foreach($project->description as $line)
+    @foreach($project->getDescriptionEscaped() as $line)
         \item {{$line}}
     @endforeach
     \end{tightemize}

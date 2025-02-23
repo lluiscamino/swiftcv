@@ -1,10 +1,10 @@
 \section{Experience}
 %=================%
 @foreach($vars->workExperiences as $workExperience)
-    \subsection{ {{$workExperience->jobTitle}} \hfill  {{$workExperience->dateRange}} }
-    \subsubsection{ {{ $workExperience->company }} \hfill {{$workExperience->location}} }
+    \subsection{ {{$workExperience->getJobTitleEscaped()}} \hfill  {{$workExperience->dateRange}} }
+    \subsubsection{ {{ $workExperience->getCompanyEscaped() }} \hfill {{$workExperience->getLocationEscaped()}} }
     \begin{itemize}
-    @foreach($workExperience->description as $line)
+    @foreach($workExperience->getDescriptionEscaped() as $line)
         \item {{$line}}
     @endforeach
     \end{itemize}

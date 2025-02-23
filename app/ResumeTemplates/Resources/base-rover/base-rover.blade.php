@@ -33,7 +33,7 @@
 \begin{center}
 \begin{minipage}{0.5\textwidth}
 {\Huge\bfseries
-{{$vars->contactInfo->name}}
+{{$vars->contactInfo->getNameEscaped()}}
 } \\ \medskip
 % Resume Template % Title [optional]
 \end{minipage} \hfill

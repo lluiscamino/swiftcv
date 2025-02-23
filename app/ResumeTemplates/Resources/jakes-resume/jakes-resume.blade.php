@@ -119,7 +119,7 @@
 % \end{tabular*}
 
 \begin{center}
-\textbf{\Huge \scshape <?= $vars->contactInfo->name ?>} \\ \vspace{1pt}
+\textbf{\Huge \scshape <?= $vars->contactInfo->getNameEscaped() ?>} \\ \vspace{1pt}
 @if($vars->contactInfo->phoneNumber)
 \small <?= $vars->contactInfo->phoneNumber ?> $|$
 @endif

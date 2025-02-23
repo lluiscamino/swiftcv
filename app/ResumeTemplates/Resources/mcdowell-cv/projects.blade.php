@@ -3,7 +3,7 @@
 
 \begin{itemize}
 @foreach($vars->projects as $project)
-    \item \textbf{<?= $project->name ?>} (<?= $project->dateRange ?>). {{ implode('. ', $project->description) }}
+    \item \textbf{<?= $project->getNameEscaped() ?>} (<?= $project->dateRange ?>). {{ implode('. ', $project->getDescriptionEscaped()) }}
 @endforeach
 \end{itemize}
 \end{cvsubsection}

@@ -10,13 +10,13 @@
 @foreach($vars->workExperiences as $workExperience)
     \item
     \headerrow
-    {\textbf{ {{ $workExperience->company }} }}
-    {\textbf{ {{$workExperience->location}} }}
+    {\textbf{ {{ $workExperience->getCompanyEscaped() }} }}
+    {\textbf{ {{$workExperience->getLocationEscaped()}} }}
     \headerrow
-    {\emph{ {{$workExperience->jobTitle}} }}
+    {\emph{ {{$workExperience->getJobTitleEscaped()}} }}
     {\emph{<?= $workExperience->dateRange ?>}}
     \begin{itemize*}
-    @foreach($workExperience->description as $line)
+    @foreach($workExperience->getDescriptionEscaped() as $line)
         \item {{$line}}
     @endforeach
     \end{itemize*}

@@ -30,7 +30,7 @@
 \usepackage{amsmath}
 
 % Set applicant's personal data for header
-\name{<?= $vars->contactInfo->name ?>}
+\name{<?= $vars->contactInfo->getNameEscaped() ?>}
 %\address{123 Spruce St, Apt 35 \linebreak Philadelphia PA 19103}
 \contacts{<?= $vars->contactInfo->phoneNumber ?> \linebreak <?= $vars->contactInfo->email ?> \linebreak <?= $vars->contactInfo->website ?>}
 

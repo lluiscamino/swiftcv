@@ -54,7 +54,7 @@
 %-------------------------------------------------------------------------------
 % Available options: circle|rectangle,edge/noedge,left/right
 % \photo{./examples/profile.png}
-\name{<?= $vars->contactInfo->name ?>}{}
+\name{<?= $vars->contactInfo->getNameEscaped() ?>}{}
 %\position{Site Reliability Engineer{\enskip\cdotp\enskip}Software Architect}
 %\address{235, World Cup buk-ro, Mapo-gu, Seoul, 03936, Republic of Korea}
 
@@ -101,7 +101,7 @@
 % Leave any of these blank if they are not needed
 \makecvfooter
 {\today}
-{<?= $vars->contactInfo->name ?>>~~~·~~~Curriculum Vitae}
+{<?= $vars->contactInfo->getNameEscaped() ?>>~~~·~~~Curriculum Vitae}
 {\thepage}
 
 

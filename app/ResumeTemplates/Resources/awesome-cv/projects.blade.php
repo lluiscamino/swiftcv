@@ -14,7 +14,7 @@
 @foreach($vars->projects as $project)
     \cvproject
     {} % Role
-    {<?= $project->name ?>} % Title
+    {<?= $project->getNameEscaped() ?>} % Title
     {} % Location
     {
     \href{<?= $project->link ?>}{\faGithub\acvHeaderIconSep\@}
@@ -23,7 +23,7 @@
     {
     \
     \begin{cvitems} % Description(s)
-    @foreach($project->description as $line)
+    @foreach($project->getDescriptionEscaped() as $line)
         \item {<?= $line ?>}
     @endforeach
     \end{cvitems}

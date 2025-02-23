@@ -8,10 +8,10 @@
 @foreach($vars->educationExperiences as $educationExperience)
     \item
     \headerrow
-    {\textbf{ {{$educationExperience->university}} }}
-    {\textbf{<?= $educationExperience->location ?>}}
+    {\textbf{ {{$educationExperience->getUniversityEscaped()}} }}
+    {\textbf{<?= $educationExperience->getLocationEscaped() ?>}}
     \headerrow
-    {\emph{ {{$educationExperience->degree}} } (\textbf{GPA:} 3.96/4.00)}
+    {\emph{ {{$educationExperience->getDegreeEscaped()}} } (\textbf{GPA:} 3.96/4.00)}
     {\emph{<?= $educationExperience->dateRange ?>}}
 @endforeach
 

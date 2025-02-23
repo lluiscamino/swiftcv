@@ -2,7 +2,7 @@
 \begin{cvsubsection}{}{}{}
 \begin{itemize}
 @foreach($vars->skills as $skill)
-    \item \textbf{<?= $skill->name ?>}: {{ $skill->description }}
+    \item \textbf{<?= $skill->getNameEscaped() ?>}: {{ $skill->getDescriptionEscaped() }}
 @endforeach
 \end{itemize}
 \end{cvsubsection}

@@ -12,8 +12,8 @@
 @foreach($vars->skills as $skill)
     %---------------------------------------------------------
     \cvskill
-    {<?= $skill->name ?>} % Category
-    {<?= $skill->description ?>} % Skills
+    {<?= $skill->getNameEscaped() ?>} % Category
+    {<?= $skill->getDescriptionEscaped() ?>} % Skills
 
 @endforeach
 %---------------------------------------------------------

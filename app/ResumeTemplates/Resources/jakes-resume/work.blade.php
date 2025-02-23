@@ -6,10 +6,10 @@
 
 @foreach($vars->workExperiences as $workExperience)
     \resumeSubheading
-    {<?= $workExperience->jobTitle ?>}{<?= $workExperience->dateRange ?>}
-    {<?= $workExperience->company ?>}{<?= $workExperience->location ?>}
+    {<?= $workExperience->getJobTitleEscaped() ?>}{<?= $workExperience->dateRange ?>}
+    {<?= $workExperience->getCompanyEscaped() ?>}{<?= $workExperience->getLocationEscaped() ?>}
     \resumeItemListStart
-    @foreach($workExperience->description as $line)
+    @foreach($workExperience->getDescriptionEscaped() as $line)
         \resumeItem{<?= $line ?>}
     @endforeach
     \resumeItemListEnd

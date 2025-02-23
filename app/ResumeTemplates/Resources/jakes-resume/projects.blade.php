@@ -6,9 +6,9 @@
 
 @foreach($vars->projects as $project)
     \resumeProjectHeading
-    {\textbf{<?= $project->name ?>} $|$ \emph{Python, Flask, React, PostgreSQL, Docker}}{<?= $project->dateRange ?>}
+    {\textbf{<?= $project->getNameEscaped() ?>} $|$ \emph{Python, Flask, React, PostgreSQL, Docker}}{<?= $project->dateRange ?>}
     \resumeItemListStart
-    @foreach($project->description as $line)
+    @foreach($project->getDescriptionEscaped() as $line)
         \resumeItem{<?= $line ?>}
     @endforeach
     \resumeItemListEnd

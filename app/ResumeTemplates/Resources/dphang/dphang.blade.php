@@ -50,7 +50,7 @@
 \begin{document}
 
 \begin{center}
-{\LARGE \textbf{ {{$vars->contactInfo->name}} }}\\
+{\LARGE \textbf{ {{$vars->contactInfo->getNameEscaped()}} }}\\
 %Seattle, Washington
 \vspace{0.05cm}
 \\

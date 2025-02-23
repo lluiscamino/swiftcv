@@ -10,13 +10,13 @@
 @foreach($vars->projects as $project)
     \item
     \headerrow
-    {\textbf{ {{ $project->name }} }}
+    {\textbf{ {{ $project->getNameEscaped() }} }}
     {\emph{<?= $project->dateRange ?>}}
     \headerrow
     {\emph{ {{$project->link}} }}
     {}
     \begin{itemize*}
-    @foreach($project->description as $line)
+    @foreach($project->getDescriptionEscaped() as $line)
         \item {{$line}}
     @endforeach
     \end{itemize*}

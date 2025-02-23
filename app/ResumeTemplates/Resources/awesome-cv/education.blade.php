@@ -12,14 +12,14 @@
 @foreach($vars->educationExperiences as $educationExperience)
     %---------------------------------------------------------
     \cventry
-    {<?= $educationExperience->degree ?>} % Degree
-    {<?= $educationExperience->university ?>} % Institution
-    {<?= $educationExperience->location ?>} % Location
+    {<?= $educationExperience->getDegreeEscaped() ?>} % Degree
+    {<?= $educationExperience->getUniversityEscaped() ?>} % Institution
+    {<?= $educationExperience->getLocationEscaped() ?>} % Location
     {<?= $educationExperience->dateRange ?>} % Date(s)
     {
     \
     \begin{cvitems} % Description(s) bullet points
-    @foreach($educationExperience->description as $line)
+    @foreach($educationExperience->getDescriptionEscaped() as $line)
         \item {<?= $line ?>}
     @endforeach
     \end{cvitems}

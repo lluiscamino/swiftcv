@@ -2,12 +2,26 @@
 
 namespace App\ResumeTemplates\Variables;
 
-class Skill
+use App\Tex\EscapesTexStrings;
+
+readonly class Skill
 {
+    use EscapesTexStrings;
+
     public function __construct(
-        public string $name,
-        public string $description,
+        private string $name,
+        private string $description,
     )
     {
+    }
+
+    public function getNameEscaped(): string
+    {
+        return $this->texEscape($this->name);
+    }
+
+    public function getDescriptionEscaped(): string
+    {
+        return $this->texEscape($this->description);
     }
 }

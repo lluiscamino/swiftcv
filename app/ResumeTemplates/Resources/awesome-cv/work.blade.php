@@ -12,14 +12,14 @@
 @foreach($vars->workExperiences as $workExperience)
     %---------------------------------------------------------
     \cventry
-    {<?= $workExperience->jobTitle ?>} % Job title
-    {<?= $workExperience->company ?>} % Organization
-    {<?= $workExperience->location ?>} % Location
+    {<?= $workExperience->getJobTitleEscaped() ?>} % Job title
+    {<?= $workExperience->getCompanyEscaped() ?>} % Organization
+    {<?= $workExperience->getLocationEscaped() ?>} % Location
     {<?= $workExperience->dateRange ?>} % Date(s)
     {
     \
     \begin{cvitems} % Description(s) of tasks/responsibilities
-    @foreach($workExperience->description as $line)
+    @foreach($workExperience->getDescriptionEscaped() as $line)
         \item{<?= $line ?>}
     @endforeach
     \end{cvitems}

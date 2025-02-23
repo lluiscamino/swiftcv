@@ -5,9 +5,9 @@
 \section{Education}
 
 @foreach($vars->educationExperiences as $educationExperience)
-    \subsection{<?= $educationExperience->university ?>}
-    \descript{<?= $educationExperience->degree ?>}
-    \location{<?= $educationExperience->dateRange ?> | <?= $educationExperience->location ?>}
+    \subsection{<?= $educationExperience->getUniversityEscaped() ?>}
+    \descript{<?= $educationExperience->getDegreeEscaped() ?>}
+    \location{<?= $educationExperience->dateRange ?> | <?= $educationExperience->getLocationEscaped() ?>}
     %College of Engineering \\
     %Magna Cum Laude\\
     %\location{ Cum. GPA: 3.83 / 4.0 \\
