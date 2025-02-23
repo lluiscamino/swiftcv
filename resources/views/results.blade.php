@@ -1,5 +1,6 @@
 @php use App\ResumeCreator\Resume;
 @endphp
+@php($resumes = array_map(fn(array $serializedResume) => Resume::createFromSerializedArray($serializedResume), request()->query('resumes')))
 @include('common/header')
 
 <div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
@@ -12,10 +13,13 @@
             the ones that best suit your needs.
         </p>
         <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-            @php /** @var Resume $resume */ @endphp
-            @foreach(request()->query('resumes') as $serializedResumeArray)
-                <x-resumes.preview :resume="Resume::createFromSerializedArray($serializedResumeArray)"/>
-            @endforeach
+            @for($i = 0; $i < count($resumes); $i++)
+                <x-resumes.preview
+                        :resume="$resumes[$i]"
+                        :prevResume="$resumes[$i - 1] ?? null"
+                        :nextResume="$resumes[$i + 1] ?? null"
+                />
+            @endfor
         </div>
         <div class="mt-4 flex justify-center">
             <a href="{{ request()->query('formUrl') }}"
