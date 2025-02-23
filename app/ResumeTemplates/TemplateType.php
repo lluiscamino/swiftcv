@@ -16,6 +16,7 @@ enum TemplateType: string
     case MCDOWELL_CV = 'mcdowell-cv';
     case DEEDY_RESUME = 'deedy-resume';
     case AWESOME_CV = 'awesome-cv';
+    case LATEX_CV_CLASSIC = 'latex-cv-classic';
 
     public function getTemplateContent(): string
     {
@@ -43,13 +44,14 @@ enum TemplateType: string
             self::MCDOWELL_CV => 'McDowell CV',
             self::DEEDY_RESUME => 'Deedy\'s Resume',
             self::AWESOME_CV => 'Awesome CV',
+            self::LATEX_CV_CLASSIC => 'LaTeX CV classic',
         };
     }
 
     public function getCompiler(): TexCompiler
     {
         return match ($this) {
-            self::BASE_ROVER, self::JAKES_RESUME, self::DPHANG => App::make(PdfLatexCompiler::class),
+            self::BASE_ROVER, self::JAKES_RESUME, self::DPHANG, self::LATEX_CV_CLASSIC => App::make(PdfLatexCompiler::class),
             self::MCDOWELL_CV, self::DEEDY_RESUME, self::AWESOME_CV => App::make(XelatexCompiler::class)
         };
     }
@@ -62,7 +64,8 @@ enum TemplateType: string
             self::DPHANG => 'Daniel Phang',
             self::MCDOWELL_CV => 'Gayle Laakmann McDowell (LaTeX template: Daniil Belyakov)',
             self::DEEDY_RESUME => 'Deedy Das',
-            self::AWESOME_CV => 'Byungjin Park'
+            self::AWESOME_CV => 'Byungjin Park',
+            self::LATEX_CV_CLASSIC => 'Jan Küster'
         };
     }
 
@@ -74,7 +77,8 @@ enum TemplateType: string
             self::DPHANG => 'https://github.com/dphang/resume',
             self::MCDOWELL_CV => 'https://github.com/dnl-blkv/mcdowell-cv',
             self::DEEDY_RESUME => 'https://github.com/deedy/Deedy-Resume',
-            self::AWESOME_CV => 'https://github.com/posquit0/Awesome-CV'
+            self::AWESOME_CV => 'https://github.com/posquit0/Awesome-CV',
+            self::LATEX_CV_CLASSIC => 'https://github.com/jankapunkt/latexcv/tree/master/classic'
         };
     }
 
