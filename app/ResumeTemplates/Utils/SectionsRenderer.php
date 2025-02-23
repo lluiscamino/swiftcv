@@ -19,35 +19,36 @@ readonly class SectionsRenderer
     public function renderSectionsInOrder(ResumeVariables $vars): string
     {
         return self::orderAndRenderSections($vars, [
-            $vars->positions->workExperiencesPosition => $this->workExperiencesResourcePath,
-            $vars->positions->educationExperiencesPosition => $this->educationExperiencesResourcePath,
-            $vars->positions->projectsPosition => $this->projectsPath,
-            $vars->positions->skillsPosition => $this->skillsPath,
+            ResumeSection::create($this->workExperiencesResourcePath, $vars->positions->workExperiencesPosition, $vars->workExperiences),
+            ResumeSection::create($this->educationExperiencesResourcePath, $vars->positions->educationExperiencesPosition, $vars->educationExperiences),
+            ResumeSection::create($this->projectsPath, $vars->positions->projectsPosition, $vars->projects),
+            ResumeSection::create($this->skillsPath, $vars->positions->skillsPosition, $vars->skills),
         ]);
     }
 
     public function renderLeftSideSectionsInOrder(ResumeVariables $vars): string
     {
         return self::orderAndRenderSections($vars, [
-            $vars->positions->educationExperiencesPosition => $this->educationExperiencesResourcePath,
-            $vars->positions->skillsPosition => $this->skillsPath,
+            ResumeSection::create($this->educationExperiencesResourcePath, $vars->positions->educationExperiencesPosition, $vars->educationExperiences),
+            ResumeSection::create($this->skillsPath, $vars->positions->skillsPosition, $vars->skills),
         ]);
     }
 
     public function renderRightSideSectionsInOrder(ResumeVariables $vars): string
     {
         return self::orderAndRenderSections($vars, [
-            $vars->positions->workExperiencesPosition => $this->workExperiencesResourcePath,
-            $vars->positions->projectsPosition => $this->projectsPath,
+            ResumeSection::create($this->workExperiencesResourcePath, $vars->positions->workExperiencesPosition, $vars->workExperiences),
+            ResumeSection::create($this->projectsPath, $vars->positions->projectsPosition, $vars->projects),
         ]);
     }
 
-    /** @param array $positionsToResourcePathMap array<int, string> */
-    private static function orderAndRenderSections(ResumeVariables $vars, array $positionsToResourcePathMap): string
+    /** @param array $sections ResumeSection[] */
+    private static function orderAndRenderSections(ResumeVariables $vars, array $sections): string
     {
-        ksort($positionsToResourcePathMap);
+        $sections = array_filter($sections, fn(ResumeSection $section) => $section->visible);
+        usort($sections, fn(ResumeSection $a, ResumeSection $b) => $a->compareTo($b));
         $data = ['vars' => $vars];
-        return join('', array_map(fn(string $path) => Blade::render($path, $data), $positionsToResourcePathMap));
+        return join('', array_map(fn(ResumeSection $section) => Blade::render($section->resourcePath, $data), $sections));
     }
 
     public static function createWithDefaultPaths(string $basePath): self
@@ -58,5 +59,27 @@ readonly class SectionsRenderer
             projectsPath: "$basePath/projects",
             skillsPath: "$basePath/skills"
         );
+    }
+}
+
+/** @access private */
+readonly class ResumeSection
+{
+    private function __construct(
+        public string $resourcePath,
+        private int   $position,
+        public string $visible
+    )
+    {
+    }
+
+    public function compareTo(ResumeSection $other): int
+    {
+        return $this->position <=> $other->position;
+    }
+
+    public static function create(string $resourcePath, int $position, array $subSections): self
+    {
+        return new self($resourcePath, $position, count($subSections) > 0);
     }
 }
