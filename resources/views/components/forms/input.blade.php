@@ -9,5 +9,5 @@
             placeholder="{{ $placeholder ?? '' }}"
             autoComplete="off"
     />
-    @error("form.$id") <p class="text-red-500 text-xs italic">{{ $message }}</p> @enderror
+    @error("form.$id") <p class="input-error-msg text-red-500 text-xs italic">{{ $message }}</p> @enderror
 </div>

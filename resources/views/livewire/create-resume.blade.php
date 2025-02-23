@@ -28,3 +28,16 @@
         </button>
     </form>
 </div>
+@livewireScripts
+<script>
+    Livewire.hook('commit', ({succeed}) => {
+        succeed(() => {
+            setTimeout(() => {
+                const firstErrorMessage = document.querySelector('.input-error-msg');
+                if (firstErrorMessage !== null) {
+                    firstErrorMessage.scrollIntoView({block: 'center', inline: 'center'});
+                }
+            }, 0);
+        });
+    })
+</script>
