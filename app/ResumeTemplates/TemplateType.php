@@ -18,6 +18,7 @@ enum TemplateType: string
     case AWESOME_CV = 'awesome-cv';
     case LATEX_CV_CLASSIC = 'latex-cv-classic';
     case SB2NOV_RESUME = 'sb2nov-resume';
+    case BILLRYAN_RESUME = 'billryan-resume';
 
     public function getTemplateContent(): string
     {
@@ -46,7 +47,8 @@ enum TemplateType: string
             self::DEEDY_RESUME => 'Deedy\'s Resume',
             self::AWESOME_CV => 'Awesome CV',
             self::LATEX_CV_CLASSIC => 'LaTeX CV classic',
-            self::SB2NOV_RESUME => 'Software Engineer Resume'
+            self::SB2NOV_RESUME => 'Software Engineer Resume',
+            self::BILLRYAN_RESUME => 'Elegant Resume',
         };
     }
 
@@ -54,7 +56,7 @@ enum TemplateType: string
     {
         return match ($this) {
             self::BASE_ROVER, self::JAKES_RESUME, self::DPHANG, self::LATEX_CV_CLASSIC, self::SB2NOV_RESUME => App::make(PdfLatexCompiler::class),
-            self::MCDOWELL_CV, self::DEEDY_RESUME, self::AWESOME_CV => App::make(XelatexCompiler::class)
+            self::MCDOWELL_CV, self::DEEDY_RESUME, self::AWESOME_CV, self::BILLRYAN_RESUME => App::make(XelatexCompiler::class)
         };
     }
 
@@ -68,7 +70,8 @@ enum TemplateType: string
             self::DEEDY_RESUME => 'Deedy Das',
             self::AWESOME_CV => 'Byungjin Park',
             self::LATEX_CV_CLASSIC => 'Jan Küster',
-            self::SB2NOV_RESUME => 'Sourabh Bajaj'
+            self::SB2NOV_RESUME => 'Sourabh Bajaj',
+            self::BILLRYAN_RESUME => 'Bill Ryan',
         };
     }
 
@@ -82,7 +85,8 @@ enum TemplateType: string
             self::DEEDY_RESUME => 'https://github.com/deedy/Deedy-Resume',
             self::AWESOME_CV => 'https://github.com/posquit0/Awesome-CV',
             self::LATEX_CV_CLASSIC => 'https://github.com/jankapunkt/latexcv/tree/master/classic',
-            self::SB2NOV_RESUME => 'https://github.com/sb2nov/resume'
+            self::SB2NOV_RESUME => 'https://github.com/sb2nov/resume',
+            self::BILLRYAN_RESUME => 'https://github.com/billryan/resume'
         };
     }
 
@@ -109,16 +113,20 @@ enum TemplateType: string
     /** @return ValidFile[] */
     private function getExtraFiles(): array
     {
-        return $this->hasExtraFiles()
-            ? [ValidFile::fromAppPath("ResumeTemplates/Resources/$this->value/$this->value.cls")]
-            : [];
-    }
-
-    private function hasExtraFiles(): bool
-    {
         return match ($this) {
-            self::MCDOWELL_CV, self::DEEDY_RESUME, self::AWESOME_CV => true,
-            default => false,
+            self::MCDOWELL_CV, self::DEEDY_RESUME, self::AWESOME_CV => [ValidFile::fromAppPath("ResumeTemplates/Resources/$this->value/$this->value.cls")],
+            self::BILLRYAN_RESUME => [
+                ValidFile::fromAppPath("ResumeTemplates/Resources/$this->value/$this->value.cls"),
+                ValidFile::fromAppPath("ResumeTemplates/Resources/$this->value/fontawesome.sty"),
+                ValidFile::fromAppPath("ResumeTemplates/Resources/$this->value/fonts/fontawesome/opentype/FontAwesome.otf"),
+                ValidFile::fromAppPath("ResumeTemplates/Resources/$this->value/fonts/Main/Fontin-SmallCaps.otf"),
+                ValidFile::fromAppPath("ResumeTemplates/Resources/$this->value/fonts/Main/texgyretermes-bold.otf"),
+                ValidFile::fromAppPath("ResumeTemplates/Resources/$this->value/fonts/Main/texgyretermes-bolditalic.otf"),
+                ValidFile::fromAppPath("ResumeTemplates/Resources/$this->value/fonts/Main/texgyretermes-italic.otf"),
+                ValidFile::fromAppPath("ResumeTemplates/Resources/$this->value/fonts/Main/texgyretermes-regular.otf"),
+                ValidFile::fromAppPath("ResumeTemplates/Resources/$this->value/fonts/fontawesome-webfont.ttf"),
+            ],
+            default => [],
         };
     }
 }
