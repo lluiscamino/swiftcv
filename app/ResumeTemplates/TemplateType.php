@@ -19,6 +19,7 @@ enum TemplateType: string
     case LATEX_CV_CLASSIC = 'latex-cv-classic';
     case SB2NOV_RESUME = 'sb2nov-resume';
     case BILLRYAN_RESUME = 'billryan-resume';
+    case ALTA_CV = 'alta-cv';
 
     public function getTemplateContent(): string
     {
@@ -49,13 +50,14 @@ enum TemplateType: string
             self::LATEX_CV_CLASSIC => 'LaTeX CV classic',
             self::SB2NOV_RESUME => 'Software Engineer Resume',
             self::BILLRYAN_RESUME => 'Elegant Resume',
+            self::ALTA_CV => 'Alta CV',
         };
     }
 
     public function getCompiler(): TexCompiler
     {
         return match ($this) {
-            self::BASE_ROVER, self::JAKES_RESUME, self::DPHANG, self::LATEX_CV_CLASSIC, self::SB2NOV_RESUME => App::make(PdfLatexCompiler::class),
+            self::BASE_ROVER, self::JAKES_RESUME, self::DPHANG, self::LATEX_CV_CLASSIC, self::SB2NOV_RESUME, self::ALTA_CV => App::make(PdfLatexCompiler::class),
             self::MCDOWELL_CV, self::DEEDY_RESUME, self::AWESOME_CV, self::BILLRYAN_RESUME => App::make(XelatexCompiler::class)
         };
     }
@@ -72,6 +74,7 @@ enum TemplateType: string
             self::LATEX_CV_CLASSIC => 'Jan Küster',
             self::SB2NOV_RESUME => 'Sourabh Bajaj',
             self::BILLRYAN_RESUME => 'Bill Ryan',
+            self::ALTA_CV => 'LianTze Lim'
         };
     }
 
@@ -86,7 +89,8 @@ enum TemplateType: string
             self::AWESOME_CV => 'https://github.com/posquit0/Awesome-CV',
             self::LATEX_CV_CLASSIC => 'https://github.com/jankapunkt/latexcv/tree/master/classic',
             self::SB2NOV_RESUME => 'https://github.com/sb2nov/resume',
-            self::BILLRYAN_RESUME => 'https://github.com/billryan/resume'
+            self::BILLRYAN_RESUME => 'https://github.com/billryan/resume',
+            self::ALTA_CV => 'https://github.com/liantze/AltaCV'
         };
     }
 
@@ -114,7 +118,7 @@ enum TemplateType: string
     private function getExtraFiles(): array
     {
         return match ($this) {
-            self::MCDOWELL_CV, self::DEEDY_RESUME, self::AWESOME_CV => [ValidFile::fromAppPath("ResumeTemplates/Resources/$this->value/$this->value.cls")],
+            self::MCDOWELL_CV, self::DEEDY_RESUME, self::AWESOME_CV, self::ALTA_CV => [ValidFile::fromAppPath("ResumeTemplates/Resources/$this->value/$this->value.cls")],
             self::BILLRYAN_RESUME => [
                 ValidFile::fromAppPath("ResumeTemplates/Resources/$this->value/$this->value.cls"),
                 ValidFile::fromAppPath("ResumeTemplates/Resources/$this->value/fontawesome.sty"),
