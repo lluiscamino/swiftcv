@@ -86,7 +86,7 @@
 
 \begin{minipage}[t]{0.33\textwidth}
 
-{!! $sectionsRenderer->renderLeftSideSectionsInOrder($vars) !!}
+{!! $sectionsRenderer->renderSecondarySectionsInOrder($vars) !!}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     LINKS
@@ -110,7 +110,7 @@
 \hfill
 \begin{minipage}[t]{0.66\textwidth}
 
-{!! $sectionsRenderer->renderRightSideSectionsInOrder($vars) !!}
+{!! $sectionsRenderer->renderPrimarySectionsInOrder($vars) !!}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     AWARDS

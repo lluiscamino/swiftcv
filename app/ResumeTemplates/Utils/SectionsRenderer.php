@@ -26,7 +26,7 @@ readonly class SectionsRenderer
         ]);
     }
 
-    public function renderLeftSideSectionsInOrder(ResumeVariables $vars): string
+    public function renderSecondarySectionsInOrder(ResumeVariables $vars): string
     {
         return self::orderAndRenderSections($vars, [
             ResumeSection::create($this->educationExperiencesResourcePath, $vars->positions->educationExperiencesPosition, $vars->educationExperiences),
@@ -34,7 +34,7 @@ readonly class SectionsRenderer
         ]);
     }
 
-    public function renderRightSideSectionsInOrder(ResumeVariables $vars): string
+    public function renderPrimarySectionsInOrder(ResumeVariables $vars): string
     {
         return self::orderAndRenderSections($vars, [
             ResumeSection::create($this->workExperiencesResourcePath, $vars->positions->workExperiencesPosition, $vars->workExperiences),

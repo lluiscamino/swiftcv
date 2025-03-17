@@ -91,7 +91,7 @@
 %\addbibresource{sample.bib}
 % \usepackage{academicons}\let\faOrcid\aiOrcid
 \begin{document}
-\name{<?= $vars->contactInfo->getNameEscaped()?>}
+\name{<?= $vars->contactInfo->getNameEscaped() ?>}
 %\tagline{Your Position or Tagline Here}
 %% You can add multiple photos on the left or right
 \photoR{2.8cm}{Globe_High}
@@ -100,19 +100,19 @@
 \personalinfo{%
 % Not all of these are required!
 @if($vars->contactInfo->email)
-    \email{<?= $vars->contactInfo->email?>}
+    \email{<?= $vars->contactInfo->email ?>}
 @endif
 @if($vars->contactInfo->phoneNumber)
-    \phone{<?= $vars->contactInfo->phoneNumber?>}
+    \phone{<?= $vars->contactInfo->phoneNumber ?>}
 @endif
 @if($vars->contactInfo->website)
-    \homepage{<?= $vars->contactInfo->website?>}
+    \homepage{<?= $vars->contactInfo->website ?>}
 @endif
 @if($vars->contactInfo->linkedinUsername)
-    \linkedin{<?= $vars->contactInfo->linkedinUsername?>}
+    \linkedin{<?= $vars->contactInfo->linkedinUsername ?>}
 @endif
 @if($vars->contactInfo->githubUsername)
-    \github{<?= $vars->contactInfo->githubUsername?>}
+    \github{<?= $vars->contactInfo->githubUsername ?>}
 @endif
 % \mailaddress{Åddrésş, Street, 00000 Cóuntry}
 % \location{Location, COUNTRY}
@@ -150,13 +150,13 @@
 % break across pages if things get too long.
 \begin{paracol}{2}
 
-{!! $sectionsRenderer->renderRightSideSectionsInOrder($vars) !!}
+{!! $sectionsRenderer->renderPrimarySectionsInOrder($vars) !!}
 
 \medskip
 
 \switchcolumn
 
-{!! $sectionsRenderer->renderLeftSideSectionsInOrder($vars) !!}
+{!! $sectionsRenderer->renderSecondarySectionsInOrder($vars) !!}
 
 \end{paracol}
 
