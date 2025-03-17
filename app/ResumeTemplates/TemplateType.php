@@ -20,6 +20,7 @@ enum TemplateType: string
     case SB2NOV_RESUME = 'sb2nov-resume';
     case BILLRYAN_RESUME = 'billryan-resume';
     case ALTA_CV = 'alta-cv';
+    case SCOTT_CLARK_CV = 'scott-clark-cv';
 
     public function getTemplateContent(): string
     {
@@ -51,13 +52,14 @@ enum TemplateType: string
             self::SB2NOV_RESUME => 'Software Engineer Resume',
             self::BILLRYAN_RESUME => 'Elegant Resume',
             self::ALTA_CV => 'Alta CV',
+            self::SCOTT_CLARK_CV => 'Scott Clark\'s CV'
         };
     }
 
     public function getCompiler(): TexCompiler
     {
         return match ($this) {
-            self::BASE_ROVER, self::JAKES_RESUME, self::DPHANG, self::LATEX_CV_CLASSIC, self::SB2NOV_RESUME, self::ALTA_CV => App::make(PdfLatexCompiler::class),
+            self::BASE_ROVER, self::JAKES_RESUME, self::DPHANG, self::LATEX_CV_CLASSIC, self::SB2NOV_RESUME, self::ALTA_CV, self::SCOTT_CLARK_CV => App::make(PdfLatexCompiler::class),
             self::MCDOWELL_CV, self::DEEDY_RESUME, self::AWESOME_CV, self::BILLRYAN_RESUME => App::make(XelatexCompiler::class)
         };
     }
@@ -74,7 +76,8 @@ enum TemplateType: string
             self::LATEX_CV_CLASSIC => 'Jan Küster',
             self::SB2NOV_RESUME => 'Sourabh Bajaj',
             self::BILLRYAN_RESUME => 'Bill Ryan',
-            self::ALTA_CV => 'LianTze Lim'
+            self::ALTA_CV => 'LianTze Lim',
+            self::SCOTT_CLARK_CV => 'Scott Clark'
         };
     }
 
@@ -90,7 +93,8 @@ enum TemplateType: string
             self::LATEX_CV_CLASSIC => 'https://github.com/jankapunkt/latexcv/tree/master/classic',
             self::SB2NOV_RESUME => 'https://github.com/sb2nov/resume',
             self::BILLRYAN_RESUME => 'https://github.com/billryan/resume',
-            self::ALTA_CV => 'https://github.com/liantze/AltaCV'
+            self::ALTA_CV => 'https://github.com/liantze/AltaCV',
+            self::SCOTT_CLARK_CV => 'https://github.com/sc932/resume'
         };
     }
 
