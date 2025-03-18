@@ -1,5 +1,5 @@
 @php use App\Livewire\ResumeSectionType; @endphp
-@php/** @var ResumeSectionType $resumeSectionType */ @endphp
+@php /** @var ResumeSectionType $resumeSectionType */ @endphp
 
 @switch($resumeSectionType)
     @case(ResumeSectionType::WORK_EXPERIENCE)
