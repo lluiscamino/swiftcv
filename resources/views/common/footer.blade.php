@@ -142,7 +142,7 @@
         </div>
     </div>
 </footer>
-@vite('resources/js/app.js')
+{{-- @vite('resources/js/app.js') --}}
 <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 </body>
 </html>
