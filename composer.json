@@ -9,9 +9,10 @@
   "license": "MIT",
   "require": {
     "php": "^8.2",
-    "ext-imagick": "^3.7",
+    "ext-imagick": "*",
     "laravel/framework": "^11.9",
     "laravel/tinker": "^2.9",
+    "league/flysystem-aws-s3-v3": "^3.0",
     "livewire/livewire": "^3.5",
     "spatie/temporary-directory": "^2.2"
   },
