@@ -1,6 +1,5 @@
-@php use App\ResumeCreator\Resume;
-@endphp
-@php($resumes = array_values(array_map(fn(array $serializedResume) => Resume::createFromSerializedArray($serializedResume), request()->query('resumes'))))
+@php session()->reflash(); @endphp
+@php($resumes = array_values(session('resumes')))
 @include('common/header')
 
 <div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
@@ -22,7 +21,7 @@
             @endfor
         </div>
         <div class="mt-4 flex justify-center">
-            <a href="{{ request()->query('formUrl') }}"
+            <a href="{{ session('formUrl') }}"
                class="text-green-700 hover:text-green-800 font-bold align-center1">
                 Go back to editing
             </a>
