@@ -96,7 +96,7 @@ class CreateResumeForm extends Form
             'projects' => ['array'],
             'projects.*.name' => ['required', 'string'],
             'projects.*.link' => ['nullable', 'string'],
-            'projects.*.startDate' => ['nullable', 'date'],
+            'projects.*.startDate' => ['required', 'date'],
             'projects.*.endDate' => ['nullable', 'date'],
             'projects.*.description' => ['nullable', 'string'],
             'skills' => ['array'],

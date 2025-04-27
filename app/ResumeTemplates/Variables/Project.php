@@ -10,7 +10,7 @@ readonly class Project
 
     public function __construct(
         private string   $name,
-        public string    $link,
+        public ?string   $link,
         public DateRange $dateRange,
         private array    $description)
     {
