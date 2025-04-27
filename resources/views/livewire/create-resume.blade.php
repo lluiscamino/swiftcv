@@ -36,10 +36,13 @@
             </svg>
             Create my resume
         </button>
-        <div wire:loading.delay.longest class="mt-2">
+        <div wire:loading.delay.longest class="italic text-xs md:text-sm mt-3">
             <div role="status">
                 <span>Your resumes are being generated. This may take up to 1 minute. Please do not close this window while we generate your resumes.</span>
             </div>
+        </div>
+        <div class="italic text-xs md:text-sm mt-3">
+            We only store your generated resumes for 8 hours so you have time to download them
         </div>
     </form>
 </div>
