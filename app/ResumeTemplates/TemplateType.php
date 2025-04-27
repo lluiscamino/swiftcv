@@ -142,4 +142,29 @@ enum TemplateType: string
             default => [],
         };
     }
+
+    private function getOrder(): int
+    {
+        return match ($this) {
+            self::DPHANG => 0,
+            self::AWESOME_CV => 1,
+            self::JAKES_RESUME => 2,
+            self::DEEDY_RESUME => 3,
+            self::LATEX_CV_CLASSIC => 4,
+            self::MCDOWELL_CV => 5,
+            self::ALTA_CV => 6,
+            self::BASE_ROVER => 7,
+            self::SB2NOV_RESUME => 8,
+            self::SCOTT_CLARK_CV => 9,
+            self::BILLRYAN_RESUME => 10,
+        };
+    }
+
+    /** @return self[] */
+    public static function orderedCases(): array
+    {
+        $cases = self::cases();
+        usort($cases, fn(TemplateType $a, TemplateType $b) => $b->getOrder() < $a->getOrder());
+        return $cases;
+    }
 }

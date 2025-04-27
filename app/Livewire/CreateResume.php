@@ -75,7 +75,7 @@ class CreateResume extends Component
     public function save(ResumeCreator $resumeCreator): void
     {
         $this->validate();
-        $resumes = $resumeCreator->createResumes(TemplateType::cases(), $this->form->getResumeVariables());
+        $resumes = $resumeCreator->createResumes(TemplateType::orderedCases(), $this->form->getResumeVariables());
         session()->flash('resumes', $resumes);
         session()->flash('formUrl', '/create-resume' . $this->form->getSearchParams());
         $this->redirectRoute('results');

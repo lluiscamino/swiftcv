@@ -5,7 +5,7 @@
 
 <div class="swiper mySwiper">
     <div class="swiper-wrapper">
-        @foreach(TemplateType::cases() as $templateType)
+        @foreach(TemplateType::orderedCases() as $templateType)
             <div class="swiper-slide"><img src="{{$templateType->getExampleImageLink()}}"
                                            alt="{{$templateType->getUserFriendlyName()}}"></div>
         @endforeach
