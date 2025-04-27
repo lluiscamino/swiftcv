@@ -16,11 +16,11 @@
     ],
     [
         'question' => 'Is my data secure?',
-        'answer' => 'Yes, we take data privacy seriously. We do not store your data after the resume is generated.' // TODO
+        'answer' => 'Yes, we take data privacy seriously. We store your generated resumes and download links securely for 8 hours so you have time to download them. After 8 hours, all files and data are automatically deleted from our servers.'
     ],
     [
         'question' => 'Is there a cost to use this website?',
-        'answer' => 'Our basic service is free, with optional premium features available for a fee. <a href="create-resume" class="text-green-600 dark:text-green-500 hover:underline">Start creating your resume for free!</a>' // TODO
+        'answer' => 'Our service is completely free! <a href="create-resume" class="text-green-600 dark:text-green-500 hover:underline">Start creating your resume now!</a>'
     ]
 ];
 @endphp
