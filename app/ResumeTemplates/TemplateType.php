@@ -113,6 +113,11 @@ enum TemplateType: string
         return $this->getInternalLink() . '#source';
     }
 
+    public function getExampleImageLink(): string
+    {
+        return '/images/templates/' . $this->value . '.png';
+    }
+
     private function getTemplateFile(): ValidFile
     {
         return ValidFile::fromAppPath("ResumeTemplates/Resources/$this->value/$this->value.blade.php");
