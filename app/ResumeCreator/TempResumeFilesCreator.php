@@ -8,6 +8,7 @@ use App\Pdf\PdfThumbnailsCreator;
 use App\ResumeTemplates\TemplateType;
 use App\ResumeTemplates\Variables\ResumeVariables;
 use App\Tex\Compilers\TexCompiler;
+use App\Tex\TexPdfFile;
 use App\Tex\TexPdfFileCreator;
 use Illuminate\Support\Facades\Blade;
 use Spatie\TemporaryDirectory\TemporaryDirectory;
@@ -89,7 +90,7 @@ readonly class TempResumeFilesCreator
 
     /**
      * @param array<TemplateType, ValidFile> $texFiles
-     * @param array<TemplateType, CreatedFile> $pdfFiles
+     * @param array<TemplateType, TexPdfFile> $pdfFiles
      * @param array<TemplateType, CreatedFile> $thumbnailFiles
      */
     private function createTempResume(
@@ -102,9 +103,14 @@ readonly class TempResumeFilesCreator
         $texFile = $texFiles[$templateType->name];
         $pdfFile = $pdfFiles[$templateType->name];
         $thumbnailFile = $thumbnailFiles[$templateType->name] ?? CreatedFile::failedFile();
-        if ($pdfFile->failed() || $thumbnailFile->failed()) {
-            return null;
-        }
-        return new TempResume($templateType, $texFile->path, $pdfFile->path(), $thumbnailFile->path());
+        return $pdfFile->failed() || $thumbnailFile->failed()
+            ? TempResume::failedResume($templateType, $texFile->path, $pdfFile->creationDetails)
+            : TempResume::fromPaths(
+                templateType: $templateType,
+                texFilePath: $texFile->path,
+                pdfFilePath: $pdfFile->path(),
+                thumbnailFilePath: $thumbnailFile->path(),
+                texFileCreationDetails: $pdfFile->creationDetails
+            );
     }
 }

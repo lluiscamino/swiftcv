@@ -2,7 +2,6 @@
 
 namespace App\Tex;
 
-use App\Files\CreatedFile;
 use App\Files\ValidFile;
 use App\Tex\Compilers\PdfLatexCompiler;
 use App\Tex\Compilers\TexCompiler;
@@ -17,7 +16,7 @@ readonly class TexPdfFileCreator
     /**
      * @param array<mixed, TexCompiler> $compilers
      * @param array<mixed, ValidFile> $texFilePaths
-     * @return array<mixed, CreatedFile> PDF files indexed by the $texFilePaths key
+     * @return array<mixed, TexPdfFile> PDF files indexed by the $texFilePaths key
      */
     public function createPdfFiles(TemporaryDirectory $dir, array $compilers, array $texFilePaths): array
     {
@@ -31,7 +30,7 @@ readonly class TexPdfFileCreator
         $results = [];
         foreach ($texFilePaths as $key => $texFilePath) {
             $pdfFilePath = "$outputDir/$key.pdf";
-            $results[$key] = file_exists($pdfFilePath) ? CreatedFile::fromPath($pdfFilePath) : CreatedFile::failedFile();
+            $results[$key] = self::toTexPdfFile($pdfFilePath, $poolResults[$key]);
             if ($poolResults[$key]->failed()) {
                 Log::warning("Latexmk exited with code {$poolResults[$key]->exitCode()}", [
                     'key' => $key,
@@ -60,5 +59,13 @@ readonly class TexPdfFileCreator
     private static function getDefaultCompiler(): TexCompiler
     {
         return App::make(PdfLatexCompiler::class);
+    }
+
+    private static function toTexPdfFile(string $pdfFilePath, mixed $processResult): TexPdfFile
+    {
+        $creationDetails = TexPdfFileCreationDetails::fromProcessResult($processResult);
+        return file_exists($pdfFilePath)
+            ? TexPdfFile::fromPathAndCreationDetails($pdfFilePath, $creationDetails)
+            : TexPdfFile::failedFileWithCreationDetails($creationDetails);
     }
 }

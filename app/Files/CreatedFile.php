@@ -6,7 +6,7 @@ use LogicException;
 
 readonly class CreatedFile
 {
-    private function __construct(private ?string $path)
+    protected function __construct(private ?string $path)
     {
     }
 

@@ -4,6 +4,8 @@ namespace App\ResumeCreator;
 
 use App\ResumeTemplates\TemplateType;
 use App\ResumeTemplates\Variables\ResumeVariables;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use RuntimeException;
 use Spatie\TemporaryDirectory\Exceptions\PathAlreadyExists;
@@ -46,6 +48,50 @@ readonly class ResumeCreator
     private static function saveResumesToPermanentDisk(array $tempResumes): array
     {
         $path = 'resumes/' . Str::orderedUuid();
-        return array_map(fn(TempResume $tempResume) => Resume::createFromTempResume($tempResume, $path), $tempResumes);
+        $resumes = [];
+        foreach ($tempResumes as $tempResume) {
+            $resumePath = "$path/{$tempResume->templateType->name}";
+            self::saveDebugDetailsFile($tempResume, $resumePath);
+            $texFileUrl = self::saveTexFileAndGeneratePublicUrl($tempResume, $resumePath);
+            if ($tempResume->successful) {
+                $resumes[] = new Resume(
+                    templateType: $tempResume->templateType,
+                    texFileUrl: $texFileUrl,
+                    pdfFileUrl: self::savePdfFileAndGeneratePublicUrl($tempResume, $resumePath),
+                    thumbnailUrl: self::saveThumbnailFileAndGeneratePublicUrl($tempResume, $resumePath),
+                );
+            }
+        }
+        return $resumes;
+    }
+
+    private static function saveDebugDetailsFile(TempResume $tempResume, string $path): void
+    {
+        Storage::put("$path/debug.md", $tempResume->texFileCreationDetails->toMarkdown());
+    }
+
+    private static function saveTexFileAndGeneratePublicUrl(TempResume $tempResume, string $path): string
+    {
+        return self::saveToDiskAndGeneratePublicUrl($tempResume->texFilePath, $path, 'template.tex');
+    }
+
+    private static function savePdfFileAndGeneratePublicUrl(TempResume $tempResume, string $path): string
+    {
+        return self::saveToDiskAndGeneratePublicUrl($tempResume->pdfFilePath(), $path, 'resume.pdf');
+    }
+
+    private static function saveThumbnailFileAndGeneratePublicUrl(TempResume $tempResume, string $path): string
+    {
+        return self::saveToDiskAndGeneratePublicUrl($tempResume->thumbnailFilePath(), $path, 'thumbnail.png');
+    }
+
+    private static function saveToDiskAndGeneratePublicUrl(
+        string $tempFilePath,
+        string $newFilePath,
+        string $newFileName
+    ): string
+    {
+        $diskPath = Storage::putFileAs($newFilePath, new File($tempFilePath), $newFileName);
+        return Storage::temporaryUrl($diskPath, now()->addHours(8));
     }
 }
