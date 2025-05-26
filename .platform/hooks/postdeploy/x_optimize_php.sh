@@ -20,13 +20,16 @@ USED_MEMORY_IN_MB=$(($USED_MEMORY_IN_KB / 1024))
 FREE_MEMORY_IN_MB=$(($FREE_MEMORY_IN_KB / 1024))
 
 MAX_CHILDREN=$(($FREE_MEMORY_IN_MB / $PROCESS_MAX_MB))
+MAX_CHILDREN=$(($MAX_CHILDREN > 0 ? $MAX_CHILDREN : 1))
 
 # Optimal would be to have at least 1/4th of the children filled with children waiting to serve requests.
 START_SERVERS=$(($MAX_CHILDREN / 4))
 MIN_SPARE_SERVERS=$(($MAX_CHILDREN / 4))
+MIN_SPARE_SERVERS=$(($MIN_SPARE_SERVERS > 0 ? $MIN_SPARE_SERVERS : 1))
 
 # Optimal would be to have at most 3/4ths of the children filled with children waiting to serve requests.
 MAX_SPARE_SERVERS=$(((3 * $MAX_CHILDREN) / 4))
+MAX_SPARE_SERVERS=$(($MAX_SPARE_SERVERS > 0 ? $MAX_SPARE_SERVERS : 1))
 
 sudo sed -i "s|pm.max_children.*|pm.max_children = $MAX_CHILDREN|g" /etc/php-fpm.d/www.conf
 sudo sed -i "s|pm.start_servers.*|pm.start_servers = $START_SERVERS|g" /etc/php-fpm.d/www.conf
