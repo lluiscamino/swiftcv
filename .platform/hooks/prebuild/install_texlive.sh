@@ -32,4 +32,8 @@ sudo yum install -y \
     texlive-lm \
     texlive-cm-super \
     texlive-babel-english \
-    texlive-collection-fontsrecommended
+    texlive-collection-fontsrecommended \
+    texlive-xltxtra \
+    texlive-adjustbox \
+    texlive-dashrule \
+    texlive-paracol
