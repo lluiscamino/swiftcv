@@ -7,6 +7,8 @@ Route::get('/', fn() => view('home'));
 
 Route::get('/create-resume', fn() => view('create-resume'));
 
+Route::get('/templates', fn() => view('templates'));
+
 Route::get('/results', function () {
     if (!session()->has('resumes') || !session()->has('formUrl')) {
         abort(404);
