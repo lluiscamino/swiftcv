@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="italic text-xs md:text-sm mt-3">
-            We only store your generated resumes for 8 hours so you have time to download them
+            We only store your generated resumes for 24 hours so you have time to download them
         </div>
     </form>
 </div>

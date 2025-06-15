@@ -16,7 +16,7 @@
     ],
     [
         'question' => 'Is my data secure?',
-        'answer' => 'Yes, we take data privacy seriously. We store your generated resumes and download links securely for 8 hours so you have time to download them. After 8 hours, all files and data are automatically deleted from our servers.'
+        'answer' => 'Yes, we take data privacy seriously. We store your generated resumes and download links securely for one day so you have time to download them. After 24 hours, all files and data are automatically deleted from our servers.'
     ],
     [
         'question' => 'Is there a cost to use this website?',
