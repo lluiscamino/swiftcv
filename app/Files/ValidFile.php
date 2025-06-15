@@ -2,7 +2,10 @@
 
 namespace App\Files;
 
+use FilesystemIterator;
 use InvalidArgumentException;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 use RuntimeException;
 
 readonly class ValidFile
@@ -36,6 +39,18 @@ readonly class ValidFile
     public static function fromAppPath(string $path): self
     {
         return self::fromPath(app_path($path));
+    }
+
+    /** @return self[] */
+    public static function fromAppPathParentDir(string $path): array
+    {
+        $path = app_path($path);
+        $filesIterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS));
+        $result = [];
+        foreach ($filesIterator as $file) {
+            $result[] = self::fromPath($file->getPathname());
+        }
+        return $result;
     }
 
     /**
