@@ -54,7 +54,6 @@
 \pagestyle{fancy}
 \fancyhf{}
 
-\rfoot{Page \thepage \hspace{1pt}}
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -71,10 +70,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \namesection{<?= $vars->contactInfo->getNameEscaped() ?>}{}{ \urlstyle{same}\href{<?= $vars->contactInfo->website ?>}{<?= $vars->contactInfo->website ?>}\\
 @if($vars->contactInfo->email)
-\href{mailto:<?= $vars->contactInfo->email ?>}{<?= $vars->contactInfo->email ?>} |
+    \href{mailto:<?= $vars->contactInfo->email ?>}{<?= $vars->contactInfo->email ?>} |
 @endif
 @if($vars->contactInfo->phoneNumber)
-\href{tel:<?= $vars->contactInfo->phoneNumber ?>}{<?= $vars->contactInfo->phoneNumber ?>}
+    \href{tel:<?= $vars->contactInfo->phoneNumber ?>}{<?= $vars->contactInfo->phoneNumber ?>}
 @endif
 }
 
@@ -89,18 +88,6 @@
 {!! $sectionsRenderer->renderSecondarySectionsInOrder($vars) !!}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     LINKS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\section{Links}
-%Facebook:// \href{https://facebook/dd}{\bf dd} \\
-%Github:// \href{https://github.com/deedydas}{\bf deedydas} \\
-%LinkedIn://  \href{https://www.linkedin.com/in/debarghyadas}{\bf debarghyadas} \\
-%YouTube://  \href{https://www.youtube.com/user/DeedyDash007}{\bf DeedyDash007} \\
-%Twitter://  \href{https://twitter.com/debarghya_das}{\bf @debarghya\_das} \\
-%Quora://  \href{https://www.quora.com/Debarghya-Das}{\bf Debarghya-Das}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %     COLUMN TWO
 %
@@ -111,21 +98,6 @@
 \begin{minipage}[t]{0.66\textwidth}
 
 {!! $sectionsRenderer->renderPrimarySectionsInOrder($vars) !!}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     AWARDS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\section{Awards}
-%\begin{tabular}{rll}
-%2014         & top 52/2500  & KPCB Engineering Fellow\\
-%2014         & 1\textsuperscript{st}/50  & Microsoft Coding Competition, Cornell\\
-%2013         & National  & Jump Trading Challenge Finalist\\
-%2013     & 7\textsuperscript{th}/120 & CS 3410 Cache Race Bot Tournament  \\
-%2012     & 2\textsuperscript{nd}/150 & CS 3110 Biannual Intra-Class Bot Tournament \\
-%2011     & National & Indian National Mathematics Olympiad (INMO) Finalist \\
-%\end{tabular}
-%\sectionsep
 
 \end{minipage}
 \end{document}  \documentclass[]{article}

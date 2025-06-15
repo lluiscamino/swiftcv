@@ -127,7 +127,13 @@ enum TemplateType: string
     private function getExtraFiles(): array
     {
         return match ($this) {
-            self::MCDOWELL_CV, self::DEEDY_RESUME, self::AWESOME_CV, self::ALTA_CV => [ValidFile::fromAppPath("ResumeTemplates/Resources/$this->value/$this->value.cls")],
+            self::MCDOWELL_CV, self::AWESOME_CV, self::ALTA_CV => [
+                ValidFile::fromAppPath("ResumeTemplates/Resources/$this->value/$this->value.cls")
+            ],
+            self::DEEDY_RESUME =>
+                [
+                    ValidFile::fromAppPath("ResumeTemplates/Resources/$this->value/$this->value.cls")
+                ] + ValidFile::fromAppPathParentDir("ResumeTemplates/Resources/$this->value/fonts/"),
             self::BILLRYAN_RESUME => [
                 ValidFile::fromAppPath("ResumeTemplates/Resources/$this->value/$this->value.cls"),
                 ValidFile::fromAppPath("ResumeTemplates/Resources/$this->value/fontawesome.sty"),
