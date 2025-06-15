@@ -20,16 +20,16 @@ readonly class TexPdfFileCreator
      */
     public function createPdfFiles(TemporaryDirectory $dir, array $compilers, array $texFilePaths): array
     {
-        $outputDir = $dir->path();
-        $poolResults = Process::concurrently(function (Pool $pool) use ($texFilePaths, $compilers, $outputDir) {
+        $workingDir = $dir->path();
+        $poolResults = Process::concurrently(function (Pool $pool) use ($texFilePaths, $compilers, $workingDir) {
             foreach ($texFilePaths as $key => $texFilePath) {
                 $compiler = self::getCompiler($compilers, $key);
-                $pool->as($key)->command($compiler->getCommand($texFilePath->path, $outputDir, $key));
+                $pool->as($key)->path($workingDir)->command($compiler->getCommand($texFilePath->path, $workingDir, $key));
             }
         });
         $results = [];
         foreach ($texFilePaths as $key => $texFilePath) {
-            $pdfFilePath = "$outputDir/$key.pdf";
+            $pdfFilePath = "$workingDir/$key.pdf";
             $results[$key] = self::toTexPdfFile($pdfFilePath, $poolResults[$key]);
             if ($poolResults[$key]->failed()) {
                 Log::warning("Latexmk exited with code {$poolResults[$key]->exitCode()}", [
