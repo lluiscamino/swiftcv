@@ -1,3 +1,6 @@
+@php use App\ResumeTemplates\Variables\ResumeVariables; @endphp
+@php /** @var ResumeVariables $vars */ @endphp
+
 %-------------------------------------------------------------------------------
 %    SECTION TITLE
 %-------------------------------------------------------------------------------
@@ -14,12 +17,9 @@
 @foreach($vars->projects as $project)
     \cvproject
     {} % Role
-    {<?= $project->getNameEscaped() ?>} % Title
+    {\href{<?= $project->link ?>}{<?= $project->getNameEscaped() ?>}} % Title
     {} % Location
-    {
-    \href{<?= $project->link ?>}{\faGithub\acvHeaderIconSep\@}
-    %\href{https://twitter.com/archicontext}{\faTwitter\acvHeaderIconSep\@}
-    } % GitHub
+    {<?= $project->dateRange ?>} % Date
     {
     \
     \begin{cvitems} % Description(s)
