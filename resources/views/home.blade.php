@@ -43,7 +43,7 @@
 <!-- Start block -->
 <section class="bg-gray-50 dark:bg-gray-800">
     <div class="max-w-screen-xl px-4 pb-8 pt-6 mx-auto lg:pb-14 lg:pt-16">
-        <div class="text-center mb-6 text-lg text-gray-900 dark:text-white">Used by engineers at:</div>
+        <div class="text-center mb-6 text-lg text-gray-900 dark:text-white">Used by employees at:</div>
         <div class="grid grid-cols-2 gap-8 text-gray-500 sm:gap-12 sm:grid-cols-3 lg:grid-cols-6 dark:text-gray-400 flex items-center lg:justify-center">
             <svg class="h-9 hover:text-gray-900 dark:hover:text-white" viewBox="0 0 125 35" fill="currentColor"
                  xmlns="http://www.w3.org/2000/svg">
