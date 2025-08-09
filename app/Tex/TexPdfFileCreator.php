@@ -3,6 +3,7 @@
 namespace App\Tex;
 
 use App\Files\ValidFile;
+use App\Sandboxing\BubblewrapSandboxRunner;
 use App\Tex\Compilers\PdfLatexCompiler;
 use App\Tex\Compilers\TexCompiler;
 use Illuminate\Process\Pool;
@@ -13,6 +14,10 @@ use Spatie\TemporaryDirectory\TemporaryDirectory;
 
 readonly class TexPdfFileCreator
 {
+    public function __construct(private BubblewrapSandboxRunner $sandboxRunner)
+    {
+    }
+
     /**
      * @param array<mixed, TexCompiler> $compilers
      * @param array<mixed, ValidFile> $texFilePaths
@@ -24,7 +29,9 @@ readonly class TexPdfFileCreator
         $poolResults = Process::concurrently(function (Pool $pool) use ($texFilePaths, $compilers, $workingDir) {
             foreach ($texFilePaths as $key => $texFilePath) {
                 $compiler = self::getCompiler($compilers, $key);
-                $pool->as($key)->path($workingDir)->command($compiler->getCommand($texFilePath->path, $workingDir, $key));
+                $compilerCommand = $compiler->getCommand($texFilePath->path, $workingDir, $key);
+                $safeCommand = $this->sandboxRunner->getCommand($workingDir, $compilerCommand);
+                $pool->as($key)->path($workingDir)->command($safeCommand);
             }
         });
         $results = [];
