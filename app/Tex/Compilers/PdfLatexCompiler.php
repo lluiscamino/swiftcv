@@ -17,6 +17,17 @@ readonly class PdfLatexCompiler implements TexCompiler
 
     public function getCommand(string $texFilePath, string $outputDirectory, string $outputFileName): string
     {
-        return "$this->latexMkPath $texFilePath -pdf -f -interaction=nonstopmode -output-directory=$outputDirectory -jobname=$outputFileName -pdflatex=$this->pdfLatexPath";
+        $safePdfLatex = sprintf(
+            '%s -no-shell-escape -shell-restricted -interaction=nonstopmode -file-line-error', // TODO: Add -halt-on-error
+            $this->pdfLatexPath
+        );
+        return sprintf(
+            '%s -pdf -f -interaction=nonstopmode -output-directory=%s -jobname=%s -pdflatex="%s" %s',
+            $this->latexMkPath,
+            $outputDirectory,
+            $outputFileName,
+            $safePdfLatex,
+            $texFilePath
+        );
     }
 }

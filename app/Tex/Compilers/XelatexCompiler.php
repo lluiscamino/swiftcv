@@ -15,6 +15,13 @@ class XelatexCompiler implements TexCompiler
 
     public function getCommand(string $texFilePath, string $outputDirectory, string $outputFileName): string
     {
-        return "$this->xelatexPath -pdf -f -interaction=nonstopmode -output-directory=$outputDirectory -jobname=$outputFileName $texFilePath";
+        // TODO: Add -halt-on-error
+        return sprintf(
+            '%s -no-shell-escape -shell-restricted -interaction=nonstopmode -file-line-error -output-directory=%s -jobname=%s %s',
+            $this->xelatexPath,
+            $outputDirectory,
+            $outputFileName,
+            $texFilePath
+        );
     }
 }
