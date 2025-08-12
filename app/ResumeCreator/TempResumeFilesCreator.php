@@ -10,6 +10,7 @@ use App\ResumeTemplates\Variables\ResumeVariables;
 use App\Tex\Compilers\TexCompiler;
 use App\Tex\TexPdfFile;
 use App\Tex\TexPdfFileCreator;
+use App\Tex\TexSanitizer;
 use Illuminate\Support\Facades\Blade;
 use Spatie\TemporaryDirectory\TemporaryDirectory;
 
@@ -18,6 +19,7 @@ readonly class TempResumeFilesCreator
     public function __construct(
         private TexPdfFileCreator    $texPdfFileCreator,
         private PdfThumbnailsCreator $pdfThumbnailsCreator,
+        private TexSanitizer         $texSanitizer,
     )
     {
     }
@@ -28,7 +30,7 @@ readonly class TempResumeFilesCreator
      */
     public function createResumeFiles(TemporaryDirectory $dir, array $templateTypes, ResumeVariables $variables): array
     {
-        $texFiles = self::createTexFiles($dir, $templateTypes, $variables);
+        $texFiles = $this->createTexFiles($dir, $templateTypes, $variables);
         self::createExtraFiles($dir, $templateTypes);
         $pdfFiles = $this->texPdfFileCreator->createPdfFiles($dir, self::createCompilersMap($templateTypes), $texFiles);
         $thumbnailFiles = $this->pdfThumbnailsCreator->createThumbnails($dir, ValidFile::fromCreatedFiles($pdfFiles));
@@ -45,21 +47,21 @@ readonly class TempResumeFilesCreator
      * @param TemplateType[] $templateTypes
      * @return array<TemplateType, ValidFile> template file paths
      */
-    private static function createTexFiles(TemporaryDirectory $dir, array $templateTypes, ResumeVariables $variables): array
+    private function createTexFiles(TemporaryDirectory $dir, array $templateTypes, ResumeVariables $variables): array
     {
         $result = [];
         foreach ($templateTypes as $templateType) {
             $filePath = $dir->path("$templateType->name.tex");
-            $texContent = self::getTexContent($templateType, $variables);
+            $texContent = $this->getTexContent($templateType, $variables);
             file_put_contents($filePath, $texContent);
             $result[$templateType->name] = ValidFile::fromPath($filePath);
         }
         return $result;
     }
 
-    private static function getTexContent(TemplateType $templateType, ResumeVariables $variables): string
+    private function getTexContent(TemplateType $templateType, ResumeVariables $variables): string
     {
-        return Blade::render($templateType->getTemplateContent(), $variables->toArray());
+        return $this->texSanitizer->sanitize(Blade::render($templateType->getTemplateContent(), $variables->toArray()));
     }
 
     /**
