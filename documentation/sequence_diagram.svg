@@ -1,0 +1,535 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+     width="1770.3413205731097" height="1155.426626032">
+    <desc>
+        %2F%2Ftitle%20SwiftCV%20-%20Resumes%20creation%20sequence%0A%0Aactor%20User%0Aparticipant%20CreateResumeForm%0Aparticipant%20ResumeCreator%0Aparticipant%20TempResumeFilesCreator%0Amaterialdesignicons%20f214%20TemplateType%20%0Aparticipant%20TexPdfFileCreator%0Aparticipant%20pdflatex%2Fxelatex%0Aparticipant%20PdfThumbnailsCreator%0Aparticipant%20Ghostscript%0Amaterialdesignicons%20f24b%20Temp%20Storage%0Amaterialdesignicons%20f24b%20Persistent%20Object%20Storage%0AUser-%3ECreateResumeForm%3A%20submit%20form(vars)%0ACreateResumeForm%20-%3E%20ResumeCreator%3AcreateResumes(vars)%0AResumeCreator%20-%3E%20TempResumeFilesCreator%3AcreateResumeFiles(vars)%0Aloop%20for%20each%20template%20type%0ATempResumeFilesCreator-%3ETemplateType%3Arender(vars)%0ATempResumeFilesCreator-%3ETemp%20Storage%3Asave%0Aend%0ATempResumeFilesCreator-%3ETexPdfFileCreator%3AcreatePdfFiles(texFilePaths)%0Aloop%20for%20each%20texFilePath%0ATexPdfFileCreator-%3Epdflatex%2Fxelatex%3Aexecute%0Apdflatex%2Fxelatex-%3ETemp%20Storage%3Asave%0Aend%0ATempResumeFilesCreator-%3EPdfThumbnailsCreator%3A%20createThumbnails(pdfFilePaths)%0Aloop%20for%20each%20pdfFilePath%0APdfThumbnailsCreator-%3EGhostscript%3Aexecute(pdfPath)%0AGhostscript-%3ETemp%20Storage%3Asave%0Aend%0Aloop%20for%20each%20resume%0AResumeCreator-%3EPersistent%20Object%20Storage%3A%20save%0Aend%0ACreateResumeForm%3C--ResumeCreator%3A%20return%20resumes%0AUser%3C--CreateResumeForm%3A%20redirect%20to%20%2Fresults
+    </desc>
+    <defs/>
+    <g>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g>
+            <rect fill="white" stroke="none" x="0" y="0" width="1770" height="1155"/>
+        </g>
+        <g/>
+        <g>
+            <path fill="none" stroke="black" paint-order="fill stroke markers"
+                  d=" M 24.27189188359375 99.92118203199999 L 24.27189188359375 1155.426626032" stroke-miterlimit="10"
+                  stroke-width="1.4659797833333332" stroke-dasharray="13.532121076923076,5.863919133333333"/>
+            <path fill="none" stroke="black" paint-order="fill stroke markers"
+                  d=" M 187.68997407623698 99.92118203199999 L 187.68997407623698 1155.426626032" stroke-miterlimit="10"
+                  stroke-width="1.4659797833333332" stroke-dasharray="13.532121076923076,5.863919133333333"/>
+            <path fill="none" stroke="black" paint-order="fill stroke markers"
+                  d=" M 374.72293969173177 99.92118203199999 L 374.72293969173177 1155.426626032" stroke-miterlimit="10"
+                  stroke-width="1.4659797833333332" stroke-dasharray="13.532121076923076,5.863919133333333"/>
+            <path fill="none" stroke="black" paint-order="fill stroke markers"
+                  d=" M 585.3779451021485 99.92118203199999 L 585.3779451021485 1155.426626032" stroke-miterlimit="10"
+                  stroke-width="1.4659797833333332" stroke-dasharray="13.532121076923076,5.863919133333333"/>
+            <path fill="none" stroke="black" paint-order="fill stroke markers"
+                  d=" M 752.8298229408165 99.92118203199999 L 752.8298229408165 1155.426626032" stroke-miterlimit="10"
+                  stroke-width="1.4659797833333332" stroke-dasharray="13.532121076923076,5.863919133333333"/>
+            <path fill="none" stroke="black" paint-order="fill stroke markers"
+                  d=" M 893.8071142926681 99.92118203199999 L 893.8071142926681 1155.426626032" stroke-miterlimit="10"
+                  stroke-width="1.4659797833333332" stroke-dasharray="13.532121076923076,5.863919133333333"/>
+            <path fill="none" stroke="black" paint-order="fill stroke markers"
+                  d=" M 1059.1685052701994 99.92118203199999 L 1059.1685052701994 1155.426626032" stroke-miterlimit="10"
+                  stroke-width="1.4659797833333332" stroke-dasharray="13.532121076923076,5.863919133333333"/>
+            <path fill="none" stroke="black" paint-order="fill stroke markers"
+                  d=" M 1239.200611579762 99.92118203199999 L 1239.200611579762 1155.426626032" stroke-miterlimit="10"
+                  stroke-width="1.4659797833333332" stroke-dasharray="13.532121076923076,5.863919133333333"/>
+            <path fill="none" stroke="black" paint-order="fill stroke markers"
+                  d=" M 1405.3673004088557 99.92118203199999 L 1405.3673004088557 1155.426626032" stroke-miterlimit="10"
+                  stroke-width="1.4659797833333332" stroke-dasharray="13.532121076923076,5.863919133333333"/>
+            <path fill="none" stroke="black" paint-order="fill stroke markers"
+                  d=" M 1524.748308801723 99.92118203199999 L 1524.748308801723 1155.426626032" stroke-miterlimit="10"
+                  stroke-width="1.4659797833333332" stroke-dasharray="13.532121076923076,5.863919133333333"/>
+            <path fill="none" stroke="black" paint-order="fill stroke markers"
+                  d=" M 1674.759499795473 99.92118203199999 L 1674.759499795473 1155.426626032" stroke-miterlimit="10"
+                  stroke-width="1.4659797833333332" stroke-dasharray="13.532121076923076,5.863919133333333"/>
+        </g>
+        <g>
+            <g>
+                <path fill="white" stroke="black" paint-order="fill stroke markers"
+                      d=" M 34.29919360159375 25.508048229999993 A 10.027301717999999 10.027301717999999 0 1 1 34.299188587943306 25.498020929953203"
+                      stroke-miterlimit="10" stroke-width="2.990598758" stroke-dasharray=""/>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 24.27189188359375 35.53534994799999 L 24.27189188359375 56.99729397599999 M 11.605826555593751 43.275723203999995 L 36.93795721159375 43.275723203999995 M 24.27189188359375 56.99729397599999 L 11.605826555593751 77.05189741199999 M 24.27189188359375 56.99729397599999 L 36.93795721159375 77.05189741199999"
+                      stroke-miterlimit="10" stroke-width="2.990598758"/>
+            </g>
+            <g>
+                <g/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="8.7958787" y="94.643654812" text-anchor="start"
+                      dominant-baseline="alphabetic" xml:space="preserve">User</text>
+            </g>
+            <path fill="none" stroke="none"/>
+            <g>
+                <path fill="white" stroke="black" paint-order="fill stroke markers"
+                      d=" M 102.20708142077213 52.423437052 L 273.17286673170184 52.423437052 L 273.17286673170184 99.92118203199999 L 102.20708142077213 99.92118203199999 L 102.20708142077213 52.423437052 Z"
+                      stroke-miterlimit="10" stroke-width="2.814681184" stroke-dasharray=""/>
+            </g>
+            <g>
+                <g/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="121.29413819977214" y="82.32942463199998"
+                      text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">CreateResumeForm</text>
+            </g>
+            <path fill="none" stroke="none"/>
+            <g>
+                <path fill="white" stroke="black" paint-order="fill stroke markers"
+                      d=" M 303.9000354395872 52.423437052 L 445.5458439438763 52.423437052 L 445.5458439438763 99.92118203199999 L 303.9000354395872 99.92118203199999 L 303.9000354395872 52.423437052 Z"
+                      stroke-miterlimit="10" stroke-width="2.814681184" stroke-dasharray=""/>
+            </g>
+            <g>
+                <g/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="322.98709221858724" y="82.32942463199998"
+                      text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">ResumeCreator</text>
+            </g>
+            <path fill="none" stroke="none"/>
+            <g>
+                <path fill="white" stroke="black" paint-order="fill stroke markers"
+                      d=" M 481.15490199502347 52.423437052 L 689.6009882092735 52.423437052 L 689.6009882092735 99.92118203199999 L 481.15490199502347 99.92118203199999 L 481.15490199502347 52.423437052 Z"
+                      stroke-miterlimit="10" stroke-width="2.814681184" stroke-dasharray=""/>
+            </g>
+            <g>
+                <g/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="500.2419587740235" y="82.32942463199998"
+                      text-anchor="start" dominant-baseline="alphabetic"
+                      xml:space="preserve">TempResumeFilesCreator</text>
+            </g>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="mdi-file" width="68.256018712"
+                 height="68.256018712" x="718.7018135848165" y="8.795878699999989">
+                <path d="M13,9V3.5L18.5,9M6,2C4.89,2 4,2.89 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2H6Z"/>
+            </svg>
+            <g>
+                <g/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="707.1927456092735" y="94.643654812"
+                      text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">TemplateType</text>
+            </g>
+            <path fill="none" stroke="none"/>
+            <g>
+                <path fill="white" stroke="black" paint-order="fill stroke markers"
+                      d=" M 816.0586576723595 52.423437052 L 971.5555709129767 52.423437052 L 971.5555709129767 99.92118203199999 L 816.0586576723595 99.92118203199999 L 816.0586576723595 52.423437052 Z"
+                      stroke-miterlimit="10" stroke-width="2.814681184" stroke-dasharray=""/>
+            </g>
+            <g>
+                <g/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="835.1457144513595" y="82.32942463199998"
+                      text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">TexPdfFileCreator</text>
+            </g>
+            <path fill="none" stroke="none"/>
+            <g>
+                <path fill="white" stroke="black" paint-order="fill stroke markers"
+                      d=" M 989.1473283129767 52.423437052 L 1129.189682227422 52.423437052 L 1129.189682227422 99.92118203199999 L 989.1473283129767 99.92118203199999 L 989.1473283129767 52.423437052 Z"
+                      stroke-miterlimit="10" stroke-width="2.814681184" stroke-dasharray=""/>
+            </g>
+            <g>
+                <g/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="1008.2343850919767" y="82.32942463199998"
+                      text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">pdflatex/xelatex</text>
+            </g>
+            <path fill="none" stroke="none"/>
+            <g>
+                <path fill="white" stroke="black" paint-order="fill stroke markers"
+                      d=" M 1146.781439627422 52.423437052 L 1331.6197835321018 52.423437052 L 1331.6197835321018 99.92118203199999 L 1146.781439627422 99.92118203199999 L 1146.781439627422 52.423437052 Z"
+                      stroke-miterlimit="10" stroke-width="2.814681184" stroke-dasharray=""/>
+            </g>
+            <g>
+                <g/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="1165.868496406422" y="82.32942463199998"
+                      text-anchor="start" dominant-baseline="alphabetic"
+                      xml:space="preserve">PdfThumbnailsCreator</text>
+            </g>
+            <path fill="none" stroke="none"/>
+            <g>
+                <path fill="white" stroke="black" paint-order="fill stroke markers"
+                      d=" M 1349.2115409321018 52.423437052 L 1461.5230598856097 52.423437052 L 1461.5230598856097 99.92118203199999 L 1349.2115409321018 99.92118203199999 L 1349.2115409321018 52.423437052 Z"
+                      stroke-miterlimit="10" stroke-width="2.814681184" stroke-dasharray=""/>
+            </g>
+            <g>
+                <g/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="1368.2985977111018" y="82.32942463199998"
+                      text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">Ghostscript</text>
+            </g>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="mdi-folder" width="68.256018712"
+                 height="68.256018712" x="1490.620299445723" y="8.795878699999989">
+                <path d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z"/>
+            </svg>
+            <g>
+                <g/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="1479.1148172856097" y="94.643654812"
+                      text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">Temp Storage</text>
+            </g>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="mdi-folder" width="68.256018712"
+                 height="68.256018712" x="1640.631490439473" y="8.795878699999989">
+                <path d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z"/>
+            </svg>
+            <g>
+                <g/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="1587.9735577178362" y="94.643654812"
+                      text-anchor="start" dominant-baseline="alphabetic"
+                      xml:space="preserve">Persistent Object Storage</text>
+            </g>
+        </g>
+        <g>
+            <g>
+                <rect fill="white" stroke="none" x="46.32716998026693" y="135.10469683199997" width="119.30752599929687"
+                      height="22.86928462"/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="48.96593359026693" y="150.937278492"
+                      text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">submit form(vars)</text>
+            </g>
+            <g>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 24.27189188359375 157.97398145199998 L 173.20609381690366 157.97398145199998"
+                      stroke-miterlimit="10" stroke-width="1.4659797833333332"/>
+                <g transform="translate(187.68997407623698,157.97398145199998) translate(-187.68997407623698,-157.97398145199998)">
+                    <path fill="black" stroke="none" paint-order="stroke fill markers"
+                          d=" M 173.03017624290365 150.6440825353333 L 187.68997407623698 157.97398145199998 L 173.03017624290365 165.30388036866665 Z"/>
+                </g>
+            </g>
+            <g>
+                <rect fill="white" stroke="none" x="208.50688699957033" y="184.36161755199996"
+                      width="145.39913976882812" height="22.86928462"/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="211.14565060957034" y="200.19419921199997"
+                      text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">createResumes(vars)</text>
+            </g>
+            <g>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 187.68997407623698 207.23090217199996 L 360.23905943239845 207.23090217199996"
+                      stroke-miterlimit="10" stroke-width="1.4659797833333332"/>
+                <g transform="translate(374.72293969173177,207.23090217199996) translate(-374.72293969173177,-207.23090217199996)">
+                    <path fill="black" stroke="none" paint-order="stroke fill markers"
+                          d=" M 360.0631418583984 199.90100325533328 L 374.72293969173177 207.23090217199996 L 360.0631418583984 214.56080108866664 Z"/>
+                </g>
+            </g>
+            <g>
+                <rect fill="white" stroke="none" x="395.5398526150651" y="233.61853827199994" width="169.02117956375"
+                      height="22.86928462"/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="398.1786162250651" y="249.45111993199995"
+                      text-anchor="start" dominant-baseline="alphabetic"
+                      xml:space="preserve">createResumeFiles(vars)</text>
+            </g>
+            <g>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 374.72293969173177 256.48782289199994 L 570.8940648428152 256.48782289199994"
+                      stroke-miterlimit="10" stroke-width="1.4659797833333332"/>
+                <g transform="translate(585.3779451021485,256.48782289199994) translate(-585.3779451021485,-256.48782289199994)">
+                    <path fill="black" stroke="none" paint-order="stroke fill markers"
+                          d=" M 570.7181472688152 249.15792397533326 L 585.3779451021485 256.48782289199994 L 570.7181472688152 263.8177218086666 Z"/>
+                </g>
+            </g>
+            <g>
+                <rect fill="white" stroke="none" x="626.5474720960528" y="330.37320397199994" width="85.11282385085937"
+                      height="22.86928462"/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="629.1862357060528" y="346.20578563199996"
+                      text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">render(vars)</text>
+            </g>
+            <g>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 585.3779451021485 353.2424885919999 L 738.3459426814832 353.2424885919999"
+                      stroke-miterlimit="10" stroke-width="1.4659797833333332"/>
+                <g transform="translate(752.8298229408165,353.2424885919999) translate(-752.8298229408165,-353.2424885919999)">
+                    <path fill="black" stroke="none" paint-order="stroke fill markers"
+                          d=" M 738.1700251074832 345.91258967533327 L 752.8298229408165 353.2424885919999 L 738.1700251074832 360.57238750866657 Z"/>
+                </g>
+            </g>
+            <g>
+                <rect fill="white" stroke="none" x="1036.9411937862717" y="379.6301246919999" width="36.24386633132812"
+                      height="22.86928462"/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="1039.5799573962718" y="395.46270635199994"
+                      text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">save</text>
+            </g>
+            <g>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 585.3779451021485 402.4994093119999 L 1510.2644285423896 402.4994093119999"
+                      stroke-miterlimit="10" stroke-width="1.4659797833333332"/>
+                <g transform="translate(1524.748308801723,402.4994093119999) translate(-1524.748308801723,-402.4994093119999)">
+                    <path fill="black" stroke="none" paint-order="stroke fill markers"
+                          d=" M 1510.0885109683895 395.16951039533325 L 1524.748308801723 402.4994093119999 L 1510.0885109683895 409.82930822866655 Z"/>
+                </g>
+            </g>
+            <g>
+                <rect fill="white" stroke="none" x="644.8886720932677" y="455.2746815119999" width="189.40771520828125"
+                      height="22.86928462"/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="647.5274357032677" y="471.10726317199993"
+                      text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">createPdfFiles(texFilePaths)</text>
+            </g>
+            <g>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 585.3779451021485 478.1439661319999 L 879.3232340333348 478.1439661319999"
+                      stroke-miterlimit="10" stroke-width="1.4659797833333332"/>
+                <g transform="translate(893.8071142926681,478.1439661319999) translate(-893.8071142926681,-478.1439661319999)">
+                    <path fill="black" stroke="none" paint-order="stroke fill markers"
+                          d=" M 879.1473164593348 470.81406721533324 L 893.8071142926681 478.1439661319999 L 879.1473164593348 485.47386504866654 Z"/>
+                </g>
+            </g>
+            <g>
+                <rect fill="white" stroke="none" x="948.1761869795392" y="552.029347212" width="56.62324560378906"
+                      height="22.86928462"/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="950.8149505895392" y="567.8619288719999"
+                      text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">execute</text>
+            </g>
+            <g>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 893.8071142926681 574.898631832 L 1044.684625010866 574.898631832" stroke-miterlimit="10"
+                      stroke-width="1.4659797833333332"/>
+                <g transform="translate(1059.1685052701994,574.898631832) translate(-1059.1685052701994,-574.898631832)">
+                    <path fill="black" stroke="none" paint-order="stroke fill markers"
+                          d=" M 1044.508707436866 567.5687329153333 L 1059.1685052701994 574.898631832 L 1044.508707436866 582.2285307486667 Z"/>
+                </g>
+            </g>
+            <g>
+                <rect fill="white" stroke="none" x="1273.836473870297" y="601.286267932" width="36.24386633132812"
+                      height="22.86928462"/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="1276.475237480297" y="617.118849592"
+                      text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">save</text>
+            </g>
+            <g>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 1059.1685052701994 624.155552552 L 1510.2644285423896 624.155552552" stroke-miterlimit="10"
+                      stroke-width="1.4659797833333332"/>
+                <g transform="translate(1524.748308801723,624.155552552) translate(-1524.748308801723,-624.155552552)">
+                    <path fill="black" stroke="none" paint-order="stroke fill markers"
+                          d=" M 1510.0885109683895 616.8256536353333 L 1524.748308801723 624.155552552 L 1510.0885109683895 631.4854514686667 Z"/>
+                </g>
+            </g>
+            <g>
+                <rect fill="white" stroke="none" x="805.7636586518537" y="676.930824752" width="213.05123937820312"
+                      height="22.86928462"/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="808.4024222618536" y="692.763406412"
+                      text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">createThumbnails(pdfFilePaths)</text>
+            </g>
+            <g>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 585.3779451021485 699.8001093720001 L 1224.7167313204286 699.8001093720001"
+                      stroke-miterlimit="10" stroke-width="1.4659797833333332"/>
+                <g transform="translate(1239.200611579762,699.8001093720001) translate(-1239.200611579762,-699.8001093720001)">
+                    <path fill="black" stroke="none" paint-order="stroke fill markers"
+                          d=" M 1224.5408137464285 692.4702104553334 L 1239.200611579762 699.8001093720001 L 1224.5408137464285 707.1300082886668 Z"/>
+                </g>
+            </g>
+            <g>
+                <rect fill="white" stroke="none" x="1263.822026490754" y="773.6854904520001" width="116.92385900710937"
+                      height="22.86928462"/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="1266.4607901007541" y="789.518072112"
+                      text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">execute(pdfPath)</text>
+            </g>
+            <g>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 1239.200611579762 796.5547750720001 L 1390.8834201495224 796.5547750720001"
+                      stroke-miterlimit="10" stroke-width="1.4659797833333332"/>
+                <g transform="translate(1405.3673004088557,796.5547750720001) translate(-1405.3673004088557,-796.5547750720001)">
+                    <path fill="black" stroke="none" paint-order="stroke fill markers"
+                          d=" M 1390.7075025755223 789.2248761553334 L 1405.3673004088557 796.5547750720001 L 1390.7075025755223 803.8846739886668 Z"/>
+                </g>
+            </g>
+            <g>
+                <rect fill="white" stroke="none" x="1446.935871439625" y="822.9424111720001" width="36.24386633132812"
+                      height="22.86928462"/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="1449.5746350496252" y="838.7749928320001"
+                      text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">save</text>
+            </g>
+            <g>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 1405.3673004088557 845.8116957920001 L 1510.2644285423896 845.8116957920001"
+                      stroke-miterlimit="10" stroke-width="1.4659797833333332"/>
+                <g transform="translate(1524.748308801723,845.8116957920001) translate(-1524.748308801723,-845.8116957920001)">
+                    <path fill="black" stroke="none" paint-order="stroke fill markers"
+                          d=" M 1510.0885109683895 838.4817968753334 L 1524.748308801723 845.8116957920001 L 1510.0885109683895 853.1415947086668 Z"/>
+                </g>
+            </g>
+            <g>
+                <rect fill="white" stroke="none" x="1006.6192865779384" y="946.0847129720001" width="36.24386633132812"
+                      height="22.86928462"/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="1009.2580501879384" y="961.9172946320001"
+                      text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">save</text>
+            </g>
+            <g>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 374.72293969173177 968.9539975920002 L 1660.2756195361396 968.9539975920002"
+                      stroke-miterlimit="10" stroke-width="1.4659797833333332"/>
+                <g transform="translate(1674.759499795473,968.9539975920002) translate(-1674.759499795473,-968.9539975920002)">
+                    <path fill="black" stroke="none" paint-order="stroke fill markers"
+                          d=" M 1660.0997019621395 961.6240986753335 L 1674.759499795473 968.9539975920002 L 1660.0997019621395 976.2838965086669 Z"/>
+                </g>
+            </g>
+            <g>
+                <rect fill="white" stroke="none" x="229.27638010259767" y="1021.729269792" width="103.86015356277343"
+                      height="22.86928462"/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="231.91514371259768" y="1037.561851452"
+                      text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">return resumes</text>
+            </g>
+            <g>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 374.72293969173177 1044.598554412 L 202.1738543355703 1044.598554412" stroke-miterlimit="10"
+                      stroke-width="1.4659797833333332" stroke-dasharray="7.0367029599999995"/>
+                <g transform="translate(187.68997407623698,1044.598554412) translate(-187.68997407623698,-1044.598554412)">
+                    <path fill="black" stroke="none" paint-order="stroke fill markers"
+                          d=" M 202.3497719095703 1037.2686554953334 L 187.68997407623698 1044.598554412 L 202.3497719095703 1051.9284533286668 Z"/>
+                </g>
+            </g>
+            <g>
+                <rect fill="white" stroke="none" x="45.08880480692709" y="1070.9861905120001" width="121.78425634597656"
+                      height="22.86928462"/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="47.727568416927085" y="1086.818772172"
+                      text-anchor="start" dominant-baseline="alphabetic"
+                      xml:space="preserve">redirect to /results</text>
+            </g>
+            <g>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 187.68997407623698 1093.855475132 L 38.755772142927086 1093.855475132"
+                      stroke-miterlimit="10" stroke-width="1.4659797833333332" stroke-dasharray="7.0367029599999995"/>
+                <g transform="translate(24.27189188359375,1093.855475132) translate(-24.27189188359375,-1093.855475132)">
+                    <path fill="black" stroke="none" paint-order="stroke fill markers"
+                          d=" M 38.93168971692708 1086.5255762153333 L 24.27189188359375 1093.855475132 L 38.93168971692708 1101.1853740486667 Z"/>
+                </g>
+            </g>
+            <g>
+                <g/>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 523.8067942021485 282.87545899199995 L 1586.319459701723 282.87545899199995 L 1586.319459701723 428.8870454119999 L 523.8067942021485 428.8870454119999 L 523.8067942021485 282.87545899199995 Z"
+                      stroke-miterlimit="10" stroke-width="2.5131082" stroke-dasharray=""/>
+                <path fill="white" stroke="black" paint-order="fill stroke markers"
+                      d=" M 523.8067942021485 282.87545899199995 L 523.8067942021485 303.98556787199993 L 583.7447035333985 303.98556787199993 L 594.2997579733985 293.43051343199994 L 594.2997579733985 282.87545899199995 L 523.8067942021485 282.87545899199995"
+                      stroke-miterlimit="10" stroke-width="2.5131082"/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="8.8pt" font-style="normal"
+                      font-weight="bold" text-decoration="normal" x="541.3985516021485" y="296.9488649119999"
+                      text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">loop</text>
+                <g>
+                    <rect fill="white" stroke="none" x="609.2527517633986" y="284.2827995839999"
+                          width="137.5949863264453" height="18.295427696"/>
+                </g>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="8.8pt" font-style="normal"
+                      font-weight="bold" text-decoration="normal" x="611.8915153733985" y="296.9488649119999"
+                      text-anchor="start" dominant-baseline="alphabetic"
+                      xml:space="preserve">[for each template type]</text>
+            </g>
+            <g>
+                <g/>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 832.235963392668 504.53160223199995 L 1586.319459701723 504.53160223199995 L 1586.319459701723 650.543188652 L 832.235963392668 650.543188652 L 832.235963392668 504.53160223199995 Z"
+                      stroke-miterlimit="10" stroke-width="2.5131082" stroke-dasharray=""/>
+                <path fill="white" stroke="black" paint-order="fill stroke markers"
+                      d=" M 832.235963392668 504.53160223199995 L 832.235963392668 525.6417111119999 L 892.1738727239181 525.6417111119999 L 902.7289271639181 515.086656672 L 902.7289271639181 504.53160223199995 L 832.235963392668 504.53160223199995"
+                      stroke-miterlimit="10" stroke-width="2.5131082"/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="8.8pt" font-style="normal"
+                      font-weight="bold" text-decoration="normal" x="849.8277207926681" y="518.605008152"
+                      text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">loop</text>
+                <g>
+                    <rect fill="white" stroke="none" x="917.6819209539182" y="505.938942824" width="124.55911291335937"
+                          height="18.295427696"/>
+                </g>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="8.8pt" font-style="normal"
+                      font-weight="bold" text-decoration="normal" x="920.3206845639181" y="518.605008152"
+                      text-anchor="start" dominant-baseline="alphabetic"
+                      xml:space="preserve">[for each texFilePath]</text>
+            </g>
+            <g>
+                <g/>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 1177.629460679762 726.1877454720001 L 1586.319459701723 726.1877454720001 L 1586.319459701723 872.1993318920001 L 1177.629460679762 872.1993318920001 L 1177.629460679762 726.1877454720001 Z"
+                      stroke-miterlimit="10" stroke-width="2.5131082" stroke-dasharray=""/>
+                <path fill="white" stroke="black" paint-order="fill stroke markers"
+                      d=" M 1177.629460679762 726.1877454720001 L 1177.629460679762 747.2978543520001 L 1237.567370011012 747.2978543520001 L 1248.122424451012 736.7427999120001 L 1248.122424451012 726.1877454720001 L 1177.629460679762 726.1877454720001"
+                      stroke-miterlimit="10" stroke-width="2.5131082"/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="8.8pt" font-style="normal"
+                      font-weight="bold" text-decoration="normal" x="1195.221218079762" y="740.2611513920001"
+                      text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">loop</text>
+                <g>
+                    <rect fill="white" stroke="none" x="1263.075418241012" y="727.5950860640002"
+                          width="125.84207189773437" height="18.295427696"/>
+                </g>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="8.8pt" font-style="normal"
+                      font-weight="bold" text-decoration="normal" x="1265.714181851012" y="740.2611513920001"
+                      text-anchor="start" dominant-baseline="alphabetic"
+                      xml:space="preserve">[for each pdfFilePath]</text>
+            </g>
+            <g>
+                <g/>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 313.15178879173175 898.5869679920002 L 1736.3306506954727 898.5869679920002 L 1736.3306506954727 995.3416336920002 L 313.15178879173175 995.3416336920002 L 313.15178879173175 898.5869679920002 Z"
+                      stroke-miterlimit="10" stroke-width="2.5131082" stroke-dasharray=""/>
+                <path fill="white" stroke="black" paint-order="fill stroke markers"
+                      d=" M 313.15178879173175 898.5869679920002 L 313.15178879173175 919.6970768720001 L 373.08969812298176 919.6970768720001 L 383.64475256298175 909.1420224320002 L 383.64475256298175 898.5869679920002 L 313.15178879173175 898.5869679920002"
+                      stroke-miterlimit="10" stroke-width="2.5131082"/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="8.8pt" font-style="normal"
+                      font-weight="bold" text-decoration="normal" x="330.74354619173175" y="912.6603739120002"
+                      text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">loop</text>
+                <g>
+                    <rect fill="white" stroke="none" x="398.59774635298174" y="899.9943085840002"
+                          width="103.71090734695312" height="18.295427696"/>
+                </g>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="8.8pt" font-style="normal"
+                      font-weight="bold" text-decoration="normal" x="401.23650996298176" y="912.6603739120002"
+                      text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">[for each resume]</text>
+            </g>
+        </g>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+    </g>
+</svg>
